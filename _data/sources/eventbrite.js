@@ -10,7 +10,12 @@ class eventbrite {
     }
 
     async getData() {
-
+        return new Promise(resolve => {
+            this.getEvents().then(events => {
+                let data = [this.getGroups(), events];
+                resolve(data);
+            });
+        });
     }
 
     getGroups() {
@@ -32,6 +37,6 @@ class eventbrite {
     }
 }
 
-new eventbrite().getEvents().then(console.log)
+// new eventbrite().getEvents().then(console.log)
 
 module.exports = eventbrite;

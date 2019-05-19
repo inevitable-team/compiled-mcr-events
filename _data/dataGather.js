@@ -39,11 +39,21 @@ class dataGather {
         this.eventbrite = new eventbrite();
         this.meetup = new meetup();
         this.googleCalendar = new googleCalendar();
+        this.sources = [this.eventbrite, this.meetup, this.googleCalendar];
     }
 
     async getData() {
-
+        return new Promise(resolve => {
+            Promise.all(this.sources.map(api => api.getData())).then(responses => {
+                console.log(responses);
+                // Convert
+                // Join
+                resolve(responses);
+            })
+        });
     }
 }
+
+new dataGather().getData().then(res => console.log(res[0]))
 
 module.exports = dataGather;
