@@ -1,0 +1,22 @@
+{
+  "name": "manchester-tech-meetups",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sean12697/manchester-tech-meetups.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sean12697/manchester-tech-meetups/issues"
+  },
+  "homepage": "https://github.com/Sean12697/manchester-tech-meetups#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
