@@ -40,20 +40,30 @@ class dataGather {
         this.meetup = new meetup();
         this.googleCalendar = new googleCalendar();
         this.sources = [this.eventbrite, this.meetup, this.googleCalendar];
+        // Importing Classes
+        this.group = group;
+        this.event = event;
+        // Converters
+        this.eventbriteGroup = (group) => new this.group(group.name, group.url, group.img, null, null, null, "Eventbrite", false);
+        this.eventbriteEvent = (event) => new this.event(event.name.text, event.url, event.venue, event.description.text || "", event.start.utc, event.end.utc, "going", event.capacity, !event.id_free, "cost", event.groupName, event.groupLink, "Eventbrite", false);
+        this.meetupGroup = (group) => new this.group(name, link, img, members, sinceLast, untilNext, source, ad);
+        this.meetupEvent = (event) => new this.event(name, link, location, desc, startTimeISO, endTimeISO, going, capacity, paid, cost, groupName, groupLink, source, ad);
+        this.googleCalenderGroup = (group) => new this.group(name, link, img, members, sinceLast, untilNext, source, ad);
+        this.googleCalenderEvent = (event) => new this.event(name, link, location, desc, startTimeISO, endTimeISO, going, capacity, paid, cost, groupName, groupLink, source, ad);
     }
 
     async getData() {
         return new Promise(resolve => {
-            Promise.all(this.sources.map(api => api.getData())).then(responses => {
-                console.log(responses);
-                // Convert
-                // Join
-                resolve(responses);
+            Promise.all(this.sources.map(api => api.getData())).then(data => {
+                console.log(data);
+                let groups = [].concat(data[0][0].map(this.eventbriteGroup), data[1][0].map(this.meetupGroup), data[2][0].map(this.googleCalenderGroup))
+                let events = [].concat(data[0][1].map(this.eventbriteEvent), data[1][1].map(this.meetupEvent), data[2][1].map(this.googleCalenderEvent))
+                resolve([groups, events]);
             })
         });
     }
 }
 
-new dataGather().getData().then(res => console.log(res[0]))
+new dataGather().getData().then(res => console.log(res))
 
 module.exports = dataGather;
