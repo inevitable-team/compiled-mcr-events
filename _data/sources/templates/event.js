@@ -1,5 +1,5 @@
 module.exports = class event {
-    constructor(name, link, location, desc, startTimeISO, endTimeISO, going, capacity, paid, cost, groupName, groupLink, source, ad) {
+    constructor(name, link, location, desc, startTimeISO, endTimeISO, going, capacity, free, cost, groupName, groupLink, source, ad) {
         this.name = name;
         this.link = link;
         this.location = location;
@@ -8,7 +8,7 @@ module.exports = class event {
         this.endTimeISO = endTimeISO;
         this.going = going;
         this.capacity = capacity;
-        this.paid = paid;
+        this.free = free;
         this.cost = cost;
         this.groupName = groupName;
         this.groupLink = groupLink;
