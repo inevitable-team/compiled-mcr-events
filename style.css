@@ -1,3 +1,51 @@
 body {
+    font-family: 'Raleway', serif;
     text-align: center;
+    margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Poiret One', cursive;
+}
+
+h1 {
+    margin: 0px;
+    padding-top: 10px;
+}
+
+header {
+    height: 60px;
+    background-color: lightsteelblue;
+    color: white;
+}
+
+summary {
+    height: 60px;
+    margin: auto 0px;
+}
+
+#typeContainer {
+    border-top: gray solid 1px;
+    /* border-bottom: gray solid 1px; */
+}
+
+#typeContainer > * {
+    width: calc(50vw - 3px);
+    display: inline-block;
+} 
+
+#selected {
+    border-bottom: red solid 3px;
+}
+
+footer {
+    position: absolute;
+    width: 100vw;
+    padding: 4px 0px;
+    bottom: 0px;
+    background-color: lightsteelblue;
 }

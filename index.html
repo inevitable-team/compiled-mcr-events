@@ -11,41 +11,60 @@
 </head>
 
 <body>
-    <header><h1>Manchester Tech Meetups</h1></header>
-    <summary><p>Desc</p></summary>
+    <header>
+        <h1>Manchester Tech Meetups</h1>
+    </header>
+    <summary>
+        <p>Desc</p>
+    </summary>
     <main>
         <div id="typeContainer">
-            <div class="type selected">
+            <div id="selected" class="type">
                 <p>Event</p>
             </div>
-            <div class="type selected">
+            <div class="type">
                 <p>Group</p>
             </div>
         </div>
         <div id="itemsContainer">
-            <div id="eventContainer">
+            <div id="eventContainer" class="itemsContainer">
                 <nav id="eventsNav">
                     <div id="eventsSearchBar"></div>
                     <div id="eventsReduceBar"></div>
                     <div id="eventsSpecificBar"></div>
                 </nav>
                 <section id="eventsItems">
-
+                    <p>Events</p>
                 </section>
             </div>
-            <div id="groupContainer">
+            <div id="groupContainer" class="itemsContainer">
                 <nav id="groupsNav">
                     <div id="groupsSearchBar"></div>
                     <div id="groupsReduceBar"></div>
                     <div id="groupsSpecificBar"></div>
                 </nav>
                 <section id="groupsItems">
-
+                    <p>Groups</p>
                 </section>
             </div>
         </div>
     </main>
     <footer>Sean O'Mahoney</footer>
+    <script type="text/javascript">
+        function apsc(e) {
+            return Array.prototype.slice.call(e)
+        }
+        window.addEventListener("load", function () {
+            apsc(document.getElementsByTagName('type')).forEach((t, i) => {
+                t.addEventListener('click', function() {
+                    apsc(document.getElementsByTagName('type')).forEach((x) => { x.setAttribute('id', '') });
+                    apsc(document.getElementsByClassName('itemsContainer')).forEach((x) => { x.style.display = 'none' });
+                    t.setAttribute('id', 'on');
+                    document.getElementsByClassName('itemsContainer')[i].style.display = 'block';
+                });
+            })
+        });
+    </script>
 </body>
 
 </html>
