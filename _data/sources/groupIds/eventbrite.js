@@ -6,5 +6,21 @@ module.exports = [{
 }, {
     id: 17108698390,
     name: "Manchester Java Community",
+    img: "",
+    url: ""
+}, {
+    id: 17108698390,
+    name: "",
+    img: "",
+    url: ""
+}, {
+    id: 17108698390,
+    name: "",
+    img: "",
+    url: ""
+}, {
+    id: 17108698390,
+    name: "",
+    img: "",
     url: ""
 }];

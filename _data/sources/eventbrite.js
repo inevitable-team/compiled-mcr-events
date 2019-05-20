@@ -1,4 +1,6 @@
-const fetch = require("node-fetch");
+const fetch = require("node-fetch"),
+      group = require("./templates/group"),
+      event = require("./templates/event");
 
 class eventbrite {
     constructor() {
@@ -9,13 +11,17 @@ class eventbrite {
         this.token = "DEUFZCPYAAJE4ZKBNPZX";
         this.params = { headers: { 'Authorization': "Bearer " +  this.token } };
         this.urls = this.organizers.map(g => this.apiEvents + g.id);
-        // this.fetch = new fetch();
+        // Converters
+        this.groupClass = group;
+        this.eventClass = event;
+        this.group = (group) => new this.groupClass(group.name, group.url, group.img, null, null, null, "Eventbrite", false);
+        this.event = (event) => new this.eventClass(event.name.text, event.url, event.venue, event.description.text || "", event.start.utc, event.end.utc, "going", event.capacity, event.id_free ? false : true, "cost", event.groupName, event.groupLink, "Eventbrite", false);
     }
 
     async getData() {
         return new Promise(resolve => {
             this.getEvents().then(events => {
-                let data = [this.getGroups(), events];
+                let data = [this.getGroups().map(this.group), events.map(this.event)];
                 resolve(data);
             });
         });

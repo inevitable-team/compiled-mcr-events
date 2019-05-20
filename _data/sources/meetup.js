@@ -1,8 +1,15 @@
-const fetch = require("node-fetch");
+const fetch = require("node-fetch"),
+group = require("./templates/group"),
+event = require("./templates/event");
 
 class meetup {
     constructor() {
         this.groups = require("./groupIds/meetup");
+        // Converters
+        this.groupClass = group;
+        this.eventClass = event;
+        this.group = (group) => new this.groupClass(name, link, img, members, sinceLast, untilNext, source, ad);
+        this.event = (event) => new this.eventClass(name, link, location, desc, startTimeISO, endTimeISO, going, capacity, paid, cost, groupName, groupLink, source, ad);
     }
 
     async getData() {
