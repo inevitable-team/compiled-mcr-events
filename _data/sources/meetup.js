@@ -15,15 +15,29 @@ class meetup {
         // Converters
         this.groupClass = group;
         this.eventClass = event;
-        this.group = (group) => new this.groupClass(name, link, img, members, sinceLast, untilNext, source, ad);
-        this.event = (event) => new this.eventClass(event.name, event.link, this.rtnVenue(event), this.removeHTML(event.description || ""), event.time, event.time + (event.duration || 7200000), event.yes_rsvp_count, event.rsvp_limit || Infinity, event.hasOwnProperty('fee') ? false : true, this.rtnFee(event), event.group.name, "https://www.meetup.com/" + event.group.urlname, "Meetup", false);
+        this.group = (group) => new this.groupClass(group.name, group.link, this.rtnGroupImg(group), group.members, null, null, "Meetup", false);
+        this.event = (event) => new this.eventClass(event.name, event.link, this.rtnEventVenue(event), this.removeHTML(event.description || ""), event.time, event.time + (event.duration || 7200000), event.yes_rsvp_count, event.rsvp_limit || Infinity, event.hasOwnProperty('fee') ? false : true, this.rtnEventFee(event), event.group.name, "https://www.meetup.com/" + event.group.urlname, "Meetup", false);
     }
 
-    rtnFee(event) {
+    rtnGroupImg(group) {
+        let thumb = './img/blankUser.jpg';
+        if (group.hasOwnProperty('group_photo')) {
+            thumb = group.group_photo.photo_link;
+        } else {
+            if (group.hasOwnProperty('organizer')) {
+                if (group.organizer.hasOwnProperty('photo')) {
+                    thumb = group.organizer.photo.photo_link;
+                }
+            }
+        }
+        return thumb;
+    }
+
+    rtnEventFee(event) {
         return event.hasOwnProperty('fee') ? ((event.fee.currency == "GBP") ? "£" : event.fee.currency) + (Math.round(event.fee.amount * 100) / 100) : null;
     }
 
-    rtnVenue(event) {
+    rtnEventVenue(event) {
         let venueName = (event.hasOwnProperty('venue')) ? event.venue.name : "N/A";
         let venueAddress = (event.hasOwnProperty('venue')) ? event.venue.address_1 : "";
         let venuePostcode = (event.hasOwnProperty('venue')) ? event.venue.city : "";
@@ -33,17 +47,21 @@ class meetup {
 
     async getData() {
         return new Promise(resolve => {
-            resolve([
-                [],
-                []
-            ]);
+            Promise.all([this.getGroups, this.getEvents].map(data => data())).then(data => {
+                resolve(data);
+            })
         });
     }
 
     async getGroups() {
         return new Promise(resolve => {
-            resolve([]);
-        });
+            Promise.all(this.groups.map(groupId => fetch(this.apiGroup(groupId), this.header))).then(responses =>
+                Promise.all(responses.map(res => res.text()))
+            ).then(texts => {
+                let json = texts.map(t => JSON.parse(t)).filter(e => !e.hasOwnProperty("errors")).map(this.group);
+                resolve(json);
+            })
+        })
     }
 
     async getEvents() {
@@ -63,7 +81,8 @@ class meetup {
     }
 }
 
-new meetup().getEvents().then(console.log)
+// new meetup().getEvents().then(console.log)
+// new meetup().getGroups().then(console.log)
 
 
 module.exports = meetup;
