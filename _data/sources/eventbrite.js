@@ -14,8 +14,8 @@ class eventbrite {
         // Converters
         this.groupClass = group;
         this.eventClass = event;
-        this.group = (group) => new this.groupClass(group.name, group.url, group.img, null, null, null, "Eventbrite", false);
-        this.event = (event) => new this.eventClass(event.name.text, event.url, event.venue, event.description.text || "", event.start.utc, event.end.utc, "going", event.capacity, event.id_free, "cost", event.groupName, event.groupLink, "Eventbrite", false);
+        this.group = (group) => new this.groupClass(group.name, group.url, group.img || "./img/eventbrite.png", null, null, null, "Eventbrite", false);
+        this.event = (event) => new this.eventClass(event.name.text, event.url, event.venue, event.description.text || "", event.start.utc, event.end.utc, null, event.capacity, event.id_free, null, event.groupName, event.groupLink, "Eventbrite", false);
     }
 
     async getData() {
