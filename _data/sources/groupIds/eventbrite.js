@@ -87,7 +87,7 @@ module.exports = [{
     id: 7227143335,
     name: "SheSays MCR",
     img: "",
-    url: "shesays-mcr-7227143335"
+    url: "https://www.eventbrite.co.uk/o/shesays-mcr-7227143335"
 }, {
     id: 11845832416,
     name: "MancML",
