@@ -13,7 +13,7 @@ class dataGather {
     async getData() {
         return new Promise(resolve => {
             Promise.all(this.sources.map(api => api.getData())).then(data => {
-                let groups = data.reduce((total, curr) => total.concat(curr[0]), []).sort((a, b) => a.groupName - b.groupName);
+                let groups = data.reduce((total, curr) => total.concat(curr[0]), []).sort((a, b) => a.name - b.name);
                 let events = data.reduce((total, curr) => total.concat(curr[1]), []).sort((a, b) => {
                     if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
