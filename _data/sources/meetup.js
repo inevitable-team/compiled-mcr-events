@@ -47,9 +47,11 @@ class meetup {
 
     async getData() {
         return new Promise(resolve => {
-            Promise.all([this.getGroups, this.getEvents].map(data => data())).then(data => {
-                resolve(data);
-            })
+            this.getGroups().then(groups => {
+                this.getEvents().then(events => {
+                    resolve([groups, events]);
+                })
+            });
         });
     }
 
@@ -83,6 +85,5 @@ class meetup {
 
 // new meetup().getEvents().then(console.log)
 // new meetup().getGroups().then(console.log)
-
 
 module.exports = meetup;
