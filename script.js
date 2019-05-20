@@ -9,7 +9,6 @@ shell.mkdir('-p', './_site');
 shell.mkdir('-p', './_exports');
 let dataGather = new dataGatherClass();
 dataGather.getData().then(data => {
-    fs.writeFileSync(`./_exports/groups`, beautify(data[0], {format: 'json'}), () => {});
-    fs.writeFileSync(`./_exports/events`, beautify(data[1], {format: 'json'}), () => {});
+    fs.writeFileSync(`./_exports/groups.json`, beautify(JSON.stringify(data[0]), {format: 'json'}), () => {});
+    fs.writeFileSync(`./_exports/events.json`, beautify(JSON.stringify(data[1]), {format: 'json'}), () => {});
 });
-
