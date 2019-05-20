@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Sean12697/manchester-tech-meetups#readme",
   "dependencies": {
+    "beautify": "0.0.8",
     "node-fetch": "^2.6.0"
   }
 }
