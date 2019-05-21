@@ -58,4 +58,17 @@ footer {
 section {
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: #f6f7f8;
+}
+
+.blue {
+    color: #0098ab;
+}
+
+.item {
+    background-color: white;
+}
+
+.gray {
+    color: #2e3e48;
 }

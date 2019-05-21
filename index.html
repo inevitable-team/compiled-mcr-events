@@ -52,6 +52,10 @@
     <footer>Sean O'Mahoney</footer>
 
     <script type="text/javascript">
+        const months = new Map([[1, 'January'], [2, 'February'], [3, 'March'], [4, 'April'], [5, 'May'], [6, 'June'], [7, 'July'], [8, 'August'], [9, 'September'], [10, 'October'], [11, 'November'], [12, 'December']]);
+        const abvMonths = new Map([[1, 'Jan'], [2, 'Feb'], [3, 'March'], [4, 'Apr'], [5, 'May'], [6, 'Jun'], [7, 'Jul'], [8, 'Aug'], [9, 'Sept'], [10, 'Oct'], [11, 'Nov'], [12, 'Dec']]);
+        const abvDays = new Map([[0,"Sun"],[1,"Mon"],[2,"Tue"],[3,"Wed"],[4,"Thur"],[5,"Fri"],[6,"Sat"]]);
+        
         function apsc(e) {
             return Array.prototype.slice.call(e)
         }
@@ -72,12 +76,38 @@
             })
 
             getData("_exports/events.json", data => {
-                document.getElementById("eventsItems").innerHTML = data.map(event =>
-                    `<div class="event"><a href="${event.link}"><p>${event.name}</p></a><p>${event.location}</p><p>${formatDate(event.startTimeISO)}</p><p>${event.source}</p></div>`
-                    ).join("");
+                document.getElementById("eventsItems").innerHTML = data.map(eventHTML).join("");
             })
 
         });
+
+        function eventHTML(event) {
+            return `
+                <div class="item">
+                    <p class="date blue">${htmlDate(event.startTimeISO)}</p>
+                    <p class="title"><a target="_blank" href="${event.link}">${event.name}</a></p>
+                    <p class="group gray"><a target="_blank" href="${event.groupLink}">${event.groupName}</a> | ${event.source}</p>
+                    <p class="location gray">${event.location || "Location Unavailable"}</p>
+                </div>
+            `
+        }
+
+        function htmlDate(string) {
+            let date = new Date(string);
+            return `${abvDays.get(date.getDay())}, ${abvMonths.get(date.getMonth())} ${date.getDate()}, ${timeConvert(date)}`;
+        }
+
+        function timeConvert(date) {
+            let ampm, x, i = `${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() == 0 ? "00" : date.getMinutes()}`;
+            if (i.substring(0, 2) > 12) {
+                ampm = "PM";
+                x = i.substring(0, 2) % 12 + ":" + i.substring(3, 5) + " " + ampm;
+            } else {
+                ampm = "AM";
+                x = i.substring(0, 2) + ":" + i.substring(3, 5) + " " + ampm;
+            }
+            return x.substr(0, 1) == "0" ? x.slice(1) : x;
+        }
 
         function getData(url, callback) {
             let xmlhttp = new XMLHttpRequest();
