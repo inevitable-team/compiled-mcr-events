@@ -18,15 +18,19 @@ class dataGather {
                 let groupsData = data.reduce((total, curr) => total.concat(curr[0]), []);
                 let eventsData = data.reduce((total, curr) => total.concat(curr[1]), []);
                 // Sorting / Filtering
-                let groups = groupsData.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase());
-                let events = this.filterEvents(this.sortEvents(eventsData));
+                let groups = this.sortNames(groupsData);
+                let events = this.sortTime(this.filterEvents(eventsData));
                 resolve([groups, events]);
             })
         });
     }
 
-    sortEvents(events) {
-        return events.sort((a, b) => {
+    sortTime(items) {
+        return items.sort((a, b) => new Date(a.startTimeISO) - new Date(b.startTimeISO));
+    }
+
+    sortNames(items) {
+        return items.sort((a, b) => {
             if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
             if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
             return 0;
