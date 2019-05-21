@@ -13,15 +13,50 @@ class dataGather {
     async getData() {
         return new Promise(resolve => {
             Promise.all(this.sources.map(api => api.getData())).then(data => {
-                let groups = data.reduce((total, curr) => total.concat(curr[0]), []).sort((a, b) => a.name - b.name);
-                let events = data.reduce((total, curr) => total.concat(curr[1]), []).sort((a, b) => {
-                    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-                    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-                    return 0;
-                });
+                console.table(data)
+                // Joining data from all sources
+                let groupsData = data.reduce((total, curr) => total.concat(curr[0]), []);
+                let eventsData = data.reduce((total, curr) => total.concat(curr[1]), []);
+                // Sorting / Filtering
+                let groups = groupsData.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase());
+                let events = this.filterEvents(this.sortEvents(eventsData));
                 resolve([groups, events]);
             })
         });
+    }
+
+    sortEvents(events) {
+        return events.sort((a, b) => {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            return 0;
+        });
+    }
+
+    // https://stackoverflow.com/questions/2218999/remove-duplicates-from-an-array-of-objects-in-javascript
+    filterEvents(events) {
+        return events.filter((event,index) => {
+            return index === events.findIndex(obj => {
+              return this.rtnLowercaseAlpha(event.name) == this.rtnLowercaseAlpha(obj.name) && this.formatDate(event.startTimeISO) == this.formatDate(obj.startTimeISO);
+            });
+          });
+    }
+
+    rtnLowercaseAlpha(string) {
+        return string.toLowerCase().replace(/[^a-z0-9]/gi,'');
+    }
+
+    // https://stackoverflow.com/questions/23593052/format-javascript-date-to-yyyy-mm-dd
+    formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+    
+        return [day, month, year].join('-');
     }
 }
 

@@ -15,7 +15,8 @@ class googleCalendar {
     async getData() {
        return new Promise(resolve => {
            this.getEvents().then(events => {
-               resolve([[], events.filter(e => e.hasOwnProperty("summary")).map(this.event)]);
+               let filteredEvents = events.filter(e => e.hasOwnProperty("summary")).map(this.event);
+               resolve([[], filteredEvents]);
            });
        });
     }
@@ -25,7 +26,6 @@ class googleCalendar {
             fetch(this.url).then((res) => { 
                 return res.json()
               }).then((jsonData) => {
-                // require("fs").writeFileSync("gc.json", JSON.stringify(jsonData), () => {})
                 resolve(jsonData.items)
               })
         });
