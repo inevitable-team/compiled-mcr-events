@@ -1,16 +1,8 @@
 body {
-    font-family: 'Raleway', serif;
+    font-family: sans-serif;
     text-align: center;
     margin: 0px;
-    overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-family: 'Poiret One', cursive;
+    /* overflow: hidden; */
 }
 
 h1 {
@@ -57,7 +49,7 @@ footer {
 
 section {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     background-color: #f6f7f8;
 }
 
@@ -67,8 +59,44 @@ section {
 
 .item {
     background-color: white;
+    text-align: left;
+    padding: 15px;
+    width: calc(100vw - 50px);
+    max-width: 450px;
+    height: 180px;
+    overflow: hidden;
+    margin: 5px auto;
+    display: inline-block;
+}
+
+.item p {
+    margin: 9px 0px;
+}
+
+.item > *:first-child {
+    margin-top: 0px;
 }
 
 .gray {
     color: #2e3e48;
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.location {
+    display: inline-block;
+    max-width: 320px;
+    margin-left: 10px !important;
+}
+
+.locationImg {
+    display: inline-block;
+    height: 30px;
 }

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Manchester Tech Meetups</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Poiret+One" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Raleway|Poiret+One" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -28,21 +28,21 @@
         </div>
         <div id="itemsContainer">
             <div id="eventContainer" class="itemsContainer">
-                <nav id="eventsNav" class="itemsNav">
+                <!-- <nav id="eventsNav" class="itemsNav">
                     <div id="eventsSearchBar">Search</div>
                     <div id="eventsReduceBar">Reduce</div>
                     <div id="eventsSpecificBar">Specific</div>
-                </nav>
+                </nav> -->
                 <section id="eventsItems">
                     <p>Events</p>
                 </section>
             </div>
             <div id="groupContainer" class="itemsContainer" style="display:none;">
-                <nav id="groupsNav" class="itemsNav">
+                <!-- <nav id="groupsNav" class="itemsNav">
                     <div id="groupsSearchBar">Search</div>
                     <div id="groupsReduceBar">Reduce</div>
                     <div id="groupsSpecificBar">Specific</div>
-                </nav>
+                </nav> -->
                 <section id="groupsItems">
                     <p>Groups</p>
                 </section>
@@ -85,8 +85,9 @@
             return `
                 <div class="item">
                     <p class="date blue">${htmlDate(event.startTimeISO)}</p>
-                    <p class="title"><a target="_blank" href="${event.link}">${event.name}</a></p>
+                    <h3 class="title"><a target="_blank" href="${event.link}">${event.name}</a></h3>
                     <p class="group gray"><a target="_blank" href="${event.groupLink}">${event.groupName}</a> | ${event.source}</p>
+                    <img class="locationImg" src="./_static/img/location.svg">
                     <p class="location gray">${event.location || "Location Unavailable"}</p>
                 </div>
             `
