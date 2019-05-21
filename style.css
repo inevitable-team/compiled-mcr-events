@@ -2,6 +2,7 @@ body {
     font-family: 'Raleway', serif;
     text-align: center;
     margin: 0px;
+    overflow-x: hidden;
 }
 
 h1,
@@ -34,7 +35,7 @@ summary {
 }
 
 #typeContainer > * {
-    width: calc(50vw - 3px);
+    width: calc(50vw - 12px);
     display: inline-block;
 } 
 
@@ -43,9 +44,18 @@ summary {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     padding: 4px 0px;
     bottom: 0px;
     background-color: lightsteelblue;
+}
+
+.itemsNav > * {
+    height: 25px;
+}
+
+section {
+    overflow-x: hidden;
+    overflow-y: auto;
 }

@@ -28,20 +28,20 @@
         </div>
         <div id="itemsContainer">
             <div id="eventContainer" class="itemsContainer">
-                <nav id="eventsNav">
-                    <div id="eventsSearchBar"></div>
-                    <div id="eventsReduceBar"></div>
-                    <div id="eventsSpecificBar"></div>
+                <nav id="eventsNav" class="itemsNav">
+                    <div id="eventsSearchBar">Search</div>
+                    <div id="eventsReduceBar">Reduce</div>
+                    <div id="eventsSpecificBar">Specific</div>
                 </nav>
                 <section id="eventsItems">
                     <p>Events</p>
                 </section>
             </div>
-            <div id="groupContainer" class="itemsContainer">
-                <nav id="groupsNav">
-                    <div id="groupsSearchBar"></div>
-                    <div id="groupsReduceBar"></div>
-                    <div id="groupsSpecificBar"></div>
+            <div id="groupContainer" class="itemsContainer" style="display:none;">
+                <nav id="groupsNav" class="itemsNav">
+                    <div id="groupsSearchBar">Search</div>
+                    <div id="groupsReduceBar">Reduce</div>
+                    <div id="groupsSpecificBar">Specific</div>
                 </nav>
                 <section id="groupsItems">
                     <p>Groups</p>
@@ -50,21 +50,60 @@
         </div>
     </main>
     <footer>Sean O'Mahoney</footer>
+
     <script type="text/javascript">
         function apsc(e) {
             return Array.prototype.slice.call(e)
         }
+
         window.addEventListener("load", function () {
-            apsc(document.getElementsByTagName('type')).forEach((t, i) => {
-                t.addEventListener('click', function() {
-                    apsc(document.getElementsByTagName('type')).forEach((x) => { x.setAttribute('id', '') });
-                    apsc(document.getElementsByClassName('itemsContainer')).forEach((x) => { x.style.display = 'none' });
-                    t.setAttribute('id', 'on');
-                    document.getElementsByClassName('itemsContainer')[i].style.display = 'block';
+            apsc(document.getElementsByClassName('type')).forEach((t, i) => {
+                t.addEventListener('click', function () {
+                    apsc(document.getElementsByClassName('type')).forEach((x) => {
+                        x.setAttribute('id', '')
+                    });
+                    apsc(document.getElementsByClassName('itemsContainer')).forEach((x) => {
+                        x.style.display = 'none'
+                    });
+                    t.setAttribute('id', 'selected');
+                    document.getElementsByClassName('itemsContainer')[i].style.display =
+                    'block';
                 });
             })
+
+            getData("_exports/events.json", data => {
+                document.getElementById("eventsItems").innerHTML = data.map(event =>
+                    `<div class="event"><a href="${event.link}"><p>${event.name}</p></a><p>${event.location}</p><p>${formatDate(event.startTimeISO)}</p><p>${event.source}</p></div>`
+                    ).join("");
+            })
+
         });
+
+        function getData(url, callback) {
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let data = JSON.parse(this.responseText);
+                    callback(data);
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [day, month, year].join('-');
+        }
     </script>
+
 </body>
 
 </html>
