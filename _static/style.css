@@ -190,8 +190,8 @@ a {
 #toTop {
     position: fixed;
     right: 0;
-    top: 300px;
-    /* background-color: #4682b457; */
+    top: 250px;
+    background-color: #4682b414;
     color: white;
     padding-bottom: 13px;
     padding: 15px;
