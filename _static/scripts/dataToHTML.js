@@ -55,7 +55,7 @@
         `
     }
 
-    exports.groupHTML= group => {
+    exports.groupHTML = group => {
         return `
         <div class="group"><a href="${group.link}" target="_blank">
             <div class="groupImg"><img src="${group.img || "http://www.afglaw.co.uk/wp-content/uploads/2018/07/blank-user.png"}"></div>
@@ -101,4 +101,4 @@
         return 'hello world'
     };
 
-})(typeof exports === 'undefined'? this['mymodule']={}: exports);
+})(typeof exports === 'undefined'? this['dataToHTML']={}: exports);

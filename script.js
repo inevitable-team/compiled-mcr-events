@@ -2,7 +2,7 @@ let fs = require('fs-extra'),
     shell = require('shelljs'),
     beautify = require('beautify'),
     dataGatherClass = require(`${__dirname}/_data/dataGather`),
-    htmlConverter = require(`${__dirname}/dataToHTML`),
+    htmlConverter = require(`${__dirname}/_static/scripts/dataToHTML`),
     indexLayout = require(`${__dirname}/_layout/index`);
 
 // Moving static files to site
