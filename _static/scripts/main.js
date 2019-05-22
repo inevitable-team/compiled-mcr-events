@@ -39,11 +39,13 @@ window.addEventListener("load", function () {
 });
 
 function searchGroups() {
+    if (eventsSearchElement.value.length == 0) { clearGroupsSearch(); return; }
     let results = groups.filter(group => nn(group.name).includes(nn(groupsSearchElement.value))).map(dataToHTML.groupHTML).join("");
     document.getElementById("groupsItems").innerHTML = results;
 }
 
 function searchEvent() {
+    if (eventsSearchElement.value.length == 0) { clearEventSearch(); return; }
     let value = eventsSearchElement.value;
     let results = events.filter(event => !nn(event.name).includes(nn(value)) && !nn(event.desc).includes(nn(value)) && !nn(event.location).includes(nn(value))).map(dataToHTML.eventHTML).join("");
     document.getElementById("eventsItems").innerHTML = results;
