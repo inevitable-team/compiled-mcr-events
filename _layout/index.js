@@ -13,6 +13,7 @@ module.exports = (eventsHTML, groupsHTML) => `
 <body>
     <header>
         <h1>Manchester Tech Meetups</h1>
+        <p>by Sean O'Mahoney</p>
     </header>
     <summary>
         <p>Helping you find technology events through the use of Meetup, Eventbrite & the TechNW Calendar. </p>
