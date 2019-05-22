@@ -19,14 +19,14 @@ window.addEventListener("load", function () {
 
     document.getElementById("toTop").addEventListener("click", () => window.scrollTo(0, 0));
 
-    eventsSearchElement = document.getElementById("eventsClearSearch");
+    eventsSearchElement = document.getElementById("eventsSearchBox");
     groupsSearchElement = document.getElementById("groupsSearchBox");
 
-    groupsSearchElement.addEventListener("change", () => searchGroups);
-    document.getElementById("groupsClearSearch").addEventListener("click", () => clearGroupsSearch);
+    groupsSearchElement.addEventListener("change", searchGroups);
+    document.getElementById("groupsClearSearch").addEventListener("click", clearGroupsSearch);
 
-    eventsSearchElement.addEventListener("change", () => searchEvent);
-    document.getElementById("eventsClearSearch").addEventListener("click", () => clearEventSearch);
+    eventsSearchElement.addEventListener("change", searchEvent);
+    document.getElementById("eventsClearSearch").addEventListener("click", clearEventSearch);
 
     let url = window.location.href.replace("index.html", "");
 
