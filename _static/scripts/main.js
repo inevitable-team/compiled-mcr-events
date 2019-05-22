@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
         events = data;
     })
     getData(`${url}data/groups.json`, data => {
-        groups = groups;
+        groups = data;
     })
 });
 

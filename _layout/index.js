@@ -21,14 +21,18 @@ module.exports = (eventsHTML, groupsHTML) => `
     <main>
         <div id="typeContainer">
             <div id="selected" class="type">
-                <p>Event</p>
+                <p>Events</p>
             </div>
             <div class="type">
-                <p>Group</p>
+                <p>Groups</p>
             </div>
         </div>
         <div id="itemsContainer">
             <div id="eventContainer" class="itemsContainer">
+                <div class="searchDiv">
+                    <input type="button" id="eventsClearSearch" value="Clear">
+                    <input type="text" id="eventsSearchBox" class="search" value="">
+                </div>
                 <!-- <nav id="eventsNav" class="itemsNav">
                     <div id="eventsSearchBar">Search</div>
                     <div id="eventsReduceBar">Reduce</div>
@@ -39,6 +43,10 @@ module.exports = (eventsHTML, groupsHTML) => `
                 </section>
             </div>
             <div id="groupContainer" class="itemsContainer" style="display:none;">
+                <div class="searchDiv">
+                    <input type="button" id="groupsClearSearch" value="Clear">
+                    <input type="text" id="groupsSearchBox" class="search" value="">
+                </div>
                 <!-- <nav id="groupsNav" class="itemsNav">
                     <div id="groupsSearchBar">Search</div>
                     <div id="groupsReduceBar">Reduce</div>
