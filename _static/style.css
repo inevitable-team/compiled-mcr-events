@@ -187,6 +187,17 @@ a {
     font-size: 1.1em;
 }
 
+#toTop {
+    position: fixed;
+    right: 0;
+    top: 300px;
+    background-color: #4682b457;
+    color: white;
+    padding-bottom: 13px;
+    padding: 15px;
+    /* filter: opacity(0.15); */
+}
+
 @media only screen and (max-width: 420px) {
     .location {
         width: calc(100vw - 100px) !important;

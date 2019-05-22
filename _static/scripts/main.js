@@ -1,8 +1,5 @@
-function apsc(e) {
-    return Array.prototype.slice.call(e)
-}
-
 window.addEventListener("load", function () {
+    
     apsc(document.getElementsByClassName('type')).forEach((t, i) => {
         t.addEventListener('click', function () {
             apsc(document.getElementsByClassName('type')).forEach((x) => {
@@ -16,4 +13,10 @@ window.addEventListener("load", function () {
                 'block';
         });
     })
+
+    document.getElementById("toTop").addEventListener("click", () => window.scrollTo(0, 0));
 });
+
+function apsc(e) {
+    return Array.prototype.slice.call(e)
+}
