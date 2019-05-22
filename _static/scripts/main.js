@@ -39,21 +39,26 @@ window.addEventListener("load", function () {
 });
 
 function searchGroups() {
-    document.getElementById("groupsItems").innerHTML = groups.filter(group => nn(group.name).includes(nn(groupsSearchElement.value))).map(dataToHTML.groupHTML).join("");
+    let results = groups.filter(group => nn(group.name).includes(nn(groupsSearchElement.value))).map(dataToHTML.groupHTML).join("");
+    document.getElementById("groupsItems").innerHTML = results;
 }
 
 function searchEvent() {
-    document.getElementById("eventsItems").innerHTML = events.filter(event => nn(event.name).includes(nn(eventsSearchElement.value)) || nn(event.desc).includes(nn(eventsSearchElement.value)) || nn(event.location).includes(nn(eventsSearchElement.value))).map(dataToHTML.eventsHTML).join("");
+    let value = eventsSearchElement.value;
+    let results = events.filter(event => !nn(event.name).includes(nn(value)) && !nn(event.desc).includes(nn(value)) && !nn(event.location).includes(nn(value))).map(dataToHTML.eventsHTML).join("");
+    document.getElementById("eventsItems").innerHTML = results;
 }
 
 function clearGroupsSearch() {
+    let results = groups.map(dataToHTML.groupHTML).join("");
     groupsSearchElement.value = "";
-    document.getElementById("groupsItems").innerHTML = groups.map(dataToHTML.groupHTML).join("");
+    document.getElementById("groupsItems").innerHTML = results;
 }
 
 function clearEventSearch() {
+    let results = events.map(dataToHTML.eventsHTML).join("");
     eventsSearchElement.value = "";
-    document.getElementById("eventsItems").innerHTML = events.map(dataToHTML.eventsHTML).join("");
+    document.getElementById("eventsItems").innerHTML = results;
 
 }
 
