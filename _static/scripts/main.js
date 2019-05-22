@@ -22,10 +22,10 @@ window.addEventListener("load", function () {
     eventsSearchElement = document.getElementById("eventsSearchBox");
     groupsSearchElement = document.getElementById("groupsSearchBox");
 
-    groupsSearchElement.addEventListener("change", searchGroups);
+    groupsSearchElement.addEventListener("keyup", searchGroups);
     document.getElementById("groupsClearSearch").addEventListener("click", clearGroupsSearch);
 
-    eventsSearchElement.addEventListener("change", searchEvent);
+    eventsSearchElement.addEventListener("keyup", searchEvent);
     document.getElementById("eventsClearSearch").addEventListener("click", clearEventSearch);
 
     let url = window.location.href.replace("index.html", "");
@@ -45,7 +45,7 @@ function searchGroups() {
 
 function searchEvent() {
     let value = eventsSearchElement.value;
-    let results = events.filter(event => !nn(event.name).includes(nn(value)) && !nn(event.desc).includes(nn(value)) && !nn(event.location).includes(nn(value))).map(dataToHTML.eventsHTML).join("");
+    let results = events.filter(event => !nn(event.name).includes(nn(value)) && !nn(event.desc).includes(nn(value)) && !nn(event.location).includes(nn(value))).map(dataToHTML.eventHTML).join("");
     document.getElementById("eventsItems").innerHTML = results;
 }
 
@@ -56,7 +56,7 @@ function clearGroupsSearch() {
 }
 
 function clearEventSearch() {
-    let results = events.map(dataToHTML.eventsHTML).join("");
+    let results = events.map(dataToHTML.eventHTML).join("");
     eventsSearchElement.value = "";
     document.getElementById("eventsItems").innerHTML = results;
 
