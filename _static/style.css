@@ -11,7 +11,7 @@ body {
 }
 
 summary {
-    padding: 15px 0px;
+    padding: 15px 10px;
     /* background-color: #4682b491; */
     /* color: white; */
 }
@@ -20,15 +20,39 @@ summary p {
     margin: 0px;
 }
 
+p .date {
+    font-size: 0.9em;
+}
+
 h1 {
     margin: 0px;
-    padding: 10px;
     font-size: 1.6em;
+}
+
+header {
+    padding: 10px;
+}
+
+header p {
+    margin: 0px;
+    font-size: 0.6em;
+    margin-top: 3px;
+    text-align: right;
+    margin-right: 15px;
+}
+
+h3 {
+    margin: 10px 0px;
+    max-height: 45px;
+    overflow-y: hidden;
 }
 
 #typeContainer {
     border-top: gray solid 1px;
     /* border-bottom: gray solid 1px; */
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
 
 #typeContainer > * {
@@ -42,9 +66,17 @@ h1 {
 
 footer {
     position: fixed;
-    width: 100vw;
-    padding: 4px 0px;
+    width: calc(100vw - 8px);
+    padding: 4px;
     bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer p {
+    display: inline-block;
+    margin: 2px;
+    font-size: 0.8em;
 }
 
 .itemsNav > * {
@@ -68,7 +100,7 @@ section {
     padding: 15px;
     width: calc(100vw - 50px);
     max-width: 450px;
-    height: 180px;
+    height: 170px;
     overflow: hidden;
     margin: 5px;
     display: inline-block;

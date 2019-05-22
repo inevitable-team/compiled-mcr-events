@@ -49,7 +49,7 @@ module.exports = (eventsHTML, groupsHTML) => `
             </div>
         </div>
     </main>
-    <footer>Sean O'Mahoney</footer>
+    <footer><a href="https://twitter.com/sean12697" target="_blank"><p>@Sean12697</p></a><a href="mailto:sean@inevitableteam.com" target="_blank"><p>sean@inevitableteam.com</p></a><a href="https://twitter.com/weareinevitable" target="_blank"><p>@Inevitable</p></a></footer>
     <script src="./scripts/main.js"></script>
 </body>
 
