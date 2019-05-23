@@ -20,7 +20,7 @@ class meetup {
     }
 
     rtnGroupImg(group) {
-        let thumb = 'http://www.afglaw.co.uk/wp-content/uploads/2018/07/blank-user.png';
+        let thumb = './img/blank_meetup.png';
         if (group.hasOwnProperty('group_photo')) {
             thumb = group.group_photo.photo_link;
         } else {

@@ -7,6 +7,8 @@ let fs = require('fs-extra'),
     htmlConverter = require(`${__dirname}/_static/scripts/dataToHTML`),
     indexLayout = require(`${__dirname}/_layout/index`);
 
+    require('events').EventEmitter.prototype._maxListeners = Infinity;
+
 // Moving static files to site
 shell.mkdir('-p', `${__dirname}/_site`);
 shell.rm('-rf', `${__dirname}/_site/*`);
@@ -45,7 +47,9 @@ dataGather.getData().then(data => {
 async function downloadImage(group) {
     if (!group.img.includes("http")) return group; // If not image on the internet
     const url = group.img,
-    name = group.img.split("/").pop(),
+    ext = group.img.split(".").pop()
+    // name = group.img.split("/").pop(),
+    name = group.name.toLowerCase().replace(/[^a-z]+/gi, '-') + "." + ext,
     path = Path.resolve(__dirname, '_site/img', name),
     writer = fs.createWriteStream(path);
 
