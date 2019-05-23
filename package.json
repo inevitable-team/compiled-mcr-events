@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/Sean12697/manchester-tech-meetups#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "beautify": "0.0.8",
     "fs-extra": "^8.0.1",
     "node-fetch": "^2.6.0",
+    "path": "^0.12.7",
     "shelljs": "^0.8.3"
   }
 }
