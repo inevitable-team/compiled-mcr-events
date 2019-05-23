@@ -31,6 +31,14 @@ dataGather.getData().then(data => {
             groupsHTML = data[0].map(htmlConverter.groupHTML).join("");
         let index = indexLayout(eventsHTML, groupsHTML);
         fs.writeFileSync(`${__dirname}/_site/index.html`, index, () => {});
+
+        // shell.mkdir('-p', `${__dirname}/_site/imgOptimized`);
+        // require("./resize")({
+        //     src: './_site/img',
+        //     dest: './_site/imgOptimized',
+        //     width: 120,
+        //     height: 120
+        // })
     });
 });
 
@@ -38,7 +46,7 @@ async function downloadImage(group) {
     if (!group.img.includes("http")) return group; // If not image on the internet
     const url = group.img,
     name = group.img.split("/").pop(),
-    path = Path.resolve(__dirname, '_static/img', name),
+    path = Path.resolve(__dirname, '_site/img', name),
     writer = fs.createWriteStream(path);
 
     const response = await Axios({
