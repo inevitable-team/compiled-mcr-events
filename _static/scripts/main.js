@@ -39,7 +39,7 @@ window.addEventListener("load", function () {
 });
 
 function searchGroups() {
-    if (eventsSearchElement.value.length == 0) { clearGroupsSearch(); return; }
+    if (groupsSearchElement.value.length == 0) { clearGroupsSearch(); return; }
     let results = groups.filter(group => nn(group.name).includes(nn(groupsSearchElement.value))).map(dataToHTML.groupHTML).join("");
     document.getElementById("groupsItems").innerHTML = results;
 }

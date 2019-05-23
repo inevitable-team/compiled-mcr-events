@@ -10,8 +10,12 @@ body {
     color: white;
 }
 
+#typeContainer p {
+    margin: 10px 0px !important;
+}
+
 summary {
-    padding: 15px 10px;
+    padding: 10px;
     /* background-color: #4682b491; */
     /* color: white; */
 }
@@ -94,13 +98,18 @@ section {
     color: #0098ab;
 }
 
+.eventName {
+    max-height: 18px;
+    overflow-y: hidden;
+}
+
 .item {
     background-color: white;
     text-align: left;
     padding: 15px;
     width: calc(100vw - 50px);
     max-width: 450px;
-    height: 170px;
+    height: 150px;
     overflow: hidden;
     margin: 5px;
     display: inline-block;
@@ -137,9 +146,11 @@ a {
 }
 
 .location {
+    max-height: 38px;
     display: inline-block;
     max-width: 320px;
     margin-left: 10px !important;
+    overflow-y: hidden;
 }
 
 .locationImg {

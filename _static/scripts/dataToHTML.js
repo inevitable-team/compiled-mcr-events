@@ -46,7 +46,7 @@
             <div class="item">
                 <p class="date blue">${exports.htmlDate(event.startTimeISO)}</p>
                 <h3 class="title"><a target="_blank" href="${event.link}">${event.name}</a></h3>
-                <p class="gray"><a target="_blank" href="${event.groupLink}">${event.groupName}</a> | ${event.source}</p>
+                <p class="eventName gray"><a target="_blank" href="${event.groupLink}">${event.groupName}</a> | ${event.source}</p>
                 <div class="locationDiv">
                     <img class="locationImg" src="./img/location.svg">
                     <p class="location gray">${event.location || "Location Unavailable"}</p>
