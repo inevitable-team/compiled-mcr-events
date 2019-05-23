@@ -7,7 +7,7 @@ let fs = require('fs-extra'),
     htmlConverter = require(`${__dirname}/_static/scripts/dataToHTML`),
     indexLayout = require(`${__dirname}/_layout/index`);
 
-    require('events').EventEmitter.prototype._maxListeners = Infinity;
+    require('events').EventEmitter.prototype._maxListeners = 0;
 
 // Moving static files to site
 shell.mkdir('-p', `${__dirname}/_site`);
@@ -20,8 +20,8 @@ shell.mkdir('-p', `${__dirname}/_site/data`);
 let dataGather = new dataGatherClass();
 
 dataGather.getData().then(data => {
-    Promise.all(data[0].map(downloadImage)).then().then(groupsWithLocalImages => {
-        data[0] = groupsWithLocalImages;
+    // Promise.all(data[0].map(downloadImage)).then().then(groupsWithLocalImages => {
+    //     data[0] = groupsWithLocalImages;
         // Got data and images
         fs.writeFileSync(`${__dirname}/_exports/groups.json`, beautify(JSON.stringify(data[0]), { format: 'json' }), () => {});
         fs.writeFileSync(`${__dirname}/_exports/events.json`, beautify(JSON.stringify(data[1]), { format: 'json' }), () => {});
@@ -41,7 +41,7 @@ dataGather.getData().then(data => {
         //     width: 120,
         //     height: 120
         // })
-    });
+    // });
 });
 
 async function downloadImage(group) {
