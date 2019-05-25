@@ -47,7 +47,7 @@ function searchGroups() {
 function searchEvent() {
     if (eventsSearchElement.value.length == 0) { clearEventSearch(); return; }
     let value = eventsSearchElement.value;
-    let results = events.filter(event => !nn(event.name).includes(nn(value)) && !nn(event.desc).includes(nn(value)) && !nn(event.location).includes(nn(value))).map(dataToHTML.eventHTML).join("");
+    let results = events.filter(event => !nn(event.name).includes(nn(value)) || !nn(event.desc).includes(nn(value)) || !nn(event.location).includes(nn(value))).map(dataToHTML.eventHTML).join("");
     document.getElementById("eventsItems").innerHTML = results;
 }
 

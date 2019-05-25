@@ -13,10 +13,10 @@ module.exports = (eventsHTML, groupsHTML) => `
 <body>
     <header>
         <h1>Manchester Tech Meetups</h1>
-        <p>by Sean O'Mahoney</p>
+        <p>by Sean O'Mahoney, <a href='https://ko-fi.com/I2I7W3IZ'>support me on Ko-fi</a></p>
     </header>
     <summary>
-        <p>Helping you find technology events through the use of Meetup, Eventbrite & the TechNW Calendar. </p>
+        <p>Helping you find technology events through the use of Meetup, Eventbrite & the TechNW Calendar.</p>
     </summary>
     <main>
         <div id="typeContainer">
@@ -30,8 +30,18 @@ module.exports = (eventsHTML, groupsHTML) => `
         <div id="itemsContainer">
             <div id="eventContainer" class="itemsContainer">
                 <div class="searchDiv">
-                    <input type="button" id="eventsClearSearch" value="Clear">
-                    <input type="text" id="eventsSearchBox" class="search" value="">
+                    <div id="eventsTopLevel">
+                        <input type="button" id="eventsSorts" value="Sorts">
+                        <input type="button" id="eventsFilters" value="Filters">
+                        <input type="button" id="eventsClearSearch" value="Clear">
+                        <input type="text" id="eventsSearchBox" class="search" value="">
+                    </div>
+                    <!-- <div id="eventsMiddleLevel">
+                        <input type="button" id="eventsSourceType" value="Source">
+                    </div>
+                    <div id="eventsLowLevel">
+                        <input type="button" id="eventsSourceEventbrite" value="Eventbrite">
+                    </div> -->
                 </div>
                 <!-- <nav id="eventsNav" class="itemsNav">
                     <div id="eventsSearchBar">Search</div>
@@ -44,6 +54,8 @@ module.exports = (eventsHTML, groupsHTML) => `
             </div>
             <div id="groupContainer" class="itemsContainer" style="display:none;">
                 <div class="searchDiv">
+                    <input type="button" id="groupsSorts" value="Sorts">
+                    <input type="button" id="groupFilters" value="Filters">
                     <input type="button" id="groupsClearSearch" value="Clear">
                     <input type="text" id="groupsSearchBox" class="search" value="">
                 </div>
@@ -62,6 +74,16 @@ module.exports = (eventsHTML, groupsHTML) => `
     <div id="toTop"><img src="./img/chevron-arrow-up.svg" width="15px"></div>
     <script src="./scripts/dataToHTML.js"></script>
     <script src="./scripts/main.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111660061-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-111660061-2');
+    </script>
+
 </body>
 
 </html>
