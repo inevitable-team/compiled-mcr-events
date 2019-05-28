@@ -43,7 +43,7 @@ dataGather.getData().then(data => {
                 start: moment(event.startTimeISO),
                 end: moment(event.endTimeISO),
                 summary: event.name,
-                description: `${event.link} \n\n ${event.desc}`,
+                description: `Source:\n${event.link}\n\n${event.desc.length > 280 ? event.desc.substr(0, 280) : event.desc}`,
                 location: event.location,
                 url: event.link
             });
