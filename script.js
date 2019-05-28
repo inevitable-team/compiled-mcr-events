@@ -1,6 +1,8 @@
 let fs = require('fs-extra'),
     shell = require('shelljs'),
     beautify = require('beautify'),
+    moment = require('moment'),
+    ical = require('ical-generator'),
     Path = require('path'),
     Axios = require('axios'),
     dataGatherClass = require(`${__dirname}/_data/dataGather`),
@@ -8,6 +10,8 @@ let fs = require('fs-extra'),
     indexLayout = require(`${__dirname}/_layout/index`);
 
     require('events').EventEmitter.prototype._maxListeners = 0;
+
+let cal = ical({domain: 'https://manchester-tech-events.netlify.com/', name: 'Manchester Tech Events'});
 
 // Moving static files to site
 shell.mkdir('-p', `${__dirname}/_site`);
@@ -33,6 +37,18 @@ dataGather.getData().then(data => {
             groupsHTML = data[0].map(htmlConverter.groupHTML).join("");
         let index = indexLayout(eventsHTML, groupsHTML);
         fs.writeFileSync(`${__dirname}/_site/index.html`, index, () => {});
+        // Create Calender
+        data[1].forEach(event => {
+            cal.createEvent({
+                start: moment(event.startTimeISO),
+                end: moment(event.endTimeISO),
+                summary: event.name,
+                description: event.desc,
+                location: event.location,
+                url: event.link
+            });
+        });
+        fs.writeFileSync("./_site/data/events.ical", cal.toString(), () => {});
 
         // shell.mkdir('-p', `${__dirname}/_site/imgOptimized`);
         // require("./resize")({
