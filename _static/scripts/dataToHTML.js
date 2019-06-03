@@ -69,7 +69,7 @@
 
     exports.htmlDate = string => {
         let date = new Date(string);
-        return `${exports.abvDays.get(date.getDay())}, ${exports.abvMonths.get(date.getMonth())} ${date.getDate()}, ${exports.timeConvert(date)}`;
+        return `${exports.abvDays.get(date.getDay())}, ${exports.abvMonths.get(date.getMonth()+1)} ${date.getDate()}, ${exports.timeConvert(date)}`;
     }
 
     exports.timeConvert = date => {
