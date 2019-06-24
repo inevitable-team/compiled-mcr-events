@@ -93,4 +93,9 @@ module.exports = [{
     name: "MancML",
     img: "https://cdn.evbuc.com/images/36331831/175743644937/2/logo.png",
     url: "https://www.eventbrite.co.uk/o/mancml-11845832416"
+}, {
+    id: 2263648391,
+    name: "Open Data Manchester",
+    img: "https://cdn.evbuc.com/images/17906298/32873957073/2/logo.png",
+    url: "https://www.eventbrite.co.uk/o/open-data-manchester-2263648391"
 }];
