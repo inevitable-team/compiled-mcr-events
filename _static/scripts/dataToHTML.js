@@ -74,7 +74,7 @@
 
     exports.timeConvert = date => {
         let ampm, x, i =
-            `${(date.getHours() + 1) < 10 ? "0" + (date.getHours() + 1) : (date.getHours() + 1)}:${date.getMinutes() == 0 ? "00" : date.getMinutes()}`;
+            `${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() == 0 ? "00" : date.getMinutes()}`;
         if (i.substring(0, 2) > 12) {
             ampm = "PM";
             x = i.substring(0, 2) % 12 + ":" + i.substring(3, 5) + " " + ampm;
