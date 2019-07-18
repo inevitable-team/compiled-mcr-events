@@ -17,6 +17,7 @@ let cal = ical({domain: 'https://manchester-tech-events.netlify.com/', name: 'Ma
 shell.mkdir('-p', `${__dirname}/_site`);
 shell.rm('-rf', `${__dirname}/_site/*`);
 fs.copySync(`${__dirname}/_static`, `${__dirname}/_site`);
+fs.copySync(`${__dirname}/_data/sources/groupIds`, `${__dirname}/_site/data`);
 
 // Creating Data
 shell.mkdir('-p', `${__dirname}/_exports`);
