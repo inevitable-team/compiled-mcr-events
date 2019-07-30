@@ -98,4 +98,9 @@ module.exports = [{
     name: "Open Data Manchester",
     img: "https://cdn.evbuc.com/images/17906298/32873957073/2/logo.png",
     url: "https://www.eventbrite.co.uk/o/open-data-manchester-2263648391"
+}, {
+    id: 7870843917,
+    name: "Drake Music",
+    img: "https://cdn.evbuc.com/images/25501008/24756324645/2/logo.png",
+    url: "https://www.eventbrite.co.uk/o/drake-music-7870843917"
 }];
