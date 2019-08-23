@@ -103,4 +103,9 @@ module.exports = [{
     name: "Drake Music",
     img: "https://cdn.evbuc.com/images/25501008/24756324645/2/logo.png",
     url: "https://www.eventbrite.co.uk/o/drake-music-7870843917"
+}, {
+    id: 16055988646,
+    name: "Assenty",
+    img: "https://cdn.evbuc.com/images/55356882/239013174991/2/logo.png",
+    url: "https://www.eventbrite.com/o/assenty-16055988646"
 }];

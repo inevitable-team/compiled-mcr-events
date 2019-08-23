@@ -32,6 +32,7 @@ dataGather.getData().then(data => {
         fs.writeFileSync(`${__dirname}/_exports/events.json`, beautify(JSON.stringify(data[1]), { format: 'json' }), () => {});
         // Output
         fs.writeFileSync(`${__dirname}/_site/data/groups.json`, beautify(JSON.stringify(data[0]), { format: 'json' }), () => {});
+        fs.writeFileSync(`${__dirname}/_site/data/groups.txt`, data[0].map(group => `- [${group.name}](${group.link})`).join(" \n"), () => {});
         fs.writeFileSync(`${__dirname}/_site/data/events.json`, beautify(JSON.stringify(data[1]), { format: 'json' }), () => {});
         // Creating HTML
         let eventsHTML = data[1].map(htmlConverter.eventHTML).join(""),
