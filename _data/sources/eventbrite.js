@@ -49,9 +49,9 @@ class eventbrite {
                 Promise.all(flatterned.map(event => fetch(this.apiVenue + event.venue_id, this.params))).then(responses =>
                     Promise.all(responses.map(res => res.text()))
                 ).then(venues => {
-                    venues = venues.map(venue => JSON.parse(venue))
+                    venues = venues.map(venue => JSON.parse(venue));
                     let data = flatterned.map((event, i) => {
-                        event.venue = venues[i] != undefined ? venues[i].address.localized_address_display : "N/A";
+                        event.venue = venues[i].address != undefined ? venues[i].address.localized_address_display : "N/A";
                         return event;
                     }) // Once all venues have been added, return
                     resolve(data);
