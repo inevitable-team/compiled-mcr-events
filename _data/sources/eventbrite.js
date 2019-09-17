@@ -51,7 +51,7 @@ class eventbrite {
                 ).then(venues => {
                     venues = venues.map(venue => JSON.parse(venue))
                     let data = flatterned.map((event, i) => {
-                        event.venue = venues[i].address.localized_address_display;
+                        event.venue = venues[i] != undefined ? venues[i].address.localized_address_display : "N/A";
                         return event;
                     }) // Once all venues have been added, return
                     resolve(data);
