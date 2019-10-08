@@ -108,4 +108,9 @@ module.exports = [{
     name: "Assenty",
     img: "https://cdn.evbuc.com/images/55356882/239013174991/2/logo.png",
     url: "https://www.eventbrite.com/o/assenty-16055988646"
+}, {
+    id: 14504680978,
+    name: "Gravitas Recruitment Group",
+    img: "https://cdn.evbuc.com/images/74993253/112008047087/2/logo.png",
+    url: "https://www.eventbrite.co.uk/o/gravitas-recruitment-group-14504680978"
 }];
