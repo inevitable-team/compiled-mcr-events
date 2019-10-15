@@ -113,4 +113,9 @@ module.exports = [{
     name: "Gravitas Recruitment Group",
     img: "https://cdn.evbuc.com/images/74993253/112008047087/2/logo.png",
     url: "https://www.eventbrite.co.uk/o/gravitas-recruitment-group-14504680978"
+}, {
+    id: 17188385321,
+    name: "Cathcart Associates",
+    img: "",
+    url: "https://www.eventbrite.co.uk/o/cathcart-associates-17188385321"
 }];
