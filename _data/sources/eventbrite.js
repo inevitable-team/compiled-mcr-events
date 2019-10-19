@@ -37,8 +37,13 @@ class eventbrite {
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
                 // Building Events
-                let json = texts.map(text => JSON.parse(text))
-                .filter(groupEvents => !groupEvents.hasOwnProperty("error_detail"))
+                let json = texts.map(text => {
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        return { error_detail: "Unknown Error in Parsing!" };
+                    }
+                }).filter(groupEvents => !groupEvents.hasOwnProperty("error_detail"))
                 .map(groupEvents => groupEvents.events).map((groupEvents, i) => groupEvents.map(event => {
                     event.groupName = this.organizers[i].name;
                     event.groupLink = this.organizers[i].url;
