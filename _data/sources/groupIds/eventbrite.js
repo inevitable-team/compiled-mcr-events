@@ -118,4 +118,9 @@ module.exports = [{
     name: "Cathcart Associates",
     img: "",
     url: "https://www.eventbrite.co.uk/o/cathcart-associates-17188385321"
+}, {
+    id: 11357711320,
+    name: "Collective Coders' Camp",
+    img: "",
+    url: "https://www.eventbrite.co.uk/o/collective-coders-camp-11357711320"
 }];
