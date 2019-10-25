@@ -2,6 +2,8 @@
 
 This is an aggregator for groups / events across a variety of services, which is then outputted on a website, in a JSON format, and a iCal file (which can be added/shown in a calendar).
 
+OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.com/Sean12697/MeetupManchesterTech)
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
