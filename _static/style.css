@@ -62,10 +62,14 @@ h3 {
 #typeContainer > * {
     width: calc(50vw - 12px);
     display: inline-block;
+    cursor: pointer;
+    background-color: #cecece;
+    color: #0000007d;
 } 
 
 #selected {
-    border-bottom: red solid 3px;
+    background-color: white;
+    color: black;
 }
 
 footer {
@@ -106,7 +110,7 @@ section {
     background-color: white;
     text-align: left;
     padding: 15px;
-    width: calc(100vw - 50px);
+    width: calc(100vw - 75px);
     max-width: 450px;
     height: 150px;
     overflow: hidden;
@@ -159,7 +163,7 @@ a {
 
 
 .group {
-    width: calc(100vw - 10px);
+    width: calc(100vw - 50px);
     max-width: 380px;
     height: 120px;
     margin: 8px 0px;
@@ -227,12 +231,12 @@ input {
 .searchDiv {
     padding: 5px;
     position: sticky;
-    top: 42px;
+    top: 39px;
     background-color: white;
 }
 
 .search {
-    width: 140px;
+    width: calc(100% - 170px);
 }
 
 input[type="button"] {
@@ -248,8 +252,14 @@ header a {
     text-decoration: underline;
 }
 
+.item, .group {
+    border: 2px gray solid;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);
+}
+
 @media only screen and (max-width: 420px) {
     .location {
-        width: calc(100vw - 100px) !important;
+        width: calc(100% - 100px) !important;
     }
 }

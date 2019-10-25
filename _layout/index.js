@@ -36,8 +36,8 @@ module.exports = (eventsHTML, groupsHTML) => `
                     <div id="eventsTopLevel">
                         <input type="button" id="eventsSorts" value="Sorts">
                         <input type="button" id="eventsFilters" value="Filters">
-                        <input type="button" id="eventsClearSearch" value="Clear">
                         <input type="text" id="eventsSearchBox" class="search" value="">
+                        <input type="button" id="eventsClearSearch" value="Clear">
                     </div>
                     <!-- <div id="eventsMiddleLevel">
                         <input type="button" id="eventsSourceType" value="Source">
@@ -59,8 +59,8 @@ module.exports = (eventsHTML, groupsHTML) => `
                 <div class="searchDiv">
                     <input type="button" id="groupsSorts" value="Sorts">
                     <input type="button" id="groupFilters" value="Filters">
-                    <input type="button" id="groupsClearSearch" value="Clear">
                     <input type="text" id="groupsSearchBox" class="search" value="">
+                    <input type="button" id="groupsClearSearch" value="Clear">
                 </div>
                 <!-- <nav id="groupsNav" class="itemsNav">
                     <div id="groupsSearchBar">Search</div>
