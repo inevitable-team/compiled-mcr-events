@@ -8,7 +8,7 @@ class eventbrite {
         this.baseAPI = "https://www.eventbriteapi.com/v3/";
         this.apiEvents = this.baseAPI + "events/search?organizer.id=";
         this.apiVenue = this.baseAPI + "venues/";
-        this.token = "DEUFZCPYAAJE4ZKBNPZX";
+        this.token = "OZEXEAKAHSDLIRBERBGV"; // Can be found from the following link, this is a Public token: https://www.eventbrite.com/platform/api-keys/
         this.params = { headers: { 'Authorization': "Bearer " +  this.token } };
         this.urls = this.organizers.map(g => this.apiEvents + g.id);
         // Converters
@@ -41,6 +41,8 @@ class eventbrite {
                     try {
                         return JSON.parse(text);
                     } catch (e) {
+                        console.log("Issue Getting Eventbrite Events!", e);
+                        console.log("Returned: ", text);
                         return { error_detail: "Unknown Error in Parsing!" };
                     }
                 }).filter(groupEvents => !groupEvents.hasOwnProperty("error_detail"))
