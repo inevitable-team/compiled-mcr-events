@@ -16,7 +16,7 @@ module.exports = (eventsHTML, groupsHTML) => `
 <body>
     <header>
         <h1>CompiledMCR Events</h1>
-        <p>by Sean O'Mahoney, <a href='https://ko-fi.com/I2I7W3IZ' rel="noreferrer">support me on Ko-fi</a></p>
+        <p>by Sean O'Mahoney, <a href='https://twitter.com/Sean12697/status/1133340835054018560' rel="noreferrer" target="_blank">steps to add to Calendar.</a></p>
     </header>
     <summary>
         <p>Helping you find technology events through the use of Meetup, Eventbrite & the <a href='https://technw.uk/calendar.html' target='_blank' rel="noreferrer">TechNW Calendar</a>.</p>
@@ -73,7 +73,7 @@ module.exports = (eventsHTML, groupsHTML) => `
             </div>
         </div>
     </main>
-    <footer><a href="https://twitter.com/sean12697" target="_blank" rel="noreferrer"><p>@Sean12697</p></a><a href="mailto:sean@inevitableteam.com" target="_blank"><p>sean@inevitableteam.com</p></a><a href="https://twitter.com/weareinevitable" target="_blank" rel="noreferrer"><p>@Inevitable</p></a></footer>
+    <footer>Find me on <a href="https://github.com/inevitable-team/compiled-mcr-resources" target="_blank" rel="noreferrer"><p>GitHub</p></a></footer>
     <div id="toTop"><img src="./img/chevron-arrow-up.svg" width="15px"></div>
     <script src="./scripts/dataToHTML.js"></script>
     <script src="./scripts/main.js"></script>

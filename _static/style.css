@@ -73,7 +73,6 @@ footer {
     width: calc(100vw - 8px);
     padding: 4px;
     bottom: 0px;
-    display: flex;
     justify-content: space-between;
 }
 
@@ -243,6 +242,10 @@ input[type="button"] {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
+}
+
+header a {
+    text-decoration: underline;
 }
 
 @media only screen and (max-width: 420px) {
