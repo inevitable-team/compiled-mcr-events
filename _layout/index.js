@@ -6,17 +6,20 @@ module.exports = (eventsHTML, groupsHTML) => `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Manchester Tech Meetups</title>
+    <title>CompiledMCR Events (Manchester Tech Meetups)</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="author" content="Sean O'Mahoney"/>
+    <meta name="description" content="CompiledMCR Events (Manchester Tech Meetups) - Helping you find technology events through the use of Meetup, Eventbrite & the TechNW Calendar."/>
+    <meta name="keywords" content="Manchester, Events, Tech, Technology, Networking, Meetup, Eventbrite, TechNW, CompiledMCR"/>
 </head>
 
 <body>
     <header>
-        <h1>Manchester Tech Meetups</h1>
-        <p>by Sean O'Mahoney, <a href='https://ko-fi.com/I2I7W3IZ'>support me on Ko-fi</a></p>
+        <h1>CompiledMCR Events</h1>
+        <p>by Sean O'Mahoney, <a href='https://ko-fi.com/I2I7W3IZ' rel="noreferrer">support me on Ko-fi</a></p>
     </header>
     <summary>
-        <p>Helping you find technology events through the use of Meetup, Eventbrite & the TechNW Calendar.</p>
+        <p>Helping you find technology events through the use of Meetup, Eventbrite & the <a href='https://technw.uk/calendar.html' target='_blank' rel="noreferrer">TechNW Calendar</a>.</p>
     </summary>
     <main>
         <div id="typeContainer">
@@ -70,7 +73,7 @@ module.exports = (eventsHTML, groupsHTML) => `
             </div>
         </div>
     </main>
-    <footer><a href="https://twitter.com/sean12697" target="_blank"><p>@Sean12697</p></a><a href="mailto:sean@inevitableteam.com" target="_blank"><p>sean@inevitableteam.com</p></a><a href="https://twitter.com/weareinevitable" target="_blank"><p>@Inevitable</p></a></footer>
+    <footer><a href="https://twitter.com/sean12697" target="_blank" rel="noreferrer"><p>@Sean12697</p></a><a href="mailto:sean@inevitableteam.com" target="_blank"><p>sean@inevitableteam.com</p></a><a href="https://twitter.com/weareinevitable" target="_blank" rel="noreferrer"><p>@Inevitable</p></a></footer>
     <div id="toTop"><img src="./img/chevron-arrow-up.svg" width="15px"></div>
     <script src="./scripts/dataToHTML.js"></script>
     <script src="./scripts/main.js"></script>

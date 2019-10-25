@@ -45,10 +45,10 @@
         return `
             <div class="item">
                 <p class="date blue">${exports.htmlDate(event.startTimeISO)}</p>
-                <h3 class="title"><a target="_blank" href="${event.link}">${event.name}</a></h3>
-                <p class="eventName gray"><a target="_blank" href="${event.groupLink}">${event.groupName}</a> | ${event.source}</p>
+                <h3 class="title"><a target="_blank" href="${event.link}" rel="noreferrer">${event.name}</a></h3>
+                <p class="eventName gray"><a target="_blank" href="${event.groupLink}" rel="noreferrer">${event.groupName}</a> | ${event.source}</p>
                 <div class="locationDiv">
-                    <img class="locationImg" src="./img/location.svg">
+                    <img class="locationImg" src="./img/location.svg" alt="Location Icon">
                     <p class="location gray">${event.location || "Location Unavailable"}</p>
                 </div>
             </div>
@@ -57,7 +57,7 @@
 
     exports.groupHTML = group => {
         return `
-        <div class="group"><a href="${group.link}" target="_blank">
+        <div class="group"><a href="${group.link}" target="_blank" rel="noreferrer">
             <div class="groupImg"><img src="${group.img || "http://www.afglaw.co.uk/wp-content/uploads/2018/07/blank-user.png"}"></div>
             <div class="groupText">
                 <p class="groupName">${group.name}</p>

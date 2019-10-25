@@ -9,7 +9,7 @@ let fs = require('fs-extra'),
 
     require('events').EventEmitter.prototype._maxListeners = 0;
 
-let cal = ical({domain: 'https://manchester-tech-events.netlify.com/', name: 'Manchester Tech Events'});
+let cal = ical({domain: 'https://events.compiledmcr.com/', name: 'CompiledMCR Events (Manchester Tech Meetups)'});
 
 // Moving static files to site
 shell.mkdir('-p', `${__dirname}/_site`);

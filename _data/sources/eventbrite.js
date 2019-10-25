@@ -14,7 +14,7 @@ class eventbrite {
         // Converters
         this.groupClass = group;
         this.eventClass = event;
-        this.group = (group) => new this.groupClass(group.name, group.url, group.img || "./img/blank_eventbrite.jpg", null, null, null, "Eventbrite", false);
+        this.group = (group) => new this.groupClass(group.name, "", group.url, group.img || "./img/blank_eventbrite.jpg", null, null, null, "Eventbrite", false);
         this.event = (event) => new this.eventClass(event.name.text, event.url, event.venue, event.description.text || "", event.start.utc, event.end.utc, null, event.capacity, event.id_free, null, event.groupName, event.groupLink, "Eventbrite", false);
     }
 
@@ -41,8 +41,7 @@ class eventbrite {
                     try {
                         return JSON.parse(text);
                     } catch (e) {
-                        console.log("Issue Getting Eventbrite Events!", e);
-                        console.log("Returned: ", text);
+                        console.log("Issue Getting Eventbrite Events: ", e);
                         return { error_detail: "Unknown Error in Parsing!" };
                     }
                 }).filter(groupEvents => !groupEvents.hasOwnProperty("error_detail"))
