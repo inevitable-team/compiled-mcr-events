@@ -4,6 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
+    "start": "node script",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +19,6 @@
   "homepage": "https://github.com/Sean12697/manchester-tech-meetups#readme",
   "dependencies": {
     "async": "^3.0.0",
-    "axios": "^0.18.0",
     "beautify": "0.0.8",
     "fs-extra": "^8.0.1",
     "ical-generator": "^1.7.1",
@@ -26,7 +26,6 @@
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "os": "^0.1.1",
-    "path": "^0.12.7",
     "shelljs": "^0.8.3"
   }
 }

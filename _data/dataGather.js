@@ -1,12 +1,13 @@
 let meetup = require("./sources/meetup"),
     eventbrite = require("./sources/eventbrite"),
-    googleCalendar = require("./sources/googleCalendar");
+    googleCalendar = require("./sources/googleCalendar"),
+    googleCalendarKey = "AIzaSyCR3-ptjHE-_douJsn8o20oRwkxt-zHStY"; // Calendar API Key gained from the Google Developer Console, this key is shown in many examples
 
 class dataGather {
     constructor() {
         this.eventbrite = new eventbrite();
         this.meetup = new meetup();
-        this.googleCalendar = new googleCalendar();
+        this.googleCalendar = new googleCalendar("a73q3trj8bssqjifgolb1q8fr4@group.calendar.google.com", "https://technw.uk/calendar", "TechNW", googleCalendarKey);
         this.sources = [this.eventbrite, this.meetup, this.googleCalendar];
     }
 

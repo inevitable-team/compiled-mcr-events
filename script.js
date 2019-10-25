@@ -3,8 +3,6 @@ let fs = require('fs-extra'),
     beautify = require('beautify'),
     moment = require('moment'),
     ical = require('ical-generator'),
-    Path = require('path'),
-    Axios = require('axios'),
     dataGatherClass = require(`${__dirname}/_data/dataGather`),
     htmlConverter = require(`${__dirname}/_static/scripts/dataToHTML`),
     indexLayout = require(`${__dirname}/_layout/index`);
@@ -25,8 +23,6 @@ shell.mkdir('-p', `${__dirname}/_site/data`);
 let dataGather = new dataGatherClass();
 
 dataGather.getData().then(data => {
-    // Promise.all(data[0].map(downloadImage)).then().then(groupsWithLocalImages => {
-    //     data[0] = groupsWithLocalImages;
         // Got data and images
         fs.writeFileSync(`${__dirname}/_exports/groups.json`, beautify(JSON.stringify(data[0]), { format: 'json' }), () => {});
         fs.writeFileSync(`${__dirname}/_exports/events.json`, beautify(JSON.stringify(data[1]), { format: 'json' }), () => {});
@@ -51,39 +47,4 @@ dataGather.getData().then(data => {
             });
         });
         fs.writeFileSync("./_site/data/events.ical", cal.toString(), () => {});
-
-        // shell.mkdir('-p', `${__dirname}/_site/imgOptimized`);
-        // require("./resize")({
-        //     src: './_site/img',
-        //     dest: './_site/imgOptimized',
-        //     width: 120,
-        //     height: 120
-        // })
-    // });
 });
-
-async function downloadImage(group) {
-    if (!group.img.includes("http")) return group; // If not image on the internet
-    const url = group.img,
-    ext = group.img.split(".").pop()
-    // name = group.img.split("/").pop(),
-    name = group.name.toLowerCase().replace(/[^a-z]+/gi, '-') + "." + ext,
-    path = Path.resolve(__dirname, '_site/img', name),
-    writer = fs.createWriteStream(path);
-
-    const response = await Axios({
-        url,
-        method: 'GET',
-        responseType: 'stream'
-    });
-
-    response.data.pipe(writer);
-
-    return new Promise((resolve, reject) => {
-        writer.on('finish', () => {
-            group.img = `./img/${name}`;
-            resolve(group);
-        })
-        writer.on('error', () => resolve(group))
-    })
-}
