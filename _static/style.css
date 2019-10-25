@@ -236,7 +236,7 @@ input {
 }
 
 .search {
-    width: calc(100% - 170px);
+    width: calc(100% - 180px);
 }
 
 input[type="button"] {
