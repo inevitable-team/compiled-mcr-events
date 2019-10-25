@@ -73,7 +73,7 @@ module.exports = (eventsHTML, groupsHTML) => `
             </div>
         </div>
     </main>
-    <footer>Find me on <a href="https://github.com/inevitable-team/compiled-mcr-resources" target="_blank" rel="noreferrer"><p>GitHub</p></a></footer>
+    <footer>Find me on <a href="https://github.com/inevitable-team/compiled-mcr-events" target="_blank" rel="noreferrer"><p>GitHub</p></a></footer>
     <div id="toTop"><img src="./img/chevron-arrow-up.svg" width="15px"></div>
     <script src="./scripts/dataToHTML.js"></script>
     <script src="./scripts/main.js"></script>
