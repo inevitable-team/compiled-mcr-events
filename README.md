@@ -67,7 +67,11 @@ Once installed and configured, you can then run the following command:
 npm run start
 ```
 
-Which will then generate the website in the `_site` folder.
+Which will then generate the website in the `_site` folder, along with the following files within that folder:
+
+- ical: ~/data/events.ical
+- Events JSON: ~/data/events.json
+- Groups JSON: ~/data/groups.json
 
 ## Deploying
 
