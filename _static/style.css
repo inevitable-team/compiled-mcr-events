@@ -53,14 +53,14 @@ h3 {
 
 #typeContainer {
     border-top: gray solid 1px;
-    /* border-bottom: gray solid 1px; */
     position: sticky;
     top: 0;
     background-color: white;
+    word-spacing: -5px;
 }
 
 #typeContainer > * {
-    width: calc(50vw - 12px);
+    width: 50%;
     display: inline-block;
     cursor: pointer;
     background-color: #cecece;
@@ -199,6 +199,8 @@ a {
 
 .groupName {
     font-size: 1.1em;
+    max-height: 40px;
+    overflow: hidden;
 }
 
 #toTop {
@@ -214,6 +216,10 @@ a {
 
 summary * {
     display: inline-block;
+}
+
+summary a {
+    text-decoration: underline !important;
 }
 
 input {
