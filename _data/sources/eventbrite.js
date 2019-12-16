@@ -6,11 +6,11 @@ class eventbrite {
     constructor(token = process.env.EVENTBRITE_TOKEN) {
         this.organizers = require("./groupIds/eventbrite");
         this.baseAPI = "https://www.eventbriteapi.com/v3/";
-        this.apiEvents = this.baseAPI + "organizations/";
+        this.apiEvents = this.baseAPI + "organizers/";
         this.apiVenue = this.baseAPI + "venues/";
         this.token = token; // Can be generated from the following link: https://www.eventbrite.com/platform/api-keys/
         this.params = { headers: { 'Authorization': "Bearer " +  this.token } };
-        this.urls = this.organizers.map(g => this.apiEvents + g.id + "/events/");
+        this.urls = this.organizers.map(g => this.apiEvents + g.id + "/events/?status=live");
         // Converters
         this.groupClass = group;
         this.eventClass = event;
