@@ -3,14 +3,14 @@ const fetch = require("node-fetch"),
       event = require("./templates/event");
 
 class eventbrite {
-    constructor() {
+    constructor(token = process.env.EVENTBRITE_TOKEN) {
         this.organizers = require("./groupIds/eventbrite");
         this.baseAPI = "https://www.eventbriteapi.com/v3/";
-        this.apiEvents = this.baseAPI + "events/search?organizer.id=";
+        this.apiEvents = this.baseAPI + "organizations/";
         this.apiVenue = this.baseAPI + "venues/";
-        this.token = "OZEXEAKAHSDLIRBERBGV"; // Can be found from the following link, this is a Public token: https://www.eventbrite.com/platform/api-keys/
+        this.token = token; // Can be generated from the following link: https://www.eventbrite.com/platform/api-keys/
         this.params = { headers: { 'Authorization': "Bearer " +  this.token } };
-        this.urls = this.organizers.map(g => this.apiEvents + g.id);
+        this.urls = this.organizers.map(g => this.apiEvents + g.id + "/events/");
         // Converters
         this.groupClass = group;
         this.eventClass = event;
@@ -37,14 +37,17 @@ class eventbrite {
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
                 // Building Events
-                let json = texts.map(text => {
+                let json = texts.map((text, i) => {
                     try {
-                        return JSON.parse(text);
+                        let parsed = JSON.parse(text);
+                        if (parsed.hasOwnProperty("error_description")) console.log(this.urls[i], parsed.error_description);
+                        if (parsed.hasOwnProperty("events")) if (parsed.events.length == 0) console.log(this.urls[i], "No upcoming/found events!");
+                        return parsed;
                     } catch (e) {
                         console.log("Issue Getting Eventbrite Events: ", e);
                         return { error_detail: "Unknown Error in Parsing!" };
                     }
-                }).filter(groupEvents => !groupEvents.hasOwnProperty("error_detail"))
+                }).filter(groupEvents => groupEvents.hasOwnProperty("events"))
                 .map(groupEvents => groupEvents.events).map((groupEvents, i) => groupEvents.map(event => {
                     event.groupName = this.organizers[i].name;
                     event.groupLink = this.organizers[i].url;

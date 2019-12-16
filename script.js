@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 let fs = require('fs-extra'),
     shell = require('shelljs'),
     beautify = require('beautify'),
