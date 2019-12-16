@@ -49,7 +49,9 @@ The Meetup class uses group IDs from [~/_data/sources/groupIds/meetup.js](_data/
 
 The EventBrite class uses organizations objects from [~/_data/sources/groupIds/eventbrite.js](_data/sources/groupIds/eventbrite.js) for now, which can be updated/replaced with ease.
 
-Eventbrite does require an API key, which can be found on [their website](https://www.eventbrite.com/platform/api-keys/), although a Public key is being used in this example which works.
+<del>Eventbrite does require an API key, which can be found on [their website](https://www.eventbrite.com/platform/api-keys/), although a Public key is being used in this example which works.</del>
+
+As of 12/12/19 there has been a ["Event Search API Shut Down"](https://www.eventbrite.com/platform/docs/changelog), which means an API Key/Token is required, which can be found on [their website](https://www.eventbrite.com/platform/api-keys/). This can be set under the environment variables as `EVENTBRITE_TOKEN`, or set as the only parameter for the Eventbrite setup in the `dataGather`.
 
 #### Google Calendar
 
