@@ -264,6 +264,16 @@ header a {
     box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);
 }
 
+.warning {
+    background-color:red;
+    padding: 15px;
+    color:white;
+}
+
+.warning a {
+    text-decoration: underline !important;
+}
+
 @media only screen and (max-width: 420px) {
     .location {
         width: calc(100% - 100px) !important;

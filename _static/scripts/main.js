@@ -3,6 +3,8 @@ let events = [], groups = [], eventsSearchElement, groupsSearchElement;
 
 window.addEventListener("load", function () {
     
+    checkUrl();
+
     apsc(document.getElementsByClassName('type')).forEach((t, i) => {
         t.addEventListener('click', function () {
             apsc(document.getElementsByClassName('type')).forEach((x) => {
@@ -62,6 +64,16 @@ function clearEventSearch() {
     eventsSearchElement.value = "";
     document.getElementById("eventsItems").innerHTML = results;
 
+}
+
+function checkUrl() {
+    if (window.location.hostname == "mcrmeetup.tech") {
+        let header = document.getElementsByTagName("header")[0];
+        var warning = document.createElement('div');
+        warning.innerHTML = 'This URL will no longer be in use, please start using <a href="https://events.compiledmcr.com/">https://events.compiledmcr.com/</a>!';
+        warning.className = 'warning';
+        header.parentNode.insertBefore(warning, header);
+    }
 }
 
 function getData(url, callback) {
