@@ -128,4 +128,9 @@ module.exports = [{
     name: "Institute for Data Science and Artificial Intelligence",
     img: "",
     url: "https://www.eventbrite.co.uk/o/institute-for-data-science-and-artificial-intelligence-23205539610"
+}, {
+    id: 20098062478,
+    name: "Caoimhe Roddy",
+    img: "",
+    url: "https://www.eventbrite.co.uk/o/caoimhe-roddy-20098062478"
 }];
