@@ -133,4 +133,9 @@ module.exports = [{
     name: "Caoimhe Roddy",
     img: "",
     url: "https://www.eventbrite.co.uk/o/caoimhe-roddy-20098062478"
+}, {
+    id: 14805514172,
+    name: "Noisy Cricket Ltd",
+    img: "",
+    url: "https://www.eventbrite.co.uk/o/noisy-cricket-ltd-14805514172"
 }];
