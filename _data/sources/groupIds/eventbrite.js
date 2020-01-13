@@ -138,4 +138,9 @@ module.exports = [{
     name: "Noisy Cricket Ltd",
     img: "",
     url: "https://www.eventbrite.co.uk/o/noisy-cricket-ltd-14805514172"
+}, {
+    id: 27830496259,
+    name: "Barclays Eagle Lab - Salford",
+    img: "",
+    url: "https://www.eventbrite.co.uk/o/barclays-eagle-lab-salford-27830496259"
 }];
