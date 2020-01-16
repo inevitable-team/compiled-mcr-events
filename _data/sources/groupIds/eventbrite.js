@@ -143,4 +143,9 @@ module.exports = [{
     name: "Barclays Eagle Lab - Salford",
     img: "",
     url: "https://www.eventbrite.co.uk/o/barclays-eagle-lab-salford-27830496259"
+}, {
+    id: 23175809949,
+    name: "GC Angels (Part of the Growth Company)",
+    img: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F64597606%2F309822095919%2F2%2Foriginal.png?w=225&auto=format%2Ccompress&q=75&sharp=10&s=0b67261c7c0fdba368430559629210cd",
+    url: "https://www.eventbrite.co.uk/o/gc-angels-part-of-the-growth-company-23175809949"
 }];
