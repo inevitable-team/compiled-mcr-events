@@ -148,4 +148,9 @@ module.exports = [{
     name: "GC Angels (Part of the Growth Company)",
     img: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F64597606%2F309822095919%2F2%2Foriginal.png?w=225&auto=format%2Ccompress&q=75&sharp=10&s=0b67261c7c0fdba368430559629210cd",
     url: "https://www.eventbrite.co.uk/o/gc-angels-part-of-the-growth-company-23175809949"
+}, {
+    id: 15947527697,
+    name: "Secarma",
+    img: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F49292968%2F217107814368%2F2%2Foriginal.png?w=225&auto=format%2Ccompress&q=75&sharp=10&s=303f5f4e104564d3104940e6bbc8e591",
+    url: "https://www.eventbrite.co.uk/o/secarma-15947527697"
 }];
