@@ -1,4 +1,5 @@
 module.exports = [
+  "Data-Science-Festival-Manchester",
   "CTOs-in-Manchester",
   "CryptoHub",
   "Analytics-BI-Data-Strategy-Events",
