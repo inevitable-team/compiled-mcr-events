@@ -1,4 +1,5 @@
 module.exports = [
+  "AND-Chat-Manchester",
   "Azure-Workshops-Manchester",
   "North-West-Project-Data-Analytics-Meetup",
   "Micpod",
