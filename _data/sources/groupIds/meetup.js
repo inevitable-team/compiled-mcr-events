@@ -107,7 +107,6 @@ module.exports = [
   "northernsoho",
   "North-West-Playtesters",
   "VueJS-Manchester",
-  "North-West-Tester-Gathering",
   "etechmcr",
   "Introduction-to-Bitcoin-and-Cryptoeconomics",
   "Bitcoin-Manchester",
