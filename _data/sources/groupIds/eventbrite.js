@@ -153,4 +153,9 @@ module.exports = [{
     name: "Secarma",
     img: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F49292968%2F217107814368%2F2%2Foriginal.png?w=225&auto=format%2Ccompress&q=75&sharp=10&s=303f5f4e104564d3104940e6bbc8e591",
     url: "https://www.eventbrite.co.uk/o/secarma-15947527697"
+}, {
+    id: 17467080627,
+    name: "Peak",
+    img: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F46268856%2F260528740012%2F2%2Foriginal.jpg?w=225&auto=format%2Ccompress&q=75&sharp=10&s=7101528d27f209503627ab9f84b14a99",
+    url: "https://www.eventbrite.com/o/peak-17467080627"
 }];
