@@ -1,4 +1,5 @@
 module.exports = [
+  "Manchester-Digital-the-tech-and-digital-trade-body",
   "Cloud-Native-Kubernetes-Manchester",
   "Slalom-Manchester-Meetup-Group",
   "DDD-Manchester",
