@@ -1,4 +1,5 @@
 module.exports = [
+  "meetup-group-TRQXKDok",
   "Ansible-Manchester",
   "Manchester-Infrastructure-Group",
   "GM-Cyber-Foundry-Programme-University-of-Salford",
