@@ -1,4 +1,5 @@
 module.exports = [
+  "Elementor-Manchester",
   "Hyde-Open-Source-Meetup-Group",
   "Manchester-Digital-the-tech-and-digital-trade-body",
   "Cloud-Native-Kubernetes-Manchester",
