@@ -1,4 +1,5 @@
 module.exports = [
+  "Cloud-Native-Kubernetes-Manchester",
   "Slalom-Manchester-Meetup-Group",
   "DDD-Manchester",
   "Eagle-Labs-Incubator-Manchester",
