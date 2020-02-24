@@ -1,4 +1,5 @@
 module.exports = [
+  "Slalom-Manchester-Meetup-Group",
   "DDD-Manchester",
   "Eagle-Labs-Incubator-Manchester",
   "Manchester-Women-in-Technology-Meetup",
