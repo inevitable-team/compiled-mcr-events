@@ -57,7 +57,10 @@ class meetup {
 
     async getGroups() {
         return new Promise(resolve => {
-            Promise.all(this.groups.map(groupId => fetch(this.apiGroup(groupId), this.header))).then(responses =>
+            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(groupId => {
+              console.log('Fetching group details for: ', groupId);
+              return fetch(this.apiGroup(groupId), this.header);
+            }))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
                 let json = texts.map(t => JSON.parse(t)).filter(e => !e.hasOwnProperty("errors")).map(this.group);
@@ -68,7 +71,10 @@ class meetup {
 
     async getEvents() {
         return new Promise(resolve => {
-            Promise.all(this.groups.map(groupId => fetch(this.apiEvents(groupId), this.header))).then(responses =>
+            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(groupId => {
+              console.log('Fetching events for: ', groupId);
+              return fetch(this.apiEvents(groupId), this.header);
+            }))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
                 let json = texts.map(t => JSON.parse(t));

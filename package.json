@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Sean12697/manchester-tech-meetups#readme",
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.1.1",
     "beautify": "0.0.8",
     "dotenv": "^8.2.0",
     "fs-extra": "^8.1.0",
