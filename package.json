@@ -22,8 +22,8 @@
     "beautify": "0.0.8",
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
-    "ical-generator": "^1.9.2",
-    "moment": "^2.27.0",
+    "ical-generator": "^1.11.0",
+    "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "os": "^0.1.1",
     "shelljs": "^0.8.4"
