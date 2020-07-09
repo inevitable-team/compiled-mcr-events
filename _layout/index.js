@@ -16,7 +16,7 @@ module.exports = (eventsHTML, groupsHTML) => `
 <body>
     <header>
         <h1>CompiledMCR Events</h1>
-        <p>by Sean O'Mahoney, <a href='https://twitter.com/Sean12697/status/1133340835054018560' rel="noreferrer" target="_blank">steps to add to Calendar.</a></p>
+        <p>Powered by <a href='https://inevitableinnovations.com/' rel="noreferrer" target="_blank">INEVITABLE</a>, <a href='https://twitter.com/Sean12697/status/1133340835054018560' rel="noreferrer" target="_blank">steps to add to Calendar.</a></p>
     </header>
     <summary>
         <p>Helping you find technology events through the use of Meetup, Eventbrite & the <a href='https://technw.uk/calendar.html' target='_blank' rel="noreferrer">TechNW Calendar</a>.</p>
