@@ -158,4 +158,9 @@ module.exports = [{
     name: "Peak",
     img: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F46268856%2F260528740012%2F2%2Foriginal.jpg?w=225&auto=format%2Ccompress&q=75&sharp=10&s=7101528d27f209503627ab9f84b14a99",
     url: "https://www.eventbrite.com/o/peak-17467080627"
+}, {
+    id: 30834204055,
+    name: "CodeWith",
+    img: "https://codewith.org.uk/images/logo/logo.png",
+    url: "https://www.eventbrite.co.uk/o/codewith-30834204055"
 }];
