@@ -1,0 +1,14 @@
+name: Trigger Netlify Build
+on:
+  schedule:
+    # Run at 3AM daily
+    - cron: '0 3 * * *'
+jobs:
+  build:
+    name: Request Netlify Webhook
+    runs-on: ubuntu-latest
+    steps:
+      # Ensures Action doesn't run on Forks (BUILD_HOOK must be configured)
+      - if: $GITHUB_REPOSITORY == "inevitable-team/compiled-mcr-events"
+        name: Curl request
+        run: curl -X POST -d {} ${{ secrets.BUILD_HOOK }}
