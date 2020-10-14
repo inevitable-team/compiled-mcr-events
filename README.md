@@ -6,16 +6,21 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
+- [CompiledMCR Events (Manchester Tech Meetups)](#compiledmcr-events-manchester-tech-meetups)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
     - [Sources](#sources)
-        - [Meetup](#meetup)
-        - [EventBrite](#eventbrite)
-        - [Google Calendar](#google-calendar)
-- [Usage](#usage)
-- [Deploying](#deploying)
-- [Contributing](#contributing)
+      - [Meetup](#meetup)
+      - [EventBrite](#eventbrite)
+      - [Google Calendar](#google-calendar)
+    - [Github Action](#github-action)
+      - [If Statement](#if-statement)
+      - [Build Hook](#build-hook)
+  - [Usage](#usage)
+  - [Deploying](#deploying)
+  - [Contributing](#contributing)
 
 ## Prerequisites
 
@@ -61,6 +66,32 @@ The Google Calendar class can be found [~/_data/sources/googleCalendar.js](_data
 this.googleCalendar = new googleCalendar("a73q3trj8bssqjifgolb1q8fr4@group.calendar.google.com", "https://technw.uk/calendar", "TechNW", googleCalendarKey)
 ```
 
+### Github Action
+
+Once deployed, where `npm start` is ran, there is no built in / automated way to update the website and pull new events by default. There are many solutions for this, often involving some type of cron job to rebuild the website on a daily basis, which is recommended due to events finishing and the potential of new events being added.
+
+Within this repository there is a [Github Action](https://github.com/features/actions) called [main.yml](~/.github/workflows/main.yml), to configure the Cron job there are two main steps, changing the the repo name in the if statement and placing the build hook into the repositories secrets.
+
+```yaml
+      - if: "$GITHUB_REPOSITORY" == "inevitable-team/compiled-mcr-events"
+        name: Curl request
+        run: curl -X POST -d {} ${{ secrets.BUILD_HOOK }}
+```
+
+<i>It must be noted that this is currently setup to work with the Repository being hosted on GitHub (to take advantage of Github Actions & Repository Secrets) and being deployed to Netlify.</i>
+
+<i>If you do intend to use a different pipeline it is recommended to modify the code for this, or get in touch if you are facing any issues.</i>
+
+#### If Statement
+
+The line that includes `inevitable-team/compiled-mcr-events` should be changed to match the main repo's name, this is to ensure that any forks of the project do not attempt to trigger the cron job as well.
+
+#### Build Hook
+
+If you visit `https://app.netlify.com/sites/${ netlify_project_name }/settings/deploys#build-hooks` you will find the area to generate your build hook, this "give you a unique URL you can use to trigger a build".
+
+If you wish to learn more about Build Hooks visit the [Netlify Docs](https://docs.netlify.com/configure-builds/build-hooks/).
+
 ## Usage
 
 Once installed and configured, you can then run the following command:
@@ -83,6 +114,6 @@ If you wish to deploy this as a service, the recommended way would be to push it
 
 This project is part of the much greater CompiledMCR project (infrastructure below), meaning potentially only minor PR's will be accepted for refinements, feature updates and bug fixes.
 
-If you do wish to folk it for another city, please do link back and a central Compiled website will be constructed soon.
+If you do wish to fork it for another city, please do link back and a central Compiled website will be constructed soon.
 
 ![CompiledMCR Project Infrastructure](https://i.imgur.com/80G49TU.png)
