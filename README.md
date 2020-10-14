@@ -73,7 +73,7 @@ Once deployed, where `npm start` is ran, there is no built in / automated way to
 Within this repository there is a [Github Action](https://github.com/features/actions) called [main.yml](~/.github/workflows/main.yml), to configure the Cron job there are two main steps, changing the the repo name in the if statement and placing the build hook into the repositories secrets.
 
 ```yaml
-      - if: ${{ "$GITHUB_REPOSITORY" == "inevitable-team/compiled-mcr-events" }}
+      - if: github.repository == "inevitable-team/compiled-mcr-events"
         name: Curl request
         run: curl -X POST -d {} ${{ secrets.BUILD_HOOK }}
 ```
