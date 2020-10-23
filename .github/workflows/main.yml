@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Ensures Action doesn't run on Forks (BUILD_HOOK must be configured)
-      - if: github.repository == "inevitable-team/compiled-mcr-events"
+      - if: github.repository == 'inevitable-team/compiled-mcr-events'
         name: Curl request
         run: curl -X POST -d {} ${{ secrets.BUILD_HOOK }}
