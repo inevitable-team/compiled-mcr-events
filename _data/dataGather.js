@@ -1,7 +1,7 @@
 let meetup = require("./sources/meetup"),
     eventbrite = require("./sources/eventbrite"),
     googleCalendar = require("./sources/googleCalendar"),
-    googleCalendarKey = "AIzaSyCR3-ptjHE-_douJsn8o20oRwkxt-zHStY"; // Calendar API Key gained from the Google Developer Console, this key is shown in many examples
+    googleCalendarKey = process.env.GOOGLE_CALENDAR_KEY || "AIzaSyCR3-ptjHE-_douJsn8o20oRwkxt-zHStY"; // Calendar API Key gained from the Google Developer Console, this key is shown in many examples
 
 class dataGather {
     constructor() {
