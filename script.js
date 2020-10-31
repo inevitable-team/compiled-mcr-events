@@ -7,7 +7,8 @@ let fs = require('fs-extra'),
     ical = require('ical-generator'),
     dataGatherClass = require(`${__dirname}/_data/dataGather`),
     htmlConverter = require(`${__dirname}/_static/scripts/dataToHTML`),
-    indexLayout = require(`${__dirname}/_layout/index`);
+    indexLayout = require(`${__dirname}/_layout/index`),
+    config = require(`./config.json`);
 
     require('events').EventEmitter.prototype._maxListeners = 0;
 
@@ -35,7 +36,7 @@ dataGather.getData().then(data => {
         // Creating HTML
         let eventsHTML = data[1].map(htmlConverter.eventHTML).join(""),
             groupsHTML = data[0].map(htmlConverter.groupHTML).join("");
-        let index = indexLayout(eventsHTML, groupsHTML);
+        let index = indexLayout(eventsHTML, groupsHTML, config);
         fs.writeFileSync(`${__dirname}/_site/index.html`, index, () => {});
         // Create Calender
         data[1].forEach(event => {
