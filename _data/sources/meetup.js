@@ -4,7 +4,7 @@ const fetch = require("node-fetch"),
 
 class meetup {
     constructor() {
-        this.groups = require("./groupIds/meetup");
+        this.groups = require("./groupIds/meetup").filter((value, index, self) => self.indexOf(value) === index);
         this.apiEvents = (group) => 'https://api.meetup.com/' + group + '/events';
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
         this.apiGroup = (group) => 'https://api.meetup.com/' + group;
