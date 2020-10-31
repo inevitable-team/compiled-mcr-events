@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sean12697/manchester-tech-meetups.git"
+    "url": "git+https://github.com/inevitable-team/compiled-mcr-events.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Sean12697/manchester-tech-meetups/issues"
+    "url": "https://github.com/inevitable-team/compiled-mcr-events/issues"
   },
-  "homepage": "https://github.com/Sean12697/manchester-tech-meetups#readme",
+  "homepage": "https://github.com/inevitable-team/compiled-mcr-events#readme",
   "dependencies": {
     "async": "^3.1.1",
     "beautify": "0.0.8",
