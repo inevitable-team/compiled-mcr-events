@@ -22,7 +22,7 @@
     "beautify": "0.0.8",
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
-    "ical-generator": "^1.15.1",
+    "ical-generator": "^1.15.3",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "os": "^0.1.1",
