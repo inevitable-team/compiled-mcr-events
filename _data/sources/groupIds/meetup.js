@@ -200,5 +200,6 @@ module.exports = [
   "manchester-geek-nights",
   "Manchester-Patterns-Group",
   "Manchester-Software-Craftsmanship-Community",
-  "Behind-The-Buzz-Word"
+  "Behind-The-Buzz-Word",
+  "Manchester-Umbraco-Meetup"
 ];
