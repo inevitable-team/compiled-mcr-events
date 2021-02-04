@@ -1,4 +1,4 @@
-module.exports = (eventsHTML, groupsHTML) => `
+module.exports = (eventsHTML, groupsHTML, config) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,12 +79,12 @@ module.exports = (eventsHTML, groupsHTML) => `
     <script src="./scripts/main.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111660061-2"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${config.gtagId}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-111660061-2');
+        gtag('config', '${config.gtagId}');
     </script>
 
 </body>
