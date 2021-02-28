@@ -15,7 +15,12 @@ class eventbrite {
         this.groupClass = group;
         this.eventClass = event;
         this.group = (group) => new this.groupClass(group.name, "", group.url, group.img || "./img/blank_eventbrite.jpg", null, null, null, "Eventbrite", false);
-        this.event = (event) => new this.eventClass(event.name.text, event.url, event.venue, event.description.text || "", event.start.utc, event.end.utc, null, event.capacity, event.id_free, null, event.groupName, event.groupLink, "Eventbrite", false);
+        this.event = (event) => {
+            let description = "";
+            if (event.summary) description = event.summary;
+            if (event.description) if (event.description.text) description = event.description.text;
+            return new this.eventClass(event.name.text, event.url, event.venue, description, event.start.utc, event.end.utc, null, event.capacity, event.id_free, null, event.groupName, event.groupLink, "Eventbrite", false);
+        }
     }
 
     async getData() {
