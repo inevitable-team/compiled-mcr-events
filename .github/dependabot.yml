@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  reviewers:
+  - Sean12697
+  assignees:
+  - Sean12697
+  ignore:
+  - dependency-name: ical-generator
+    versions:
+    - 1.15.4
+    - 2.0.0
+  - dependency-name: fs-extra
+    versions:
+    - 9.1.0
+  - dependency-name: ini
+    versions:
+    - 1.3.7
