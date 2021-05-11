@@ -20,7 +20,7 @@
   "dependencies": {
     "async": "^3.1.1",
     "beautify": "0.0.8",
-    "dotenv": "^8.2.0",
+    "dotenv": "^9.0.2",
     "fs-extra": "^9.0.1",
     "ical-generator": "^2.0.0",
     "moment": "^2.29.1",
