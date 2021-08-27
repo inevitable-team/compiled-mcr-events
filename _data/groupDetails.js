@@ -64,4 +64,16 @@ module.exports = [{
         link: "https://dotnetnorth.org.uk/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: 14858329308,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/fspmcr",
+        type: "Twitter"
+    }, {
+        link: "https://facebook.com/fullstackofpancakes/",
+        type: "Facebook"
+    }]
 }]
