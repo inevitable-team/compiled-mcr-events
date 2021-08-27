@@ -259,4 +259,16 @@ module.exports = [{
         link: "https://www.mancml.io/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: "HER-Data-MCR",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/herplusdatamcr",
+        type: "Twitter"
+    }, {
+        link: "http://herplusdata.org/",
+        type: "Website"
+    }]
 }]
