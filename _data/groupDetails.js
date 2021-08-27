@@ -109,4 +109,19 @@ module.exports = [{
         link: "https://www.ladiesthatux.com/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: 2263648391,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/opendatamcr",
+        type: "Twitter"
+    }, {
+        link: "https://www.linkedin.com/company/opendatamcr/",
+        type: "Linkedin"
+    }, {
+        link: "https://www.opendatamanchester.org.uk/",
+        type: "Website"
+    }]
 }]
