@@ -91,4 +91,22 @@ module.exports = [{
         link: "https://innovateher.co.uk/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: 4493390085,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/ladiesthatuxmcr",
+        type: "Twitter"
+    }, {
+        link: "https://www.linkedin.com/company/ladies-that-ux/",
+        type: "Linkedin"
+    }, {
+        link: "https://www.facebook.com/LadiesThatUX/",
+        type: "Facebook"
+    }, {
+        link: "https://www.ladiesthatux.com/",
+        type: "Website"
+    }]
 }]
