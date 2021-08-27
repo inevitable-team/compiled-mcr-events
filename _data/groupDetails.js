@@ -226,4 +226,16 @@ module.exports = [{
         link: "https://twitter.com/mcrjava",
         type: "Twitter"
     }]
+}, {
+    ids: [{
+        id: 16693829495,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/lambdamcr",
+        type: "Twitter"
+    }, {
+        link: "http://www.lambdalounge.org.uk/",
+        type: "Website"
+    }]
 }]
