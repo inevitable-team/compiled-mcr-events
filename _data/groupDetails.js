@@ -238,4 +238,13 @@ module.exports = [{
         link: "http://www.lambdalounge.org.uk/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: 16055988646,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/TechFemale/",
+        type: "Twitter"
+    }]
 }]
