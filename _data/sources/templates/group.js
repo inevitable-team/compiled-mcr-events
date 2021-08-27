@@ -4,6 +4,7 @@ module.exports = class group {
         this.name = name;
         this.desc = desc.replace(/(<([^>]+)>)/ig, "");
         this.link = link;
+        this.links = [];
         this.img = img;
         this.members = members;
         this.sinceLast = sinceLast;

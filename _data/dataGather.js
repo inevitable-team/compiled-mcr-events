@@ -19,11 +19,15 @@ class dataGather {
                 let groupsData = data.reduce((total, curr) => total.concat(curr[0]), []);
                 let eventsData = data.reduce((total, curr) => total.concat(curr[1]), []);
                 // Sorting / Filtering
-                let groups = this.sortNames(groupsData);
+                let groups = this.sortNames(this.mergeGroups(groupsData));
                 let events = this.sortTime(this.filterEvents(eventsData));
                 resolve([groups, events]);
             })
         });
+    }
+
+    mergeGroups(groups) {
+        return groups;
     }
 
     sortTime(items) {
