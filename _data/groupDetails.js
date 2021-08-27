@@ -1,10 +1,10 @@
 module.exports = [{
     ids: [{
-        id: "Manchester-Digital-the-tech-and-digital-trade-body",
-        type: "Meetup"
-    }, {
         id: 227118780,
         type: "Eventbrite"
+    }, {
+        id: "Manchester-Digital-the-tech-and-digital-trade-body",
+        type: "Meetup"
     }],
     links: [{
         link: "https://www.manchesterdigital.com/slack-channel",
