@@ -151,4 +151,13 @@ module.exports = [{
         link: "https://twitter.com/pydatamcr",
         type: "Twitter"
     }]
+}, {
+    ids: [{
+        id: "RealUX",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/realuxmcr",
+        type: "Twitter"
+    }]
 }]
