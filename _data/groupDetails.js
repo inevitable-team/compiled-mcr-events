@@ -160,4 +160,16 @@ module.exports = [{
         link: "https://twitter.com/realuxmcr",
         type: "Twitter"
     }]
+}, {
+    ids: [{
+        id: 7227143335,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/shesaysmcr",
+        type: "Twitter"
+    },{
+        link: "https://weareshesays.com/",
+        type: "Website"
+    }]
 }]
