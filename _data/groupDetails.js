@@ -142,4 +142,13 @@ module.exports = [{
         link: "https://codeyourfuture.io/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: "PyData-Manchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/pydatamcr",
+        type: "Twitter"
+    }]
 }]
