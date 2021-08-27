@@ -16,4 +16,22 @@ module.exports = [{
         link: "https://www.manchesterdigital.com/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: 30834204055,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://launchpass.com/codewithpeople",
+        type: "Slack"
+    }, {
+        link: "https://twitter.com/CodeWithGroup",
+        type: "Twitter"
+    }, {
+        link: "https://www.facebook.com/CodeWithGroup/",
+        type: "Facebook"
+    }, {
+        link: "https://codewith.org.uk/",
+        type: "Website"
+    }, ]
 }]
