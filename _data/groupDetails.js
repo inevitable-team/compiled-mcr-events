@@ -46,4 +46,22 @@ module.exports = [{
         link: "https://codeandstuff-manchester.github.io/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: "DotNetNorth",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/DotNetNorth/status/1241128650117955584",
+        type: "Slack"
+    }, {
+        link: "https://twitter.com/DotNetNorth",
+        type: "Twitter"
+    }, {
+        link: "https://www.facebook.com/DotNetNorth",
+        type: "Facebook"
+    }, {
+        link: "https://dotnetnorth.org.uk/",
+        type: "Website"
+    }]
 }]
