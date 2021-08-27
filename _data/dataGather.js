@@ -31,8 +31,10 @@ class dataGather {
         details.forEach(groupDetails => {
             if (groupDetails.ids.length > 1) groups = this.mergeGroups(groups, groupDetails.ids);
             let groupIndex = this.findGroupIndex(groups, groupDetails.ids[0]);
-            if (groups[groupIndex].links == undefined) groups[groupIndex].links = [];
-            (groupDetails || { links: [] }).links.forEach(link => groups[groupIndex].links.push(link));
+            if (groupIndex != -1) {
+                if (groups[groupIndex].links == undefined) groups[groupIndex].links = [];
+                (groupDetails || { links: [] }).links.forEach(link => groups[groupIndex].links.push(link));
+            }
         }); return groups;
     }
 
