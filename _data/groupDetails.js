@@ -247,4 +247,16 @@ module.exports = [{
         link: "https://twitter.com/TechFemale/",
         type: "Twitter"
     }]
+}, {
+    ids: [{
+        id: 11845832416,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/Manc_ML",
+        type: "Twitter"
+    }, {
+        link: "https://www.mancml.io/",
+        type: "Website"
+    }]
 }]
