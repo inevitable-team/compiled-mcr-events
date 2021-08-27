@@ -187,4 +187,22 @@ module.exports = [{
         link: "https://www.techforgood.live/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: "VRManchester",
+        type: "Meetup"
+    }, {
+        id: 33989894333,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/vrmanchester",
+        type: "Twitter"
+    }, {
+        link: "https://www.facebook.com/VRManchester",
+        type: "Facebook"
+    }, {
+        link: "http://vrmcr.com/",
+        type: "Website"
+    }]
 }]
