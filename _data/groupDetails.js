@@ -214,4 +214,16 @@ module.exports = [{
         type: "Eventbrite"
     }],
     links: []
+}, {
+    ids: [{
+        id: "ManchesterUK-Java-Community",
+        type: "Meetup"
+    }, {
+        id: 17108698390,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/mcrjava",
+        type: "Twitter"
+    }]
 }]
