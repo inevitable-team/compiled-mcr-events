@@ -205,4 +205,13 @@ module.exports = [{
         link: "http://vrmcr.com/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: 5881267695,
+        type: "Eventbrite"
+    }, {
+        id: 17831433367,
+        type: "Eventbrite"
+    }],
+    links: []
 }]
