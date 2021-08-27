@@ -76,4 +76,19 @@ module.exports = [{
         link: "https://facebook.com/fullstackofpancakes/",
         type: "Facebook"
     }]
+}, {
+    ids: [{
+        id: 16890786611,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/innovateheruk",
+        type: "Twitter"
+    }, {
+        link: "https://www.linkedin.com/company/innovateheruk/",
+        type: "Linkedin"
+    }, {
+        link: "https://innovateher.co.uk/",
+        type: "Website"
+    }]
 }]
