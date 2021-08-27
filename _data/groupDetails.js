@@ -33,5 +33,17 @@ module.exports = [{
     }, {
         link: "https://codewith.org.uk/",
         type: "Website"
-    }, ]
+    }]
+}, {
+    ids: [{
+        id: 19702492738,
+        type: "Eventbrite"
+    }],
+    links: [{
+        link: "https://twitter.com/CodeAndStuff_uk",
+        type: "Twitter"
+    }, {
+        link: "https://codeandstuff-manchester.github.io/",
+        type: "Website"
+    }]
 }]
