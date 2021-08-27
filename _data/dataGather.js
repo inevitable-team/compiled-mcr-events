@@ -1,4 +1,5 @@
-let meetup = require("./sources/meetup"),
+let details = require("./groupDetails"),
+    meetup = require("./sources/meetup"),
     eventbrite = require("./sources/eventbrite"),
     googleCalendar = require("./sources/googleCalendar"),
     googleCalendarKey = process.env.GOOGLE_CALENDAR_KEY || "AIzaSyCR3-ptjHE-_douJsn8o20oRwkxt-zHStY"; // Calendar API Key gained from the Google Developer Console, this key is shown in many examples
@@ -19,10 +20,57 @@ class dataGather {
                 let groupsData = data.reduce((total, curr) => total.concat(curr[0]), []);
                 let eventsData = data.reduce((total, curr) => total.concat(curr[1]), []);
                 // Sorting / Filtering
-                let groups = this.sortNames(groupsData);
+                let groups = this.sortNames(this.enhanceGroups(groupsData));
                 let events = this.sortTime(this.filterEvents(eventsData));
                 resolve([groups, events]);
             })
+        });
+    }
+
+    enhanceGroups(groups) {
+        details.forEach(groupDetails => {
+            if (groupDetails.ids.length > 1) groups = this.mergeGroups(groups, groupDetails.ids);
+            let groupIndex = this.findGroupIndex(groups, groupDetails.ids[0]);
+            if (groupIndex != -1) {
+                if (groups[groupIndex].links == undefined) groups[groupIndex].links = [];
+                (groupDetails || { links: [] }).links.forEach(link => groups[groupIndex].links.push(link));
+            }
+        }); return groups;
+    }
+
+    mergeGroups(allGroups, ids) {
+        // Extract all groups
+        let groups = [];
+        ids.forEach(id => {
+            let response = this.extractGroup(allGroups, id);
+            groups.push(response.group);
+            allGroups = response.groups;
+        });
+
+        groups.forEach((group, index) => {
+            if (index != 0) {
+                if (group.ad) groups[0].ad = group.ad;
+                if ((group.desc || "").length > (groups[0].desc || "").length) groups[0].desc = group.desc;
+                if (group.members > groups[0].members) groups[0].members = group.members;
+                if (group.sinceLast > groups[0].sinceLast) groups[0].sinceLast = group.sinceLast;
+                if (group.untilNext < groups[0].untilNext) groups[0].untilNext = group.untilNext;
+                if (groups[0].links == undefined) groups[0].links = [];
+                groups[0].links.push({ link: group.link, type: group.source });
+            }
+        });
+
+        allGroups.push(groups[0]);
+        return allGroups;
+    }
+
+    extractGroup(groups, groupDetailId) {
+        let group = groups.splice(this.findGroupIndex(groups, groupDetailId), 1)[0];
+        return { group, groups };
+    }
+
+    findGroupIndex(groups, groupDetailId) {
+        return groups.findIndex(group => {
+            return group.id == groupDetailId.id && group.source == groupDetailId.type;
         });
     }
 

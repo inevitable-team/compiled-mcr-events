@@ -14,7 +14,7 @@ class eventbrite {
         // Converters
         this.groupClass = group;
         this.eventClass = event;
-        this.group = (group) => new this.groupClass(group.name, "", group.url, group.img || "./img/blank_eventbrite.jpg", null, null, null, "Eventbrite", false);
+        this.group = (group) => new this.groupClass(group.id, group.name, "", group.url, group.img || "./img/blank_eventbrite.jpg", null, null, null, "Eventbrite", false);
         this.event = (event) => {
             let description = "";
             if (event.summary) description = event.summary;

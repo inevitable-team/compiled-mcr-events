@@ -5,6 +5,13 @@ body {
     /* overflow: hidden; */
 }
 
+.groupText a img {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+
 .steelBlue, header, footer {
     background-color: #4682b4;
     color: white;
