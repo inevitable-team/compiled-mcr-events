@@ -124,4 +124,22 @@ module.exports = [{
         link: "https://www.opendatamanchester.org.uk/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: "Code-Your-Future-Manchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/codeyourfuture",
+        type: "Twitter"
+    }, {
+        link: "https://www.linkedin.com/company/codeyourfuture/",
+        type: "Linkedin"
+    }, {
+        link: "https://www.facebook.com/codeyourfuture.io/",
+        type: "Facebook"
+    }, {
+        link: "https://codeyourfuture.io/",
+        type: "Website"
+    }]
 }]
