@@ -172,4 +172,19 @@ module.exports = [{
         link: "https://weareshesays.com/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: "Tech-for-Good-Live",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://pod.co/tech-for-good-live",
+        type: "Podcast"
+    }, {
+        link: "https://twitter.com/techforgoodlive",
+        type: "Twitter"
+    }, {
+        link: "https://www.techforgood.live/",
+        type: "Website"
+    }]
 }]
