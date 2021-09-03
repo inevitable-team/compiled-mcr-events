@@ -261,7 +261,7 @@ module.exports = [{
     }]
 }, {
     ids: [{
-        id: "HER-Data-MCR",
+        id: "herplusdatamcr",
         type: "Meetup"
     }],
     links: [{
