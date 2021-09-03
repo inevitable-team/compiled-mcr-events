@@ -298,5 +298,16 @@ module.exports = [
   "ecommercegroupuk",
   "neurodivergent-entrepreneurs-adhd-asd-dyslexia",
   "manchester-biotech-bioinformatics",
-  "Rochdale-WordPress-Meetup"
+  "Rochdale-WordPress-Meetup",
+  "infused-in-the-community",
+  "Talentful-Talks-Tech",
+  "the-cloud-user-group",
+  "MusicTech-North",
+  "The-Manchester-Responsible-Business-Collective-MRBC",
+  "Women-in-Business-UK",
+  "C-I-N-G",
+  "data-leaders-north-people-centric-innovation",
+  "manchesteryoungentrepreneurnetworkers",
+  "North-West-Tech-Talks",
+  "SaltStack-Manchester-Meetup"
 ];
