@@ -1,20 +1,21 @@
 const fetch = require("node-fetch"),
-    graphql = require("graphql-request"),
+    GraphQLClient = require("graphql-request"),
     group = require("./templates/group"),
     event = require("./templates/event");
 
 class meetup {
     constructor(token = process.env.MEETUP_TOKEN) {
         this.groups = require("./groupIds/meetup").filter((value, index, self) => self.indexOf(value) === index);
+        this.graphQLClient = new GraphQLClient('https://api.meetup.com/gql', {
+            headers: {
+                authorization: 'Bearer ' + token,
+                method: 'POST',
+                dataType: 'jsonp'
+            },
+        });
         this.apiEvents = (group) => 'https://api.meetup.com/' + group + '/events';
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
         this.apiGroup = (group) => 'https://api.meetup.com/' + group;
-        this.endpoint = "https://api.meetup.com/gql";
-        this.header = {
-            authorization: 'Bearer ' + token,
-            method: 'POST',
-            dataType: 'jsonp'
-        };
         // Converters
         this.groupClass = group;
         this.eventClass = event;
