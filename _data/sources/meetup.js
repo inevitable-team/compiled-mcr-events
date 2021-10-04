@@ -1,5 +1,4 @@
-const fetch = require("node-fetch"),
-    GraphQLClient = require("graphql-request"),
+const GraphQLClient = require("graphql-request"),
     group = require("./templates/group"),
     event = require("./templates/event");
 
