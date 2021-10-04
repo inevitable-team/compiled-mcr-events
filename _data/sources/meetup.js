@@ -10,8 +10,8 @@ class meetup {
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
         this.apiGroup = (group) => 'https://api.meetup.com/' + group;
         this.endpoint = "https://api.meetup.com/gql";
-        this.token = token;
         this.header = {
+            authorization: 'Bearer ' + token,
             method: 'POST',
             dataType: 'jsonp'
         };
