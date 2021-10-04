@@ -14,7 +14,23 @@ class meetup {
         });
         this.apiEvents = (group) => 'https://api.meetup.com/' + group + '/events';
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
-        this.apiGroup = (group) => 'https://api.meetup.com/' + group;
+        this.apiGroup = (group) => gql`
+            {
+                groupByUrlname(urlname: ${group}) {
+                    id
+                    name
+                    desc
+                    link
+                    links
+                    img
+                    members
+                    sinceLast
+                    untilNext
+                    source
+                    ad
+                }
+            }
+        `;
         // Converters
         this.groupClass = group;
         this.eventClass = event;
