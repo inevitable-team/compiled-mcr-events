@@ -8,6 +8,7 @@ class meetup {
         this.apiEvents = (group) => 'https://api.meetup.com/' + group + '/events';
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
         this.apiGroup = (group) => 'https://api.meetup.com/' + group;
+        this.token = token;
         this.header = {
             method: 'GET',
             dataType: 'jsonp'
