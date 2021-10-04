@@ -1,4 +1,4 @@
-const GraphQLClient = require("graphql-request"),
+const {GraphQLClient, gql} = require("graphql-request"),
     group = require("./templates/group"),
     event = require("./templates/event");
 
@@ -12,7 +12,32 @@ class meetup {
                 dataType: 'jsonp'
             },
         });
-        this.apiEvents = (group) => 'https://api.meetup.com/' + group + '/events';
+        this.apiEvents = (group) => gql`
+            {
+                groupByUrlname(urlname: ${group}) {
+                    unifiedEvents {
+                        edges {
+                            node {
+                                name
+                                link
+                                location
+                                desc
+                                startTimeISO
+                                endTimeISO
+                                going
+                                capacity
+                                free
+                                cost
+                                groupName
+                                groupLink
+                                source
+                                ad
+                            }
+                        }
+                    }
+                }
+            }
+        `;
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
         this.apiGroup = (group) => gql`
             {
