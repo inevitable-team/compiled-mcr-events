@@ -3,7 +3,7 @@ const fetch = require("node-fetch"),
     event = require("./templates/event");
 
 class meetup {
-    constructor() {
+    constructor(token = process.env.MEETUP_TOKEN) {
         this.groups = require("./groupIds/meetup").filter((value, index, self) => self.indexOf(value) === index);
         this.apiEvents = (group) => 'https://api.meetup.com/' + group + '/events';
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
