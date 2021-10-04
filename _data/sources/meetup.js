@@ -10,7 +10,7 @@ class meetup {
         this.apiGroup = (group) => 'https://api.meetup.com/' + group;
         this.token = token;
         this.header = {
-            method: 'GET',
+            method: 'POST',
             dataType: 'jsonp'
         };
         // Converters
