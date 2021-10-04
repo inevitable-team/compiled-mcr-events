@@ -103,7 +103,7 @@ class meetup {
         return new Promise(resolve => {
             Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(groupId => {
               console.log('Fetching group details for: ', groupId);
-              return graphQLClient.request(this.apiGroup(groupId));
+              return this.graphQLClient.request(this.apiGroup(groupId));
             }))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
@@ -117,7 +117,7 @@ class meetup {
         return new Promise(resolve => {
             Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(groupId => {
               console.log('Fetching events for: ', groupId);
-              return graphQLClient.request(this.apiEvents(groupId));
+              return this.graphQLClient.request(this.apiEvents(groupId));
             }))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
