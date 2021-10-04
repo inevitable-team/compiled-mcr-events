@@ -1,4 +1,5 @@
 const fetch = require("node-fetch"),
+    graphql = require("graphql-request"),
     group = require("./templates/group"),
     event = require("./templates/event");
 
