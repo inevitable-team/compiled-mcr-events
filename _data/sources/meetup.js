@@ -18,16 +18,16 @@ class meetup {
                     unifiedEvents {
                         edges {
                             node {
-                                name
-                                link
-                                location
-                                desc
-                                startTimeISO
-                                endTimeISO
+                                title
+                                shortUrl
+                                venue
+                                description
+                                dateTime
+                                endTime
                                 going
-                                capacity
-                                free
-                                cost
+                                maxTickets
+                                fees
+                                price
                                 groupName
                                 groupLink
                                 source
@@ -35,6 +35,8 @@ class meetup {
                             }
                         }
                     }
+                    name
+                    link 
                 }
             }
         `;
