@@ -27,7 +27,7 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
 
 ### Prerequisites/required software
 
-To start using this project, you will need to have the following programs installed:
+To install the rest of the software you need (dependencies), you will need to have NodeJS and npm installed:
 
 - [NodeJS download page](https://nodejs.org/en/download/)
 
