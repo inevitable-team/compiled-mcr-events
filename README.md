@@ -12,6 +12,7 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
     - [Prerequisites/required software](#prerequisites/required-software)
       - [Nodejs](#nodejs)
         - [install NodeJS by download](#install-nodejs-by-download)
+        - [install NodeJS by package manager](#install-nodejs-by-package-manager)
       - [Project dependencies](#project-dependencies)
   - [Configuration](#configuration)
     - [Sources](#sources)
@@ -40,6 +41,12 @@ NodeJS can be installed either by direct download or through your favourite supp
 Go to the download page and follow the instructions there:
 
 - [NodeJS download page](https://nodejs.org/en/download/)
+
+#####install NodeJS by package manager
+
+There are a lot of options, thankfully the NodeJS team made a page that goes through most of them
+
+- [NodeJS package manager article](https://nodejs.org/en/download/package-manager/)
 
 #### Project dependencies
 
