@@ -30,7 +30,6 @@ class meetup {
                                 price
                                 groupName
                                 groupLink
-                                ad
                             }
                         }
                     }
