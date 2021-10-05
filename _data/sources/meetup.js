@@ -51,7 +51,6 @@ class meetup {
                     members
                     sinceLast
                     untilNext
-                    source
                     ad
                 }
             }
