@@ -44,7 +44,7 @@ class meetup {
                 groupByUrlname(urlname: ${group}) {
                     id
                     name
-                    desc
+                    description
                     link
                     img
                     members
