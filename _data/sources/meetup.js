@@ -48,7 +48,6 @@ class meetup {
                     link
                     img
                     members
-                    sinceLast
                 }
             }
         `;
