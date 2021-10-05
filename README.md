@@ -29,7 +29,7 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
 
 To start using this project, you will need to have the following programs installed:
 
-- [NodeJS](https://nodejs.org/en/)
+- [NodeJS download page](https://nodejs.org/en/download/)
 
 ### Project dependencies
 
