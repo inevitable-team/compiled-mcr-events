@@ -10,7 +10,9 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Prerequisites/required software](#prerequisites/required-software)
-    - [Project dependencies](#project-dependencies)
+      - [Nodejs](#nodejs)
+        - [install NodeJS by download](#install-nodejs-by-download)
+      - [Project dependencies](#project-dependencies)
   - [Configuration](#configuration)
     - [Sources](#sources)
       - [Meetup](#meetup)
@@ -29,9 +31,17 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
 
 To install the rest of the software you need (dependencies), you will need to have NodeJS and npm installed:
 
+####NodeJS
+
+NodeJS can be installed either by direct download or through your favourite supported package manager
+
+#####install NodeJS by download
+
+Go to the download page and follow the instructions there:
+
 - [NodeJS download page](https://nodejs.org/en/download/)
 
-### Project dependencies
+#### Project dependencies
 
 Run the following command at the root of the project to download all the dependencies:
 
