@@ -8,8 +8,9 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
 
 - [CompiledMCR Events (Manchester Tech Meetups)](#compiledmcr-events-manchester-tech-meetups)
   - [Table of Contents](#table-of-contents)
-  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+    - [Prerequisites/required software](#prerequisites/required-software)
+    - [Project dependencies](#project-dependencies)
   - [Configuration](#configuration)
     - [Sources](#sources)
       - [Meetup](#meetup)
@@ -22,15 +23,17 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
   - [Deploying](#deploying)
   - [Contributing](#contributing)
 
-## Prerequisites
+## Installation
+
+### Prerequisites/required software
 
 To start using this project, you will need to have the following programs installed:
 
 - [NodeJS](https://nodejs.org/en/)
 
-## Installation
+### Project dependencies
 
-Once you have NodeJS installed, run the following command at the root of the project to download all the dependencies:
+Run the following command at the root of the project to download all the dependencies:
 
 ```
 npm i
