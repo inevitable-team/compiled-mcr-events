@@ -13,6 +13,7 @@ OLD VERSION: [https://github.com/Sean12697/MeetupManchesterTech](https://github.
       - [Nodejs](#nodejs)
         - [install NodeJS by download](#install-nodejs-by-download)
         - [install NodeJS by package manager](#install-nodejs-by-package-manager)
+      - [Npm](#npm)
       - [Project dependencies](#project-dependencies)
   - [Configuration](#configuration)
     - [Sources](#sources)
@@ -47,6 +48,10 @@ Go to the download page and follow the instructions there:
 There are a lot of options, thankfully the NodeJS team made a page that goes through most of them
 
 - [NodeJS package manager article](https://nodejs.org/en/download/package-manager/)
+
+####Npm
+
+Npm should already be included, if it is not then please either create an issue so we can document how to get it on your system or search online for how to do it on your system
 
 #### Project dependencies
 
