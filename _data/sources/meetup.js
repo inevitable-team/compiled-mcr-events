@@ -46,7 +46,6 @@ class meetup {
                     name
                     desc
                     link
-                    links
                     img
                     members
                     sinceLast
