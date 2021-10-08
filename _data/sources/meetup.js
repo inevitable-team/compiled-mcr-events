@@ -46,7 +46,7 @@ class meetup {
                     name
                     description
                     link
-                    img
+                    logo
                     members
                 }
             }
