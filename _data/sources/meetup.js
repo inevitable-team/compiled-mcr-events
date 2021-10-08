@@ -20,7 +20,9 @@ class meetup {
                             node {
                                 title
                                 shortUrl
-                                venue
+                                venue {
+                                    name
+                                }
                                 description
                                 dateTime
                                 endTime
