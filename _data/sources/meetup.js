@@ -34,7 +34,7 @@ class meetup {
                         }
                     }
                     name
-                    link 
+                    link
                 }
             }
         `;
