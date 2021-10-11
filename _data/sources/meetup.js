@@ -1,20 +1,13 @@
-const {GraphQLClient, gql} = require("graphql-request"),
+const {gql, request} = require("graphql-request"),
     group = require("./templates/group"),
     event = require("./templates/event");
 
 class meetup {
     constructor(token = process.env.MEETUP_TOKEN) {
         this.groups = require("./groupIds/meetup").filter((value, index, self) => self.indexOf(value) === index);
-        this.graphQLClient = new GraphQLClient('https://api.meetup.com/gql', {
-            headers: {
-                authorization: 'Bearer ' + token,
-                method: 'POST',
-                dataType: 'jsonp'
-            },
-        });
-        this.apiEvents = (group) => gql`
-            {
-                groupByUrlname(urlname: ${group}) {
+        this.queryEvent = gql`
+            query($group: String!) {
+                groupByUrlname(urlname: $group) {
                     unifiedEvents {
                         edges {
                             node {
@@ -38,9 +31,9 @@ class meetup {
             }
         `;
         this.apiPastEvents = (group) => 'https://api.meetup.com/' + group + '/events?desc=true&status=past';
-        this.apiGroup = (group) => gql`
-            {
-                groupByUrlname(urlname: ${group}) {
+        this.queryGroup = gql`
+            query($group: String!) {
+                groupByUrlname(urlname: $group) {
                     id
                     name
                     description
@@ -94,9 +87,9 @@ class meetup {
 
     async getGroups() {
         return new Promise(resolve => {
-            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(groupId => {
-              console.log('Fetching group details for: ', groupId);
-              return this.graphQLClient.request(this.apiGroup(groupId));
+            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(async groupId => {
+                console.log('Fetching group details for: ', groupId);
+                return await request('https://api.meetup.com/gql', this.queryGroup, {group: groupId,});
             }))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
@@ -108,9 +101,9 @@ class meetup {
 
     async getEvents() {
         return new Promise(resolve => {
-            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(groupId => {
-              console.log('Fetching events for: ', groupId);
-              return this.graphQLClient.request(this.apiEvents(groupId));
+            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(async groupId => {
+                console.log('Fetching events for: ', groupId);
+                return await request('https://api.meetup.com/gql', this.queryEvent, {group: groupId,});
             }))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
             ).then(texts => {
