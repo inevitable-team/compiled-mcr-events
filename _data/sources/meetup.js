@@ -45,7 +45,10 @@ class meetup {
                     name
                     description
                     link
-                    logo
+                    logo {
+                        id
+                        baseUrl
+                    }
                     memberships {
                         count
                     }
