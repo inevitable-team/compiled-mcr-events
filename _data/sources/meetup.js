@@ -91,9 +91,9 @@ class meetup {
                 console.log('Fetching group details for: ', groupId);
                 return await request('https://api.meetup.com/gql', this.queryGroup, {group: groupId,});
             }))).then(responses =>
-                Promise.all(responses.map(res => res.text()))
+                Promise.all(responses)
             ).then(texts => {
-                let json = texts.map(t => JSON.parse(t)).filter(e => !e.hasOwnProperty("errors")).map(this.group);
+                let json = texts.filter(e => !e.hasOwnProperty("errors")).map(this.group);
                 resolve(json);
             })
         })
@@ -105,9 +105,9 @@ class meetup {
                 console.log('Fetching events for: ', groupId);
                 return await request('https://api.meetup.com/gql', this.queryEvent, {group: groupId,});
             }))).then(responses =>
-                Promise.all(responses.map(res => res.text()))
+                Promise.all(responses)
             ).then(texts => {
-                let json = texts.map(t => JSON.parse(t));
+                let json = texts;
                 let converted = [].concat(...json).filter(e => !e.hasOwnProperty("errors")).map(this.event);
                 resolve(converted);
             })
