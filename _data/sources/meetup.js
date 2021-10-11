@@ -28,7 +28,6 @@ class meetup {
                                 endTime
                                 going
                                 maxTickets
-                                fees
                                 price
                             }
                         }
