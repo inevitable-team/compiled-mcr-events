@@ -107,8 +107,7 @@ class meetup {
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
-                let json = texts;
-                let converted = [].concat(...json).filter(e => !e.hasOwnProperty("errors")).map(this.event);
+                let converted = [].concat(...(texts)).filter(e => !e.hasOwnProperty("errors")).map(this.event);
                 resolve(converted);
             })
         })
