@@ -64,8 +64,8 @@ class meetup {
 
     rtnGroupImg(group) {
         let thumb = './img/blank_meetup.png';
-        if (group.hasOwnProperty('group_photo')) {
-            thumb = group.group_photo.photo_link;
+        if (group.hasOwnProperty('logo')) {
+            thumb = group.logo.baseUrl + group.logo.id + '/1000x1000.webp';
         } else {
             if (group.hasOwnProperty('organizer')) {
                 if (group.organizer.hasOwnProperty('photo')) {
