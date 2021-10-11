@@ -47,7 +47,9 @@ class meetup {
                     description
                     link
                     logo
-                    memberships
+                    memberships {
+                        count
+                    }
                 }
             }
         `;
