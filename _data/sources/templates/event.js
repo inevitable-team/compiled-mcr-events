@@ -14,5 +14,6 @@ module.exports = class event {
         this.groupLink = groupLink;
         this.source = source;
         this.ad = ad;
+        this.is_online_event = is_online_event;
     }
 }
