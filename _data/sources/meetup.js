@@ -66,12 +66,6 @@ class meetup {
         let thumb = './img/blank_meetup.png';
         if (group.hasOwnProperty('logo')) {
             thumb = group.logo.baseUrl + group.logo.id + '/1000x1000.webp';
-        } else {
-            if (group.hasOwnProperty('organizer')) {
-                if (group.organizer.hasOwnProperty('photo')) {
-                    thumb = group.organizer.photo.photo_link;
-                }
-            }
         }
         return thumb;
     }
