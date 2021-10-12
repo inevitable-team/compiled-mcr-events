@@ -9,7 +9,11 @@ class googleCalendar {
         this.name = name || "N/A";
         // Converters
         this.eventClass = event;
-        this.event = (event) => new this.eventClass(event.summary, event.htmlLink, event.location, this.removeHTML(event.description || ""), event.start.dateTime, event.end.dateTime || event.start.dateTime, null, null, null, null, this.name, this.link, this.name, false);
+        this.event = (event) => new this.eventClass(event.summary, event.htmlLink, event.location, this.removeHTML(event.description || ""), event.start.dateTime, event.end.dateTime || event.start.dateTime, null, null, null, null, this.name, this.link, this.name, false, this.chkOnline(event.location));
+    }
+
+    chkOnline(location) {
+        return !!(location.includes("Online") || location.includes("online"));
     }
 
     async getData() {
