@@ -15,6 +15,8 @@ class meetup {
                                 shortUrl
                                 venue {
                                     name
+                                    address
+                                    postalCode
                                 }
                                 description
                                 dateTime
@@ -22,6 +24,7 @@ class meetup {
                                 going
                                 maxTickets
                                 price
+                                currency
                             }
                         }
                     }
@@ -52,10 +55,10 @@ class meetup {
         this.groupClass = group;
         this.eventClass = event;
         this.group = (group) => new this.groupClass(
-            group.link,
-            group.name,
-            group.description || "",
-            group.link, this.rtnGroupImg(group),
+            group.data.groupByUrlname.link,
+            group.data.groupByUrlname.name,
+            group.data.groupByUrlname.description || "",
+            group.data.groupByUrlname.link, this.rtnGroupImg(group),
             group.data.groupByUrlname.memberships.count,
             null,
             null,
@@ -65,18 +68,18 @@ class meetup {
         this.event = (event) => {
             if(event.unifiedEvents != null && event.unifiedEvents.edges != null){
                 new this.eventClass(
-                    event.name,
-                    event.link,
+                    event.data.groupByUrlname.unifiedEvents.edges.node.title,
+                    event.data.groupByUrlname.unifiedEvents.edges.node.shortUrl,
                     this.rtnEventVenue(event),
-                    this.removeHTML(event.description || ""),
-                    event.time,
-                    event.time + (event.duration || 7200000),
-                    event.unifiedEvents.edges.node.going,
-                    event.unifiedEvents.edges.node.maxTickets || Infinity,
-                    event.hasOwnProperty('fee') ? false : true,
+                    this.removeHTML(event.data.groupByUrlname.unifiedEvents.edges.node.description || ""),
+                    event.data.groupByUrlname.unifiedEvents.edges.node.dateTime,
+                    event.data.groupByUrlname.unifiedEvents.edges.node.endTime,
+                    event.data.groupByUrlname.unifiedEvents.edges.node.going,
+                    event.data.groupByUrlname.unifiedEvents.edges.node.maxTickets || Infinity,
+                    event.data.groupByUrlname.unifiedEvents.edges.node.price == null,
                     this.rtnEventFee(event),
-                    event.group.name,
-                    "https://www.meetup.com/" + event.group.urlname,
+                    event.data.groupByUrlname.name,
+                    event.data.groupByUrlname.link,
                     "Meetup",
                     false
                 );
@@ -87,19 +90,19 @@ class meetup {
     rtnGroupImg(group) {
         let thumb = './img/blank_meetup.png';
         if (group.hasOwnProperty('logo')) {
-            thumb = group.logo.baseUrl + group.logo.id + '/1000x1000.webp';
+            thumb = group.data.groupByUrlname.logo.baseUrl + group.data.groupByUrlname.logo.id + '/1000x1000.webp';
         }
         return thumb;
     }
 
     rtnEventFee(event) {
-        return event.hasOwnProperty('fee') ? ((event.fee.currency == "GBP") ? "£" : event.fee.currency) + (Math.round(event.fee.amount * 100) / 100) : null;
+        return event.data.groupByUrlname.unifiedEvents.edges.node.price ? ((event.data.groupByUrlname.unifiedEvents.edges.node.currency == "GBP") ? "£" : event.data.groupByUrlname.unifiedEvents.edges.node.currency) + (Math.round(event.data.groupByUrlname.unifiedEvents.edges.node.price * 100) / 100) : null;
     }
 
     rtnEventVenue(event) {
-        let venueName = (event.hasOwnProperty('venue')) ? event.venue.name : "N/A";
-        let venueAddress = (event.hasOwnProperty('venue')) ? event.venue.address_1 : "";
-        let venuePostcode = (event.hasOwnProperty('venue')) ? event.venue.city : "";
+        let venueName = (event.data.groupByUrlname.unifiedEvents.edges.node.venue != null) ? event.data.groupByUrlname.unifiedEvents.edges.node.venue.name : "N/A";
+        let venueAddress = (event.data.groupByUrlname.unifiedEvents.edges.node.venue != null) ? event.data.groupByUrlname.unifiedEvents.edges.node.venue.address : "";
+        let venuePostcode = (event.data.groupByUrlname.unifiedEvents.edges.node.venue != null) ? event.data.groupByUrlname.unifiedEvents.edges.node.venue.postalCode : "";
         let venue = (venueName == "N/A") ? "N/A" : venueName + ' - ' + venueAddress + ' (' + venuePostcode + ')';
         return venue.replace("undefined", "").replace("undefined", "").replace(' - ()', "");
     }
