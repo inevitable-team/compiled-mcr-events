@@ -11,5 +11,6 @@ module.exports = class group {
         this.untilNext = untilNext;
         this.source = source;
         this.ad = ad;
+        this.topics = topics;
     }
 }
