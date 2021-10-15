@@ -82,7 +82,7 @@ class meetup {
                     event.link,
                     "Meetup",
                     false,
-                    event.is_online_event
+                    event.data.groupByUrlname.unifiedEvents.edges.node.isOnline
                 );
         };
     }
