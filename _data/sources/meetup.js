@@ -42,6 +42,9 @@ class meetup {
                     urlname
                     name
                     description
+                    topics {
+                        name
+                    }
                     link
                     logo {
                         id
