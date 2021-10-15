@@ -82,7 +82,8 @@ class meetup {
                     event.link,
                     "Meetup",
                     false,
-                    event.data.groupByUrlname.unifiedEvents.edges.node.isOnline
+                    event.data.groupByUrlname.unifiedEvents.edges.node.isOnline,
+                    this.rtnEventFee(event) != null
                 );
         };
     }
