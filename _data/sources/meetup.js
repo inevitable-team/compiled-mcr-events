@@ -51,7 +51,7 @@ class meetup {
         // Converters
         this.groupClass = group;
         this.eventClass = event;
-        this.group = (group) => new this.groupClass(group.link, group.name, group.description || "", group.link, this.rtnGroupImg(group), group.members, null, null, "Meetup", false);
+        this.group = (group) => new this.groupClass(group.link, group.name, group.description || "", group.link, this.rtnGroupImg(group), group.data.groupByUrlname.memberships.count, null, null, "Meetup", false);
         this.event = (event) => {
             if(event.unifiedEvents != null && event.unifiedEvents.edges != null){
                 new this.eventClass(event.name, event.link, this.rtnEventVenue(event), this.removeHTML(event.description || ""), event.time, event.time + (event.duration || 7200000), event.unifiedEvents.edges.node.going, event.unifiedEvents.edges.node.maxTickets || Infinity, event.hasOwnProperty('fee') ? false : true, this.rtnEventFee(event), event.group.name, "https://www.meetup.com/" + event.group.urlname, "Meetup", false);
