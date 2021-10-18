@@ -55,11 +55,11 @@ class meetup {
         this.groupClass = group;
         this.eventClass = event;
         this.group = (group) => new this.groupClass(
-            group.groupByUrlname.link,
-            group.groupByUrlname.name,
-            group.groupByUrlname.description || "",
-            group.groupByUrlname.link, this.rtnGroupImg(group),
-            group.groupByUrlname.memberships.count,
+            group.link,
+            group.name,
+            group.description || "",
+            group.link, this.rtnGroupImg(group),
+            group.memberships.count,
             null,
             null,
             "Meetup",
@@ -68,18 +68,18 @@ class meetup {
         this.event = (event) => {
             if(event.unifiedEvents != null && event.unifiedEvents.edges != null){
                 return new this.eventClass(
-                    event.groupByUrlname.unifiedEvents.edges.node.title,
-                    event.groupByUrlname.unifiedEvents.edges.node.shortUrl,
+                    event.title,
+                    event.shortUrl,
                     this.rtnEventVenue(event),
-                    this.removeHTML(event.groupByUrlname.unifiedEvents.edges.node.description || ""),
-                    event.groupByUrlname.unifiedEvents.edges.node.dateTime,
-                    event.groupByUrlname.unifiedEvents.edges.node.endTime,
-                    event.groupByUrlname.unifiedEvents.edges.node.going,
-                    event.groupByUrlname.unifiedEvents.edges.node.maxTickets || Infinity,
-                    event.groupByUrlname.unifiedEvents.edges.node.price == null,
+                    this.removeHTML(event.description || ""),
+                    event.dateTime,
+                    event.endTime,
+                    event.going,
+                    event.maxTickets || Infinity,
+                    event.price == null,
                     this.rtnEventFee(event),
-                    event.groupByUrlname.name,
-                    event.groupByUrlname.link,
+                    event.name,
+                    event.link,
                     "Meetup",
                     false
                 );
@@ -89,20 +89,20 @@ class meetup {
 
     rtnGroupImg(group) {
         let thumb = './img/blank_meetup.png';
-        if (group.groupByUrlname.hasOwnProperty('logo')) {
-            thumb = group.groupByUrlname.logo.baseUrl + group.groupByUrlname.logo.id + '/1000x1000.webp';
+        if (group.hasOwnProperty('logo')) {
+            thumb = group.logo.baseUrl + group.logo.id + '/1000x1000.webp';
         }
         return thumb;
     }
 
     rtnEventFee(event) {
-        return event.groupByUrlname.unifiedEvents.edges.node.price ? ((event.groupByUrlname.unifiedEvents.edges.node.currency == "GBP") ? "£" : event.groupByUrlname.unifiedEvents.edges.node.currency) + (Math.round(event.groupByUrlname.unifiedEvents.edges.node.price * 100) / 100) : null;
+        return event.price ? ((event.currency == "GBP") ? "£" : event.currency) + (Math.round(event.price * 100) / 100) : null;
     }
 
     rtnEventVenue(event) {
-        let venueName = (event.groupByUrlname.unifiedEvents.edges.node.venue != null) ? event.groupByUrlname.unifiedEvents.edges.node.venue.name : "N/A";
-        let venueAddress = (event.groupByUrlname.unifiedEvents.edges.node.venue != null) ? event.groupByUrlname.unifiedEvents.edges.node.venue.address : "";
-        let venuePostcode = (event.groupByUrlname.unifiedEvents.edges.node.venue != null) ? event.groupByUrlname.unifiedEvents.edges.node.venue.postalCode : "";
+        let venueName = (event.venue != null) ? event.venue.name : "N/A";
+        let venueAddress = (event.venue != null) ? event.venue.address : "";
+        let venuePostcode = (event.venue != null) ? event.venue.postalCode : "";
         let venue = (venueName == "N/A") ? "N/A" : venueName + ' - ' + venueAddress + ' (' + venuePostcode + ')';
         return venue.replace("undefined", "").replace("undefined", "").replace(' - ()', "");
     }
@@ -125,7 +125,7 @@ class meetup {
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
-                let json = texts.filter(e => e.groupByUrlname != null).map(this.group);
+                let json = texts.filter(e => e != null).map(this.group);
                 resolve(json);
             })
         })
@@ -139,7 +139,13 @@ class meetup {
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
-                let converted = [].concat(...(texts)).filter(e => !e.hasOwnProperty("errors")).map(this.event);
+                let converted = [].concat(...texts.map(group => {
+                    return group.groupByUrlname.unifiedEvents.edges.map(event => {
+                        event.node.name = group.groupByUrlname.name;
+                        event.node.link = group.groupByUrlname.link;
+                        return event.node;
+                    });
+                })).map(this.event);
                 resolve(converted);
             })
         })
