@@ -59,7 +59,7 @@ class meetup {
             group.name,
             group.description || "",
             group.link, this.rtnGroupImg(group),
-            group.memberships.count,
+            (group.memberships || {count: undefined}).count,
             null,
             null,
             "Meetup",
@@ -123,7 +123,7 @@ class meetup {
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
-                let json = texts.filter(e => e != null).map(this.group);
+                let json = texts.filter(e => e.groupByUrlname != null).map(this.group);
                 resolve(json);
             })
         })
@@ -137,7 +137,7 @@ class meetup {
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
-                let converted = [].concat(...texts.map(group => {
+                let converted = [].concat(...texts.filter(e => e.groupByUrlname != null).map(group => {
                     return group.groupByUrlname.unifiedEvents.edges.map(event => {
                         event.node.name = group.groupByUrlname.name;
                         event.node.link = group.groupByUrlname.link;
