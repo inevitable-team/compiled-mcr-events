@@ -66,7 +66,6 @@ class meetup {
             false
         );
         this.event = (event) => {
-            if(event.unifiedEvents != null && event.unifiedEvents.edges != null){
                 return new this.eventClass(
                     event.title,
                     event.shortUrl,
@@ -83,7 +82,6 @@ class meetup {
                     "Meetup",
                     false
                 );
-            }
         };
     }
 
