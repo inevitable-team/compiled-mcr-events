@@ -37,7 +37,7 @@ class meetup {
         this.queryGroup = gql`
             query($group: String!) {
                 groupByUrlname(urlname: $group) {
-                    id
+                    urlname
                     name
                     description
                     link
@@ -55,7 +55,7 @@ class meetup {
         this.groupClass = group;
         this.eventClass = event;
         this.group = (group) => new this.groupClass(
-            group.link,
+            group.urlname,
             group.name,
             group.description || "",
             group.link, this.rtnGroupImg(group),
