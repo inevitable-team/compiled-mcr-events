@@ -125,7 +125,7 @@ class meetup {
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
-                let json = texts.filter(e => !e.hasOwnProperty("errors")).map(this.group);
+                let json = texts.filter(e => e.groupByUrlname != null).map(this.group);
                 resolve(json);
             })
         })
