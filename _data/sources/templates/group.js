@@ -1,5 +1,5 @@
 module.exports = class group {
-    constructor(id, name, desc, link, img, members, sinceLast, untilNext, source, ad) {
+    constructor(id, name, desc, link, img, members, sinceLast, untilNext, source, ad, topics) {
         this.id = id;
         this.name = name;
         this.desc = desc.replace(/(<([^>]+)>)/ig, "");
