@@ -13,6 +13,9 @@ class googleCalendar {
     }
 
     chkOnline(location) {
+        if(location == undefined) {
+            location = "";
+        }
         return !!(location.includes("Online") || location.includes("online"));
     }
 
