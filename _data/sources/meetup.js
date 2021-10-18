@@ -82,7 +82,7 @@ class meetup {
                     event.link,
                     "Meetup",
                     false,
-                    event.data.isOnline,
+                    event.isOnline,
                     this.rtnEventFee(event) != null
                 );
         };
