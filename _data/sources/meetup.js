@@ -67,7 +67,7 @@ class meetup {
         );
         this.event = (event) => {
             if(event.unifiedEvents != null && event.unifiedEvents.edges != null){
-                new this.eventClass(
+                return new this.eventClass(
                     event.groupByUrlname.unifiedEvents.edges.node.title,
                     event.groupByUrlname.unifiedEvents.edges.node.shortUrl,
                     this.rtnEventVenue(event),
