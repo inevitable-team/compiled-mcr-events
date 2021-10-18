@@ -69,7 +69,7 @@ class meetup {
             null,
             "Meetup",
             false,
-            group.groupByUrlname.topics.name
+            group.groupByUrlname.topics.map(e => e.name) 
         );
         this.event = (event) => {
                 return new this.eventClass(
