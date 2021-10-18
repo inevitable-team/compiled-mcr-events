@@ -55,11 +55,11 @@ class meetup {
         this.groupClass = group;
         this.eventClass = event;
         this.group = (group) => new this.groupClass(
-            group.urlname,
-            group.name,
-            group.description || "",
-            group.link, this.rtnGroupImg(group),
-            (group.memberships || {count: undefined}).count,
+            group.groupByUrlname.urlname,
+            group.groupByUrlname.name,
+            group.groupByUrlname.description || "",
+            group.groupByUrlname.link, this.rtnGroupImg(group),
+            (group.groupByUrlname.memberships || {count: undefined}).count,
             null,
             null,
             "Meetup",
@@ -87,8 +87,8 @@ class meetup {
 
     rtnGroupImg(group) {
         let thumb = './img/blank_meetup.png';
-        if (group.hasOwnProperty('logo')) {
-            thumb = group.logo.baseUrl + group.logo.id + '/1000x1000.webp';
+        if (group.groupByUrlname.hasOwnProperty('logo')) {
+            thumb = group.groupByUrlname.logo.baseUrl + group.groupByUrlname.logo.id + '/1000x1000.webp';
         }
         return thumb;
     }
