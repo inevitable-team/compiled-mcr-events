@@ -36,7 +36,7 @@ class eventbrite {
                 false,
                 event.online_event,
                 ! event.online_event,
-                event.subcategory_id || event.category_id
+                (event.subcategory_id || event.category_id).map(e => e)
             );
         }
     }
