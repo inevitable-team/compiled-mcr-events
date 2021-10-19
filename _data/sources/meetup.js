@@ -88,7 +88,7 @@ class meetup {
                     false,
                     event.isOnline,
                     ! event.isOnline,
-                    [event.topics.name]
+                    [event.topics.name] || [null]
                 );
         };
     }
