@@ -88,17 +88,9 @@ class meetup {
                     false,
                     event.isOnline,
                     ! event.isOnline,
-                    this.rtnTopic(event)
+                    event.topics
                 );
         };
-    }
-
-    rtnTopic(event) {
-        if(event.topics != null) {
-            return [event.topics.name];
-        } else {
-            return [null];
-        }
     }
 
     rtnGroupImg(group) {
@@ -157,6 +149,7 @@ class meetup {
                     return group.groupByUrlname.unifiedEvents.edges.map(event => {
                         event.node.name = group.groupByUrlname.name;
                         event.node.link = group.groupByUrlname.link;
+                        event.node.topics = (group.groupByUrlname.topics || []).map(e => e.name);
                         return event.node;
                     });
                 })).map(this.event);
