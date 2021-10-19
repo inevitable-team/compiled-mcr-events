@@ -25,6 +25,7 @@ class meetup {
                                 maxTickets
                                 price
                                 currency
+                                isOnline
                             }
                         }
                     }
@@ -80,7 +81,9 @@ class meetup {
                     event.name,
                     event.link,
                     "Meetup",
-                    false
+                    false,
+                    event.isOnline,
+                    ! event.isOnline
                 );
         };
     }

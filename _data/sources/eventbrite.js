@@ -19,7 +19,7 @@ class eventbrite {
             let description = "";
             if (event.summary) description = event.summary;
             if (event.description) if (event.description.text) description = event.description.text;
-            return new this.eventClass(event.name.text, event.url, event.venue, description, event.start.utc, event.end.utc, null, event.capacity, event.id_free, null, event.groupName, event.groupLink, "Eventbrite", false);
+            return new this.eventClass(event.name.text, event.url, event.venue, description, event.start.utc, event.end.utc, null, event.capacity, event.id_free, null, event.groupName, event.groupLink, "Eventbrite", false, event.online_event, ! event.online_event);
         }
     }
 
