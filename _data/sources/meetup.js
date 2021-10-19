@@ -3,7 +3,8 @@ const {gql, request} = require("graphql-request"),
     event = require("./templates/event");
 
 class meetup {
-    constructor(token = process.env.MEETUP_TOKEN) {
+    constructor(token = process.env.MEETUP_TOKEN, requestTimeout = (process.env.REQUEST_TIMEOUT || 0)) {
+        this.requestTimeout = requestTimeout;
         this.groups = require("./groupIds/meetup").filter((value, index, self) => self.indexOf(value) === index);
         this.queryEvent = gql`
             query($group: String!) {
@@ -120,7 +121,7 @@ class meetup {
 
     async getGroups() {
         return new Promise(resolve => {
-            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(async groupId => {
+            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*this.requestTimeout)).then(async groupId => {
                 console.log('Fetching group details for: ', groupId);
                 return await request('https://api.meetup.com/gql', this.queryGroup, {group: groupId,});
             }))).then(responses =>
@@ -134,7 +135,7 @@ class meetup {
 
     async getEvents() {
         return new Promise(resolve => {
-            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*400)).then(async groupId => {
+            Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*this.requestTimeout)).then(async groupId => {
                 console.log('Fetching events for: ', groupId);
                 return await request('https://api.meetup.com/gql', this.queryEvent, {group: groupId,});
             }))).then(responses =>
