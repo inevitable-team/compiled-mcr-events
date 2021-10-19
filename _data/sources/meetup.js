@@ -88,9 +88,17 @@ class meetup {
                     false,
                     event.isOnline,
                     ! event.isOnline,
-                    [event.topics.name || [null]]
+                    this.rtnTopic(event)
                 );
         };
+    }
+
+    rtnTopic(event) {
+        if(event.topics != null) {
+            return [event.topics.name];
+        } else {
+            return [null];
+        }
     }
 
     rtnGroupImg(group) {
