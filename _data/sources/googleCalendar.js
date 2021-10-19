@@ -26,7 +26,7 @@ class googleCalendar {
             false,
             this.chkOnline(event.location),
             ! this.chkOnline(event.location),
-            [null]
+            []
         );
     }
 
