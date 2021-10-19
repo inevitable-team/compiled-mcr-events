@@ -88,7 +88,7 @@ class meetup {
                     false,
                     event.isOnline,
                     ! event.isOnline,
-                    event.topics.map(e => e.name)
+                    [event.topics.name]
                 );
         };
     }
