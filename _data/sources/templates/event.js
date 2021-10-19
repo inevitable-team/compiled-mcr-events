@@ -1,5 +1,5 @@
 module.exports = class event {
-    constructor(name, link, location, desc, startTimeISO, endTimeISO, going, capacity, free, cost, groupName, groupLink, source, ad, is_online_event, is_offline_event) {
+    constructor(name, link, location, desc, startTimeISO, endTimeISO, going, capacity, free, cost, groupName, groupLink, source, ad, is_online_event, is_offline_event, topics) {
         this.name = name;
         this.link = link;
         this.location = location;
