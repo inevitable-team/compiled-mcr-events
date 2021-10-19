@@ -16,5 +16,6 @@ module.exports = class event {
         this.ad = ad;
         this.is_online_event = is_online_event;
         this.is_offline_event = is_offline_event;
+        this.topics = topics;
     }
 }

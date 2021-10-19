@@ -32,6 +32,9 @@ class meetup {
                     }
                     name
                     link
+                    topics {
+                        name
+                    }
                 }
             }
         `;
@@ -42,9 +45,6 @@ class meetup {
                     urlname
                     name
                     description
-                    topics {
-                        name
-                    }
                     link
                     logo {
                         id
@@ -68,8 +68,7 @@ class meetup {
             null,
             null,
             "Meetup",
-            false,
-            group.groupByUrlname.topics.map(e => e.name)
+            false
         );
         this.event = (event) => {
                 return new this.eventClass(
@@ -88,7 +87,8 @@ class meetup {
                     "Meetup",
                     false,
                     event.isOnline,
-                    ! event.isOnline
+                    ! event.isOnline,
+                    event.topics.map(e => e.name)
                 );
         };
     }
