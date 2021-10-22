@@ -98,7 +98,7 @@ class eventbrite {
                 ).then(cat => {
                     cat = cat.map(cat => JSON.parse(cat));
                     let data = flatterned.map((event, i) => {
-                        event.cat = cat;
+                        event.cat = cat[i].name;
                         return event;
                     }) // Once all categories have been added, return
                     resolve(data);
@@ -109,7 +109,7 @@ class eventbrite {
                 ).then(topic => {
                     topic = topic.map(topic => JSON.parse(topic));
                     let data = flatterned.map((event, i) => {
-                        event.topic = topic;
+                        event.topic = topic[i].name;
                         return event;
                     }) // Once all topics have been added, return
                     resolve(data);
