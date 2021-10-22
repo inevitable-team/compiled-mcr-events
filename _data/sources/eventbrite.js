@@ -90,35 +90,35 @@ class eventbrite {
                     return event;
                 }));
                 //the IDS can be referenced because the api returns the entire event object
-                let flatterned = [].concat(...json);
+                let flattened = [].concat(...json);
                 // Adding Venue Info from ID
-                Promise.all(flatterned.map(event => fetch(this.apiVenue + event.venue_id, this.params))).then(responses =>
+                Promise.all(flattened.map(event => fetch(this.apiVenue + event.venue_id, this.params))).then(responses =>
                     Promise.all(responses.map(res => res.text()))
                 ).then(venues => {
                     venues = venues.map(venue => JSON.parse(venue));
-                    let data = flatterned.map((event, i) => {
+                    let data = flattened.map((event, i) => {
                         event.venue = venues[i].address != undefined ? venues[i].address.localized_address_display : "N/A";
                         return event;
                     }) // Once all venues have been added, return
                     resolve(data);
                 });
                 // Adding category Info from ID
-                Promise.all(flatterned.map(event => fetch(this.apiCat + event.category_id, this.params))).then(responses =>
+                Promise.all(flattened.map(event => fetch(this.apiCat + event.category_id, this.params))).then(responses =>
                     Promise.all(responses.map(res => res.text()))
                 ).then(cat => {
                     cat = cat.map(cat => JSON.parse(cat));
-                    let data = flatterned.map((event, i) => {
+                    let data = flattened.map((event, i) => {
                         event.cat = cat[i].name;
                         return event;
                     }) // Once all categories have been added, return
                     resolve(data);
                 });
                 // Adding topic Info from ID
-                Promise.all(flatterned.map(event => fetch(this.apiTopic + event.subcategory_id, this.params))).then(responses =>
+                Promise.all(flattened.map(event => fetch(this.apiTopic + event.subcategory_id, this.params))).then(responses =>
                     Promise.all(responses.map(res => res.text()))
                 ).then(topic => {
                     topic = topic.map(topic => JSON.parse(topic));
-                    let data = flatterned.map((event, i) => {
+                    let data = flattened.map((event, i) => {
                         event.topic = topic[i].name;
                         return event;
                     }) // Once all topics have been added, return
