@@ -44,14 +44,17 @@ class eventbrite {
         }
     }
 
-    getVenue(flattened) {
-
+    getVenues(flattened) {
+        return flattened.map(event => fetch(this.apiVenue + event.venue_id, this.params)).then(responses =>
+            Promise.all(responses.map(res => res.text())))
     }
-    getCat(flattened) {
-
+    getCats(flattened) {
+        return flattened.map(event => fetch(this.apiCat + event.category_id, this.params)).then(responses =>
+            Promise.all(responses.map(res => res.text())))
     }
-    getTopic(flattened) {
-
+    getTopics(flattened) {
+        return flattened.map(event => fetch(this.apiTopic + event.subcategory_id, this.params)).then(responses =>
+            Promise.all(responses.map(res => res.text())))
     }
 
     async getData() {
