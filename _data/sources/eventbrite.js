@@ -44,13 +44,13 @@ class eventbrite {
         }
     }
 
-    getVenue() {
+    getVenue(flattened) {
 
     }
-    getCat() {
+    getCat(flattened) {
 
     }
-    getTopic() {
+    getTopic(flattened) {
 
     }
 
