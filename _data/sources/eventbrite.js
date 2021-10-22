@@ -44,6 +44,16 @@ class eventbrite {
         }
     }
 
+    getVenue() {
+
+    }
+    getCat() {
+
+    }
+    getTopic() {
+
+    }
+
     async getData() {
         return new Promise(resolve => {
             this.getEvents().then(events => {
