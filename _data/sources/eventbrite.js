@@ -105,10 +105,10 @@ class eventbrite {
                 // Adding category Info from ID
                 Promise.all(flattened.map(event => fetch(this.apiCat + event.category_id, this.params))).then(responses =>
                     Promise.all(responses.map(res => res.text()))
-                ).then(cat => {
-                    cat = cat.map(cat => JSON.parse(cat));
+                ).then(cats => {
+                    cats = cats.map(cat => JSON.parse(cat));
                     let data = flattened.map((event, i) => {
-                        event.cat = cat[i].name;
+                        event.cat = cats[i].name;
                         return event;
                     }) // Once all categories have been added, return
                     resolve(data);
@@ -116,10 +116,10 @@ class eventbrite {
                 // Adding topic Info from ID
                 Promise.all(flattened.map(event => fetch(this.apiTopic + event.subcategory_id, this.params))).then(responses =>
                     Promise.all(responses.map(res => res.text()))
-                ).then(topic => {
-                    topic = topic.map(topic => JSON.parse(topic));
+                ).then(topics => {
+                    topics = topics.map(topic => JSON.parse(topic));
                     let data = flattened.map((event, i) => {
-                        event.topic = topic[i].name;
+                        event.topic = topics[i].name;
                         return event;
                     }) // Once all topics have been added, return
                     resolve(data);
