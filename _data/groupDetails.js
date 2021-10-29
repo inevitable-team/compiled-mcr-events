@@ -280,4 +280,13 @@ module.exports = [{
         link: "https://twitter.com/BLABTalks", 
         type: "Twitter" 
     }] 
+}, { 
+    ids: [{ 
+        id: "Deliver-Sessions", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/DeliverSessions", 
+        type: "Twitter" 
+    }] 
 }]
