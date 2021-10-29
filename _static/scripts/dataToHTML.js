@@ -57,13 +57,13 @@
 
     exports.groupHTML = group => {
         return `
-        <div class="group"><a href="${group.link}" target="_blank" rel="noreferrer">
+        <div class="group">
             <div class="groupImg"><img src="${group.img || "http://www.afglaw.co.uk/wp-content/uploads/2018/07/blank-user.png"}"></div>
             <div class="groupText">
                 <p class="groupName">${group.name}</p>
-                <p>Members: ${group.members || "N/A"}<br>Source: ${group.source}</p>
+                <p>Members: ${group.members || "N/A"}<br>${group.links.map(link => '<a href="' + link.link + '" target="_blank" rel="noreferrer"><img src="./img/icons/' + link.type + '.png"></a>').join("")}</p>
             </div>
-        </a></div>
+        </div>
         `
     }
 

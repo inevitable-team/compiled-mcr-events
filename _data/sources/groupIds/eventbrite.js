@@ -168,4 +168,9 @@ module.exports = [{
     name: "BSides Manchester CIC",
     img: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F63901704%2F86741182505%2F2%2Foriginal.png?w=225&auto=format%2Ccompress&q=75&sharp=10&s=a0fbe7af985c2f3f209897c27f59e171",
     url: "https://www.eventbrite.co.uk/o/bsides-manchester-cic-5925186993"
+}, {
+    id: 33989894333,
+    name: "Rob Scott",
+    img: "",
+    url: "https://www.eventbrite.co.uk/o/rob-scott-33989894333"
 }];

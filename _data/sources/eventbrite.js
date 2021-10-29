@@ -8,14 +8,53 @@ class eventbrite {
         this.baseAPI = "https://www.eventbriteapi.com/v3/";
         this.apiEvents = this.baseAPI + "organizers/";
         this.apiVenue = this.baseAPI + "venues/";
+        this.apiCat = this.baseAPI + "categories/";
+        this.apiTopic = this.baseAPI + "subcategories/";
         this.token = token; // Can be generated from the following link: https://www.eventbrite.com/platform/api-keys/
         this.params = { headers: { 'Authorization': "Bearer " +  this.token } };
         this.urls = this.organizers.map(g => this.apiEvents + g.id + "/events/?status=live");
         // Converters
         this.groupClass = group;
         this.eventClass = event;
-        this.group = (group) => new this.groupClass(group.name, "", group.url, group.img || "./img/blank_eventbrite.jpg", null, null, null, "Eventbrite", false);
-        this.event = (event) => new this.eventClass(event.name.text, event.url, event.venue, event.description.text || "", event.start.utc, event.end.utc, null, event.capacity, event.id_free, null, event.groupName, event.groupLink, "Eventbrite", false);
+        this.group = (group) => new this.groupClass(group.id, group.name, "", group.url, group.img || "./img/blank_eventbrite.jpg", null, null, null, "Eventbrite", false);
+        this.event = (event) => {
+            let description = "";
+            if (event.summary) description = event.summary;
+            if (event.description) if (event.description.text) description = event.description.text;
+            return new this.eventClass(
+                event.name.text,
+                event.url,
+                event.venue,
+                description,
+                event.start.utc,
+                event.end.utc,
+                null,
+                event.capacity,
+                event.id_free,
+                null,
+                event.groupName,
+                event.groupLink,
+                "Eventbrite",
+                false,
+                event.online_event,
+                ! event.online_event,
+                event.cat ? [event.cat] : [],
+                event.topic ? [event.topic] : []
+            );
+        }
+    }
+
+    getVenues(flattened) {
+        return flattened.map(event => fetch(this.apiVenue + event.venue_id, this.params)).then(responses =>
+            Promise.all(responses.map(res => res.text())))
+    }
+    getCats(flattened) {
+        return flattened.map(event => fetch(this.apiCat + event.category_id, this.params)).then(responses =>
+            Promise.all(responses.map(res => res.text())))
+    }
+    getTopics(flattened) {
+        return flattened.map(event => fetch(this.apiTopic + event.subcategory_id, this.params)).then(responses =>
+            Promise.all(responses.map(res => res.text())))
     }
 
     async getData() {
@@ -35,7 +74,7 @@ class eventbrite {
         return new Promise(resolve => {
             Promise.all(this.urls.map(url => fetch(url, this.params))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
-            ).then(texts => {
+            ).then(async texts => {
                 // Building Events
                 let json = texts.map((text, i) => {
                     try {
@@ -53,20 +92,64 @@ class eventbrite {
                     event.groupLink = this.organizers[i].url;
                     return event;
                 }));
-                let flatterned = [].concat(...json);
-                // Adding Venue Info from ID
-                Promise.all(flatterned.map(event => fetch(this.apiVenue + event.venue_id, this.params))).then(responses =>
-                    Promise.all(responses.map(res => res.text()))
-                ).then(venues => {
-                    venues = venues.map(venue => JSON.parse(venue));
-                    let data = flatterned.map((event, i) => {
-                        event.venue = venues[i].address != undefined ? venues[i].address.localized_address_display : "N/A";
-                        return event;
-                    }) // Once all venues have been added, return
-                    resolve(data);
-                });
+
+                //the IDS can be referenced because the api returns the entire event object
+                let flattened = [].concat(...json);
+                let eventsWithVenues = await this.addVenue(flattened);
+                let eventsWithCategories = await this.addCategory(eventsWithVenues);
+                let eventsWithTopics = await this.addTopic(eventsWithCategories);
+                resolve(eventsWithTopics);
+
             })
         })
+    }
+
+    async addVenue(events) {
+        return new Promise(async resolve => {
+            // Adding Venue Info from ID
+            Promise.all(events.map(event => fetch(this.apiVenue + event.venue_id, this.params))).then(responses =>
+                Promise.all(responses.map(res => res.text()))
+            ).then(venues => {
+                venues = venues.map(venue => JSON.parse(venue));
+                let data = events.map((event, i) => {
+                    event.venue = venues[i].address != undefined ? venues[i].address.localized_address_display : "N/A";
+                    return event;
+                }) // Once all venues have been added, return
+                resolve(data);
+            });
+        });
+    }
+
+    async addCategory(events) {
+        return new Promise(async resolve => {
+            // Adding category Info from ID
+            Promise.all(events.map(event => fetch(this.apiCat + event.category_id, this.params))).then(responses =>
+                Promise.all(responses.map(res => res.text()))
+            ).then(cats => {
+                cats = cats.map(cat => JSON.parse(cat));
+                let data = events.map((event, i) => {
+                    event.cat = cats[i].name;
+                    return event;
+                }) // Once all categories have been added, return
+                resolve(data);
+            });
+        });
+    }
+
+    async addTopic(events) {
+        return new Promise(async resolve => {
+            // Adding topic Info from ID
+            Promise.all(events.map(event => fetch(this.apiTopic + event.subcategory_id, this.params))).then(responses =>
+                Promise.all(responses.map(res => res.text()))
+            ).then(topics => {
+                topics = topics.map(topic => JSON.parse(topic));
+                let data = events.map((event, i) => {
+                    event.topic = topics[i].name;
+                    return event;
+                }) // Once all topics have been added, return
+                resolve(data);
+            });
+        });
     }
 }
 
