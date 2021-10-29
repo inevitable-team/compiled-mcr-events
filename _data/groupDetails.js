@@ -271,4 +271,13 @@ module.exports = [{
         link: "http://herplusdata.org/",
         type: "Website"
     }]
+}, { 
+    ids: [{ 
+        id: "blabtalks", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/BLABTalks", 
+        type: "Twitter" 
+    }] 
 }]
