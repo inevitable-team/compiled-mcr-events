@@ -298,4 +298,13 @@ module.exports = [{
         link: "https://twitter.com/connect_devs", 
         type: "Twitter" 
     }] 
+}, { 
+    ids: [{ 
+        id: "gdg_manchester", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/GDGManchester", 
+        type: "Twitter" 
+    }] 
 }]
