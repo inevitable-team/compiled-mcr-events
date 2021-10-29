@@ -289,4 +289,13 @@ module.exports = [{
         link: "https://twitter.com/DeliverSessions", 
         type: "Twitter" 
     }] 
+}, { 
+    ids: [{ 
+        id: "devsconnect", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/connect_devs", 
+        type: "Twitter" 
+    }] 
 }]
