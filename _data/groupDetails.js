@@ -307,4 +307,13 @@ module.exports = [{
         link: "https://twitter.com/GDGManchester", 
         type: "Twitter" 
     }] 
+}, { 
+    ids: [{ 
+        id: "Slalom-Manchester-Meetup-Group", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/SlalomUK", 
+        type: "Twitter" 
+    }] 
 }]
