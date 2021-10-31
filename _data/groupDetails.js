@@ -271,4 +271,19 @@ module.exports = [{
         link: "http://herplusdata.org/",
         type: "Website"
     }]
+}, {
+    "id": "Manchester-Grey-Hats",
+    "name": "Manchester Grey Hats",
+    "desc": "This is a group for those interested in cyber security and hacking. There will be a focus on group CTFs, workshops and presenting security research.\nThis group is open to all skill levels and backgrounds, although it's best to check on a case by case basis what the prerequisites will be.\nIf you would like to help with presenting or running a workshop, get in touch.\n \n We have a group Slack and all are welcome so come say hello: https://join.slack.com/t/manchestergreyhats/shared_invite/enQtMjQ2MDk3MDMwNzA3LTkwNmIxNzY5NWE2YmMxZTAzNmZkZmZjNDg4ZjU1OTc3MTFkNDYwMzBjYzNmM2I0ZGExZTE4OWI2MjEzYTg3OGU  \n",
+    "link": "https://www.meetup.com/Manchester-Grey-Hats",
+    "links": [{
+        "link": "https://www.meetup.com/Manchester-Grey-Hats",
+        "type": "Meetup"
+    }],
+    "img": "https://secure-content.meetupstatic.com/images/classic-events/472877971/1000x1000.webp",
+    "members": 769,
+    "sinceLast": null,
+    "untilNext": null,
+    "source": "Meetup",
+    "ad": false
 }]
