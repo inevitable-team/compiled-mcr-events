@@ -325,4 +325,13 @@ module.exports = [{
          link: "https://join.slack.com/t/manchestergreyhats/shared_invite/enQtMjQ2MDk3MDMwNzA3LTkwNmIxNzY5NWE2YmMxZTAzNmZkZmZjNDg4ZjU1OTc3MTFkNDYwMzBjYzNmM2I0ZGExZTE4OWI2MjEzYTg3OGU", 
          type: "Slack" 
      }] 
+ }, { 
+     ids: [{ 
+         id: "android_mcr", 
+         type: "Meetup" 
+     }], 
+     links: [{ 
+         link: "https://twitter.com/android_mcr",
+         type: "Twitter" 
+     }] 
  }]
