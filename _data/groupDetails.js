@@ -334,4 +334,13 @@ module.exports = [{
          link: "https://twitter.com/android_mcr",
          type: "Twitter" 
      }] 
+ }, { 
+     ids: [{ 
+         id: "DevOps-Manchester", 
+         type: "Meetup" 
+     }], 
+     links: [{ 
+         link: "https://twitter.com/devopsmanc",
+         type: "Twitter" 
+     }] 
  }]
