@@ -26,7 +26,7 @@
     "graphql-request": "^3.5.0",
     "ical-generator": "^2.2.0",
     "moment": "^2.29.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.1.0",
     "os": "^0.1.1",
     "shelljs": "^0.8.4"
   }
