@@ -433,4 +433,76 @@ module.exports = [{
         link: "https://twitter.com/deeperthanblue1",
         type: "Twitter"
     }]
-}]
+}, { 
+    ids: [{ 
+        id: "blabtalks", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/BLABTalks", 
+        type: "Twitter" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "Deliver-Sessions", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/DeliverSessions", 
+        type: "Twitter" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "devsconnect", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/connect_devs", 
+        type: "Twitter" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "gdg_manchester", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/GDGManchester", 
+        type: "Twitter" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "Slalom-Manchester-Meetup-Group", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/SlalomUK", 
+        type: "Twitter" 
+    }] 
+}, { 
+     ids: [{ 
+         id: "Manchester-Grey-Hats", 
+         type: "Meetup" 
+     }], 
+     links: [{ 
+         link: "https://join.slack.com/t/manchestergreyhats/shared_invite/enQtMjQ2MDk3MDMwNzA3LTkwNmIxNzY5NWE2YmMxZTAzNmZkZmZjNDg4ZjU1OTc3MTFkNDYwMzBjYzNmM2I0ZGExZTE4OWI2MjEzYTg3OGU", 
+         type: "Slack" 
+     }] 
+ }, { 
+     ids: [{ 
+         id: "android_mcr", 
+         type: "Meetup" 
+     }], 
+     links: [{ 
+         link: "https://twitter.com/android_mcr",
+         type: "Twitter" 
+     }] 
+ }, { 
+     ids: [{ 
+         id: "DevOps-Manchester", 
+         type: "Meetup" 
+     }], 
+     links: [{ 
+         link: "https://twitter.com/devopsmanc",
+         type: "Twitter" 
+     }] 
+ }]
