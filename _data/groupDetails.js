@@ -271,4 +271,166 @@ module.exports = [{
         link: "http://herplusdata.org/",
         type: "Website"
     }]
+}, {
+    ids: [{
+        id: "C-I-N-G",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/CINGnetwork",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Digital_North_",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/DigitalgurusNTH",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "freelance-folk-manchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/freelancefolk",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "GlugManchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/glug",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "MaccTech",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/MaccTech",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Manchester-Artificial-Intelligence-Deep-Learning",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/h2oai",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Manchester-InfoSec",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/mcrinfosec",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Manchester-Small-Business-Support-group",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/Accountsplace",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Data-Science-ODSC-Manchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/odsc",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "ONEMINUTEBRIEFSMCR",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/OneMinuteBriefs",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "rladies-manchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/RladiesManchester",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Software-Crafters-North",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/NorthCrafters",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Startup2sme",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/Startup2sme",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "TechReturners",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/TechReturners",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Test-Hive-Manchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/test_hive",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "MancBizBooks",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/MancBizBooks",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "The-UX-Crunch-Manchester",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/TechCircus_",
+        type: "Twitter"
+    }]
+}, {
+    ids: [{
+        id: "Unify-Academy-Software-Testing-Courses",
+        type: "Meetup"
+    }],
+    links: [{
+        link: "https://twitter.com/deeperthanblue1",
+        type: "Twitter"
+    }]
 }]
