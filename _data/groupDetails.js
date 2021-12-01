@@ -306,6 +306,9 @@ module.exports = [{
     links: [{
         link: "https://twitter.com/glug",
         type: "Twitter"
+    }, {
+        link: "https://www.glugevents.com/",
+        type: "Website"
     }]
 }, {
     ids: [{
@@ -351,6 +354,15 @@ module.exports = [{
     links: [{
         link: "https://twitter.com/odsc",
         type: "Twitter"
+    }, {
+        link: "https://www.linkedin.com/company/open-data-science/",
+        type: "Linkedin"
+    }, {
+        link: "https://www.facebook.com/OPENDATASCI/",
+        type: "Facebook"
+    }, {
+        link: "http://bit.ly/2RkOf9l",
+        type: "Slack"
     }]
 }, {
     ids: [{
@@ -396,6 +408,15 @@ module.exports = [{
     links: [{
         link: "https://twitter.com/TechReturners",
         type: "Twitter"
+    }, {
+        link: "https://www.facebook.com/techreturners/",
+        type: "Facebook"
+    }, {
+        link: "https://www.linkedin.com/company/techreturners/",
+        type: "Linkedin"
+    }, {
+        link: "https://www.techreturners.com/",
+        type: "Website"
     }]
 }, {
     ids: [{
@@ -423,6 +444,12 @@ module.exports = [{
     links: [{
         link: "https://twitter.com/TechCircus_",
         type: "Twitter"
+    }, {
+        link: "https://www.facebook.com/techcircus/",
+        type: "Facebook"
+    }, {
+        link: "https://www.linkedin.com/company/techcircus/",
+        type: "Linkedin"
     }]
 }, {
     ids: [{
@@ -505,4 +532,67 @@ module.exports = [{
          link: "https://twitter.com/devopsmanc",
          type: "Twitter" 
      }] 
- }]
+ }, { 
+    ids: [{ 
+        id: "CRAP-Talks-CRO-Analytics-Product-Manchester", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://www.craptalks.com",
+        type: "Website" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "Manchester-Futurists", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://manchesterfuturists.home.blog/",
+        type: "Website" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "CodeUpManchester", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://codeupmanchester.github.io/",
+        type: "Website" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "StartupBlink-Manchester", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://www.startupblink.com/",
+        type: "Website" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "MPNorth", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://www.manhattanpartners.co.uk/",
+        type: "Website" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "Microservices-North", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "http://www.microservicesmanchester.com/",
+        type: "Website" 
+    }] 
+}, { 
+    ids: [{ 
+        id: "SODA-Social", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "http://www.soda-social.com/",
+        type: "Website" 
+    }] 
+}]
