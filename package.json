@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/inevitable-team/compiled-mcr-events#readme",
   "dependencies": {
-    "async": "^3.1.1",
+    "async": "^3.2.3",
     "beautify": "0.0.8",
     "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0",
