@@ -38,8 +38,8 @@ class eventbrite {
                 false,
                 event.online_event,
                 ! event.online_event,
-                event.cat,
-                event.topic
+                event.cat ? [event.cat] : [],
+                event.topic ? [event.topic] : []
             );
         }
     }
@@ -74,7 +74,7 @@ class eventbrite {
         return new Promise(resolve => {
             Promise.all(this.urls.map(url => fetch(url, this.params))).then(responses =>
                 Promise.all(responses.map(res => res.text()))
-            ).then(texts => {
+            ).then(async texts => {
                 // Building Events
                 let json = texts.map((text, i) => {
                     try {
@@ -92,43 +92,64 @@ class eventbrite {
                     event.groupLink = this.organizers[i].url;
                     return event;
                 }));
+
                 //the IDS can be referenced because the api returns the entire event object
                 let flattened = [].concat(...json);
-                // Adding Venue Info from ID
-                Promise.all(flattened.map(event => fetch(this.apiVenue + event.venue_id, this.params))).then(responses =>
-                    Promise.all(responses.map(res => res.text()))
-                ).then(venues => {
-                    venues = venues.map(venue => JSON.parse(venue));
-                    let data = flattened.map((event, i) => {
-                        event.venue = venues[i].address != undefined ? venues[i].address.localized_address_display : "N/A";
-                        return event;
-                    }) // Once all venues have been added, return
-                    resolve(data);
-                });
-                // Adding category Info from ID
-                Promise.all(flattened.map(event => fetch(this.apiCat + event.category_id, this.params))).then(responses =>
-                    Promise.all(responses.map(res => res.text()))
-                ).then(cats => {
-                    cats = cats.map(cat => JSON.parse(cat));
-                    let data = flattened.map((event, i) => {
-                        event.cat = cats[i].name;
-                        return event;
-                    }) // Once all categories have been added, return
-                    resolve(data);
-                });
-                // Adding topic Info from ID
-                Promise.all(flattened.map(event => fetch(this.apiTopic + event.subcategory_id, this.params))).then(responses =>
-                    Promise.all(responses.map(res => res.text()))
-                ).then(topics => {
-                    topics = topics.map(topic => JSON.parse(topic));
-                    let data = flattened.map((event, i) => {
-                        event.topic = topics[i].name;
-                        return event;
-                    }) // Once all topics have been added, return
-                    resolve(data);
-                });
+                let eventsWithVenues = await this.addVenue(flattened);
+                let eventsWithCategories = await this.addCategory(eventsWithVenues);
+                let eventsWithTopics = await this.addTopic(eventsWithCategories);
+                resolve(eventsWithTopics);
+
             })
         })
+    }
+
+    async addVenue(events) {
+        return new Promise(async resolve => {
+            // Adding Venue Info from ID
+            Promise.all(events.map(event => fetch(this.apiVenue + event.venue_id, this.params))).then(responses =>
+                Promise.all(responses.map(res => res.text()))
+            ).then(venues => {
+                venues = venues.map(venue => JSON.parse(venue));
+                let data = events.map((event, i) => {
+                    event.venue = venues[i].address != undefined ? venues[i].address.localized_address_display : "N/A";
+                    return event;
+                }) // Once all venues have been added, return
+                resolve(data);
+            });
+        });
+    }
+
+    async addCategory(events) {
+        return new Promise(async resolve => {
+            // Adding category Info from ID
+            Promise.all(events.map(event => fetch(this.apiCat + event.category_id, this.params))).then(responses =>
+                Promise.all(responses.map(res => res.text()))
+            ).then(cats => {
+                cats = cats.map(cat => JSON.parse(cat));
+                let data = events.map((event, i) => {
+                    event.cat = cats[i].name;
+                    return event;
+                }) // Once all categories have been added, return
+                resolve(data);
+            });
+        });
+    }
+
+    async addTopic(events) {
+        return new Promise(async resolve => {
+            // Adding topic Info from ID
+            Promise.all(events.map(event => fetch(this.apiTopic + event.subcategory_id, this.params))).then(responses =>
+                Promise.all(responses.map(res => res.text()))
+            ).then(topics => {
+                topics = topics.map(topic => JSON.parse(topic));
+                let data = events.map((event, i) => {
+                    event.topic = topics[i].name;
+                    return event;
+                }) // Once all topics have been added, return
+                resolve(data);
+            });
+        });
     }
 }
 
