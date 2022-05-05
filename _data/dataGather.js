@@ -21,7 +21,7 @@ class dataGather {
                 let eventsData = data.reduce((total, curr) => total.concat(curr[1]), []);
                 // Sorting / Filtering
                 let groups = this.sortNames(this.enhanceGroups(groupsData));
-                let events = this.sortTime(this.filterEvents(eventsData));
+                let events = this.sortTime(this.filterDuplicateEvents(this.filterPastEvents(eventsData)));
                 resolve([groups, events]);
             })
         });
@@ -86,13 +86,17 @@ class dataGather {
         });
     }
 
+    filterPastEvents(events) {
+        return events.filter(event => (new Date(event.startTimeISO) > (new Date())));
+    }
+
     // https://stackoverflow.com/questions/2218999/remove-duplicates-from-an-array-of-objects-in-javascript
-    filterEvents(events) {
+    filterDuplicateEvents(events) {
         return events.filter((event,index) => {
             return index === events.findIndex(obj => {
-              return this.rtnLowercaseAlpha(event.name) == this.rtnLowercaseAlpha(obj.name) && this.formatDate(event.startTimeISO) == this.formatDate(obj.startTimeISO);
+                return this.rtnLowercaseAlpha(event.name) == this.rtnLowercaseAlpha(obj.name) && this.formatDate(event.startTimeISO) == this.formatDate(obj.startTimeISO);
             });
-          });
+        });
     }
 
     rtnLowercaseAlpha(string) {

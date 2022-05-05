@@ -594,5 +594,5 @@ module.exports = [{
     links: [{ 
         link: "http://www.soda-social.com/",
         type: "Website" 
-    }] 
+    }]
 }]
