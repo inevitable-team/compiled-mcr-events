@@ -53,6 +53,9 @@ class meetup {
                     memberships {
                         count
                     }
+                    topics {
+                      name
+                    }
                 }
             }
         `;
@@ -68,6 +71,7 @@ class meetup {
             null,
             null,
             "Meetup",
+            group.groupByUrlname.topics.map(t => t.name),
             false
         );
         this.event = (event) => {
