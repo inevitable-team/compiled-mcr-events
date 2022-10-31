@@ -111,6 +111,7 @@ class meetup {
     }
 
     rtnEventVenue(event) {
+        if (event.isOnline) return "Online";
         let venueName = (event.venue != null) ? event.venue.name : "N/A";
         let venueAddress = (event.venue != null) ? event.venue.address : "";
         let venuePostcode = (event.venue != null) ? event.venue.postalCode : "";
