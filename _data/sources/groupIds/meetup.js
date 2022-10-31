@@ -309,5 +309,6 @@ module.exports = [
   "data-leaders-north-people-centric-innovation",
   "manchesteryoungentrepreneurnetworkers",
   "North-West-Tech-Talks",
-  "SaltStack-Manchester-Meetup"
+  "SaltStack-Manchester-Meetup",
+  "the-socialcode-x-product"
 ];
