@@ -595,4 +595,19 @@ module.exports = [{
         link: "http://www.soda-social.com/",
         type: "Website" 
     }]
+}, { 
+    ids: [{ 
+        id: "manchester-tech-festival", 
+        type: "Meetup" 
+    }], 
+    links: [{ 
+        link: "https://twitter.com/manctechfest",
+        type: "Twitter" 
+    }, {
+        link: "https://www.linkedin.com/company/manchester-tech-festival/",
+        type: "Linkedin"
+    }, { 
+        link: "https://www.manchestertechfestival.co.uk/",
+        type: "Website" 
+    }]
 }]
