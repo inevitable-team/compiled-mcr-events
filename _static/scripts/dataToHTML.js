@@ -97,8 +97,4 @@
         return [day, month, year].join('-');
     }
 
-   exports.test = function(){
-        return 'hello world'
-    };
-
 })(typeof exports === 'undefined'? this['dataToHTML']={}: exports);
