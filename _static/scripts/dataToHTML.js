@@ -44,7 +44,7 @@
     exports.eventHTML = event => {
         return `
             <div class="item">
-                <p class="date blue">${exports.htmlDate(event.startTimeISO)}</p>
+                <p class="date blue">${exports.htmlDate(event.startTimeISO)} - ${exports.htmlDate(event.endTimeISO)}</p>
                 <h3 class="title"><a target="_blank" href="${event.link}" rel="noreferrer">${event.name}</a></h3>
                 <p class="eventName gray"><a target="_blank" href="${event.groupLink}" rel="noreferrer">${event.groupName}</a> | ${event.source}</p>
                 <div class="locationDiv">
