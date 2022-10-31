@@ -286,3 +286,7 @@ header a {
         width: calc(100% - 100px) !important;
     }
 }
+
+.item:last-child, .group:last-child {
+    margin-bottom: 40px;
+}
