@@ -18,16 +18,16 @@
   },
   "homepage": "https://github.com/inevitable-team/compiled-mcr-events#readme",
   "dependencies": {
-    "async": "^3.1.1",
+    "async": "^3.2.2",
     "beautify": "0.0.8",
     "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0",
     "graphql": "^15.6.1",
     "graphql-request": "^3.5.0",
     "ical-generator": "^2.2.0",
-    "moment": "^2.29.1",
-    "node-fetch": "^2.6.1",
+    "moment": "^2.29.4",
+    "node-fetch": "^2.6.7",
     "os": "^0.1.1",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.5"
   }
 }
