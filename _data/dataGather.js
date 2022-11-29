@@ -2,6 +2,7 @@ let details = require("./groupDetails"),
     meetup = require("./sources/meetup"),
     eventbrite = require("./sources/eventbrite"),
     googleCalendar = require("./sources/googleCalendar"),
+    manchestertechevents = require("./sources/manchestertechevents.com"),
     googleCalendarKey = process.env.GOOGLE_CALENDAR_KEY || "AIzaSyCR3-ptjHE-_douJsn8o20oRwkxt-zHStY"; // Calendar API Key gained from the Google Developer Console, this key is shown in many examples
 
 class dataGather {
@@ -9,7 +10,8 @@ class dataGather {
         this.eventbrite = new eventbrite();
         this.meetup = new meetup();
         this.googleCalendar = new googleCalendar("a73q3trj8bssqjifgolb1q8fr4@group.calendar.google.com", "https://technw.uk/calendar", "TechNW", googleCalendarKey);
-        this.sources = [this.eventbrite, this.meetup, this.googleCalendar];
+        this.manchestertechevents = new manchestertechevents();
+        this.sources = [this.eventbrite, this.meetup, this.googleCalendar, this.manchestertechevents];
     }
 
     async getData() {
