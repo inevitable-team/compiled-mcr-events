@@ -1,6 +1,5 @@
 const fetch = require("node-fetch"),
       cheerio = require('cheerio'),
-      group = require("./templates/group"),
       event = require("./templates/event");
 
 class manchestertechevents {
@@ -14,10 +13,11 @@ class manchestertechevents {
             // Load JSON Data in Page
             let response = await fetch(this.url);
             let body = await response.text();
-            let $ = load(body);
-            let data = JSON.parse($('__NEXT_DATA__').text());
+            let $ = cheerio.load(body);
+            let data = JSON.parse($('script[type="application/json"]').get(0).firstChild.data);
+            let events = data.props.pageProps.recordMap.block;
 
-            let events = Object.keys(events).map(eventId => events[eventId].value).filter(e => e?.["properties"]?.[">~`X"]).map(e => {
+            let parsedEvents = Object.keys(events).map(eventId => events[eventId].value).filter(e => e?.["properties"]?.[">~`X"]).map(e => {
                 e = e["properties"];
                 return new event(
                     e["title"] ? `${e["title"][0][0]} ${e["Z^;n"] ? "(" + e["Z^;n"][0][0] + ")" : ""}` : "",
@@ -30,7 +30,7 @@ class manchestertechevents {
                     null,
                     null,
                     null,
-                    e["dh`y"] ? e["BFfG"][0][0] : this.name,
+                    e["dh`y"] ? e["dh`y"][0][0] : this.name,
                     e["dquW"] ? `mailto:${e["dquW"][0][0]}` : this.url,
                     this.name,
                     false,
@@ -41,7 +41,7 @@ class manchestertechevents {
                 );
             }).filter(event => new Date(event.startTimeISO) > new Date());
 
-            resolve([[], events]);
+            resolve([[], parsedEvents]);
        });
     }
 }
