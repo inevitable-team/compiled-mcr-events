@@ -67,7 +67,7 @@ h3 {
 }
 
 #typeContainer > * {
-    width: 50%;
+    width: 33.33%;
     display: inline-block;
     cursor: pointer;
     background-color: #cecece;
@@ -289,4 +289,19 @@ header a {
 
 .item:last-child, .group:last-child {
     margin-bottom: 40px;
+}
+
+#cal-nav {
+    text-align: left;
+}
+
+#cal-nav select, #cal-nav button, #cal-nav span {
+    margin: 5px 0px;
+    padding: 10px;
+    border-radius: 15px;
+    min-width: 40px;
+}
+
+#calendar {
+    height: calc(100vh - 240px);
 }
