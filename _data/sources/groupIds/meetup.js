@@ -312,5 +312,6 @@ module.exports = [
   "SaltStack-Manchester-Meetup",
   "the-socialcode-x-product",
   "manchester-tech-festival",
-  "tech-rise-mcr"
+  "tech-rise-mcr",
+  "manchester-prompt-engineers"
 ];
