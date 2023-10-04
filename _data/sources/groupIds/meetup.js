@@ -315,5 +315,6 @@ module.exports = [
   "tech-rise-mcr",
   "manchester-prompt-engineers",
   "hack-the-box-manchester",
-  "tech-thursday-manchester"
+  "tech-thursday-manchester",
+  "manchester-webflow-meetup-flowmcr"
 ];
