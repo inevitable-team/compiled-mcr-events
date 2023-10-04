@@ -314,5 +314,6 @@ module.exports = [
   "manchester-tech-festival",
   "tech-rise-mcr",
   "manchester-prompt-engineers",
-  "hack-the-box-manchester"
+  "hack-the-box-manchester",
+  "tech-thursday-manchester"
 ];
