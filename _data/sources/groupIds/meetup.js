@@ -313,5 +313,6 @@ module.exports = [
   "the-socialcode-x-product",
   "manchester-tech-festival",
   "tech-rise-mcr",
-  "manchester-prompt-engineers"
+  "manchester-prompt-engineers",
+  "hack-the-box-manchester"
 ];
