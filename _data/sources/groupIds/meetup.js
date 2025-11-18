@@ -199,7 +199,6 @@ module.exports = [
   "manchester-geek-nights",
   "Manchester-Patterns-Group",
   "Manchester-Software-Craftsmanship-Community",
-  "thesocialcode",
   "Manchester-Umbraco-Meetup",
   "Manchester-Small-Business-Support-group",
   "The-Marketing-Meetup-Manchester",
