@@ -6,35 +6,46 @@ class meetup {
     constructor(token = process.env.MEETUP_TOKEN, requestTimeout = (process.env.REQUEST_TIMEOUT || 0)) {
         this.requestTimeout = requestTimeout;
         this.groups = require("./groupIds/meetup").filter((value, index, self) => self.indexOf(value) === index);
+
+        // Helper function for retrying async functions with exponential backoff
+        this.retryAsync = async (fn, retries = 3, delay = 1000) => {
+            try {
+                return await fn();
+            } catch (error) {
+                if (retries === 0) throw error;
+                await new Promise(res => setTimeout(res, delay));
+                return this.retryAsync(fn, retries - 1, delay * 2);
+            }
+        };
+
         this.queryEvent = gql`
             query($group: String!) {
                 groupByUrlname(urlname: $group) {
-                    unifiedEvents {
-                        edges {
-                            node {
-                                title
-                                shortUrl
-                                venue {
-                                    name
-                                    address
-                                    postalCode
-                                }
-                                description
-                                dateTime
-                                endTime
-                                going
-                                maxTickets
-                                price
-                                currency
-                                isOnline
+                        events {
+                            edges {
+                                    node {
+                                    title
+                                    eventUrl
+                                    venues {
+                                        name
+                                        address
+                                        postalCode
+                                    }
+                                    description
+                                    dateTime
+                                    endTime
+                                    rsvps {
+                                    yesCount
+                                    }
+                                    maxTickets
+                                    }
                             }
                         }
-                    }
-                    name
-                    link
-                    topics {
                         name
-                    }
+                        link
+                        activeTopics {
+                        name
+                        }
                 }
             }
         `;
@@ -46,14 +57,14 @@ class meetup {
                     name
                     description
                     link
-                    logo {
+                    keyGroupPhoto {
                         id
                         baseUrl
                     }
                     memberships {
-                        count
+                        totalCount
                     }
-                    topics {
+                    activeTopics {
                       name
                     }
                 }
@@ -67,41 +78,41 @@ class meetup {
             group.groupByUrlname.name,
             group.groupByUrlname.description || "",
             group.groupByUrlname.link, this.rtnGroupImg(group),
-            (group.groupByUrlname.memberships || {count: undefined}).count,
+            (group.groupByUrlname.memberships || {totalCount: undefined}).totalCount,
             null,
             null,
             "Meetup",
-            group.groupByUrlname.topics.map(t => t.name),
+            group.groupByUrlname.activeTopics.map(t => t.name),
             false
         );
         this.event = (event) => {
                 return new this.eventClass(
                     event.title,
-                    event.shortUrl,
+                    event.eventUrl,
                     this.rtnEventVenue(event),
                     this.removeHTML(event.description || ""),
                     event.dateTime,
                     event.endTime,
-                    event.going,
+                    event.rsvps.yesCount,
                     event.maxTickets || Infinity,
-                    event.price == null,
-                    this.rtnEventFee(event),
+                    null,
+                    null,
                     event.name,
                     event.link,
                     "Meetup",
                     false,
-                    event.isOnline,
-                    ! event.isOnline,
+                    event.venues.some(event => event.name == "Online event"),
+                    event.venues.some(event => event.name != "Online event"),
                     [],
-                    event.topics
+                    event.activeTopics
                 );
         };
     }
 
     rtnGroupImg(group) {
         let thumb = './img/blank_meetup.png';
-        if (group.groupByUrlname.hasOwnProperty('logo')) {
-            thumb = group.groupByUrlname.logo.baseUrl + group.groupByUrlname.logo.id + '/1000x1000.webp';
+        if (group.groupByUrlname.hasOwnProperty('keyGroupPhoto')) {
+            if (group.groupByUrlname.keyGroupPhoto != null) thumb = "https://secure-content.meetupstatic.com/images/classic-events/" + group.groupByUrlname.keyGroupPhoto.id + '/1000x1000.webp';
         }
         return thumb;
     }
@@ -111,10 +122,12 @@ class meetup {
     }
 
     rtnEventVenue(event) {
-        if (event.isOnline) return "Online";
-        let venueName = (event.venue != null) ? event.venue.name : "N/A";
-        let venueAddress = (event.venue != null) ? event.venue.address : "";
-        let venuePostcode = (event.venue != null) ? event.venue.postalCode : "";
+        let inPersonVenues = event.venues.filter(venue => venue.name != "Online event");
+        if (inPersonVenues.length == 0) return "Online";
+        let mainVenue = inPersonVenues[0];
+        let venueName = (mainVenue != null) ? mainVenue.name : "N/A";
+        let venueAddress = (mainVenue != null) ? mainVenue.address : "";
+        let venuePostcode = (mainVenue != null) ? mainVenue.postalCode : "";
         let venue = (venueName == "N/A") ? "N/A" : venueName + ' - ' + venueAddress + ' (' + venuePostcode + ')';
         return venue.replace("undefined", "").replace("undefined", "").replace(' - ()', "");
     }
@@ -133,11 +146,21 @@ class meetup {
         return new Promise(resolve => {
             Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*this.requestTimeout)).then(async groupId => {
                 console.log('Fetching group details for: ', groupId);
-                return await request('https://api.meetup.com/gql', this.queryGroup, {group: groupId,});
+                try {
+                    return await this.retryAsync(() => request('https://api.meetup.com/gql-ext', this.queryGroup, {group: groupId}));
+                } catch (error) {
+                    if (error.response && error.response.status === 404) {
+                        console.warn(`Warning: Group not found: ${groupId}`);
+                        return null;
+                    }
+                    // For other errors, log warning and return null to continue processing other groups
+                    console.warn(`Warning: Failed to fetch group details for ${groupId}: ${error.message}`);
+                    return null;
+                }
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
-                let json = texts.filter(e => e.groupByUrlname != null).map(this.group);
+                let json = texts.filter(e => e != null && e.groupByUrlname != null).map(this.group);
                 resolve(json);
             })
         })
@@ -147,12 +170,12 @@ class meetup {
         return new Promise(resolve => {
             Promise.all(this.groups.map((groupId, i) => new Promise(resolve => setTimeout(() => resolve(groupId), i*this.requestTimeout)).then(async groupId => {
                 console.log('Fetching events for: ', groupId);
-                return await request('https://api.meetup.com/gql', this.queryEvent, {group: groupId,});
+                return await this.retryAsync(() => request('https://api.meetup.com/gql-ext', this.queryEvent, {group: groupId,}));
             }))).then(responses =>
                 Promise.all(responses)
             ).then(texts => {
                 let converted = [].concat(...texts.filter(e => e.groupByUrlname != null).map(group => {
-                    return group.groupByUrlname.unifiedEvents.edges.map(event => {
+                    return group.groupByUrlname.events.edges.map(event => {
                         event.node.name = group.groupByUrlname.name;
                         event.node.link = group.groupByUrlname.link;
                         event.node.topics = (group.groupByUrlname.topics || []).map(e => e.name);

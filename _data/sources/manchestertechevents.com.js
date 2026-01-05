@@ -1,5 +1,4 @@
 const fetch = require("node-fetch"),
-      cheerio = require('cheerio'),
       event = require("./templates/event");
 
 class manchestertechevents {
@@ -9,29 +8,47 @@ class manchestertechevents {
     }
 
     async getData() {
-       return new Promise(async resolve => {
-            // Load JSON Data in Page
-            let response = await fetch(this.url);
-            let body = await response.text();
-            let $ = cheerio.load(body);
-            let data = JSON.parse($('script[type="application/json"]').get(0).firstChild.data);
-            let events = data.props.pageProps.recordMap.block;
+        const apiKey = process.env.MANCHESTER_TECH_EVENTS_TOKEN;
+        if (!apiKey) {
+            console.warn("Warning: MANCHESTER_TECH_EVENTS_TOKEN environment variable is not set.");
+            return [[], []];
+        }
 
-            let parsedEvents = Object.keys(events).map(eventId => events[eventId].value).filter(e => e?.["properties"]?.[">~`X"]).map(e => {
-                e = e["properties"];
+        try {
+            const response = await fetch("https://sxfvfofzpzqhdzogwnjy.supabase.co/rest/v1/rpc/get_approved_events", {
+                method: "POST",
+                headers: {
+                    "apikey": apiKey,
+                    "content-type": "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                console.warn(`Warning: Failed to fetch events, status: ${response.status}`);
+                return [[], []];
+            }
+
+            const data = await response.json();
+
+            // Map API response to event instances with real data
+            const parsedEvents = data.map(ev => {
+                const startDate = new Date(ev.date);
+                const durationMinutes = ev.duration || 0;
+                const endDate = new Date(startDate.getTime() + durationMinutes * 60000);
+
                 return new event(
-                    e["title"] ? `${e["title"][0][0]} ${e["Z^;n"] ? "(" + e["Z^;n"][0][0] + ")" : ""}` : "",
-                    e["L=u~"] ? e["L=u~"][0][0] : "",
-                    e["NMxS"] ? e["NMxS"].map(e => e[0]).join(", ") : "",
-                    e["BFfG"] ? e["BFfG"][0][0] : "",
-                    `${e[">~`X"][0][1][0][1].start_date}T${e[">~`X"][0][1][0][1].start_time}:00Z`,
-                    e["HPJU"] ? `${e["HPJU"][0][1][0][1].start_date}T${e["HPJU"][0][1][0][1].start_time}:00Z` : `${e[">~`X"][0][1][0][1].start_date}T${e[">~`X"][0][1][0][1].start_time}:00Z`,
+                    ev.title || "No Title",
+                    ev.description || "",
+                    ev.venue || "",
+                    ev.link || "",
+                    startDate.toISOString(),
+                    endDate.toISOString(),
                     null,
                     null,
                     null,
                     null,
-                    e["dh`y"] ? e["dh`y"][0][0] : this.name,
-                    e["dquW"] ? `mailto:${e["dquW"][0][0]}` : this.url,
+                    this.name,
+                    this.url,
                     this.name,
                     false,
                     true,
@@ -41,8 +58,11 @@ class manchestertechevents {
                 );
             }).filter(event => new Date(event.startTimeISO) > new Date());
 
-            resolve([[], parsedEvents]);
-       });
+            return [[], parsedEvents];
+        } catch (error) {
+            console.warn("Warning: Error fetching events:", error);
+            return [[], []];
+        }
     }
 }
 
